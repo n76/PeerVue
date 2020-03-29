@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+    A part of the content screen, shows a summary of the currently
+    focused content row list item
+-->
+
+<component name="SummaryDisplay" extends="LayoutGroup">
+    <interface>
+        <!-- Fields that we display above row list
+            Title - The title of the video
+            Description - The short description of the video
+            Release Date - The date published
+        -->
+        <field id="Title"           type="node" alias=""/>
+        <field id="Description"     type="node" alias=""/>
+        <field id="ReleaseDate"     type="node" alias=""/>
+
+        <!-- Content node -->
+        <field id="Content"         type="node" onChange="OnContentChanged"/>
+    </interface>
+
+    <!-- main handler -->
+    <script type="text/brightscript"
+            uri="pkg:/components/screens/SummaryDisplay/SummaryDisplay.brs" />
+
+    <children>
+
+        <Label
+            id="Title"
+            color="0xFFFFFF"
+            text=""
+        />
+
+        <Label
+            id="ReleaseDate"
+            color="0xFFFFFF"
+            text=""
+        />
+
+        <Label
+            id="Description"
+            color="0xFFFFFF"
+            height="120"
+            lineSpacing="7"
+            text=""
+            width="1500"
+            wrap="true"
+        />
+    </children>
+
+</component>

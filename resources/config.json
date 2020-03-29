@@ -1,0 +1,25 @@
+{
+  "server": "https://video.fitchfamily.org",
+  "categories": [
+    {
+      "str_id":         "recent",
+      "path":           "/api/v1/videos/?start=0&count=20&sort=-publishedAt"
+    },
+    {
+      "str_id":         "trending",
+      "path":           "/api/v1/videos/?start=0&count=20&sort=-trending"
+    },
+    {
+      "str_id":         "liked",
+      "path":           "/api/v1/videos/?start=0&count=20&sort=-likes"
+    },
+    {
+      "str_id":         "local",
+      "path":           "/api/v1/videos/?start=0&count=20&filter=local"
+    },
+    {
+      "str_id":         "discover",
+      "path":           "/api/v1/overviews/videos?start=0&count=20"
+    }
+  ]
+}

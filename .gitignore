@@ -1,0 +1,5 @@
+logo.svg*
+.DS_Store
+out/*
+TODO.txt
+build-number.txt

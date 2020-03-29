@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component   name="content_screen"   extends="Group"   initialFocus="rowList" >
+    <script type="text/brightscript" uri="pkg:/components/screens/content_screen/content_screen.brs" />
+    <script type="text/brightscript" uri="pkg:/source/utils/config.brs" />
+    <interface>
+        <field id="content" type="node" alias="RowList.content" />
+
+        <!-- Row item selection handler -->
+        <field id="rowItemSelected" type="intarray" alwaysnotify="true" alias="rowList.rowItemSelected"/>
+
+        <!-- Row item focused handler -->
+        <field id="itemFocused" type="intarray" alias="rowList.rowItemFocused" onChange="OnItemFocused"/>
+
+        <!-- Interface to focused item (Content Node) -->
+        <field id="focusedContent"  type="node"/>
+
+        <function name="updateConfig" />
+    </interface>
+
+    <children>
+        <background
+            id="Background"
+            width="1920"
+            height="1080"
+            color="0xAAAAAA"
+            />
+
+        <overhang
+            id="MyOverhang"
+            visible="true"
+            translation="[0,0]"
+            logoUri="pkg:/images/logo.png"
+            title = "PeerTube"
+            showOptions="false"
+            logoBaselineOffset="25"
+            height="115" />
+
+        <RowList
+            id="rowList"
+            itemSize="[1900, 327]"
+            itemSpacing="[20, 0]"
+            numRows="2"
+            rowFocusAnimationStyle="floatingFocus"
+            rowItemSize="[[393, 220]]"
+            rowItemSpacing="[[25, 4.5]]"
+            rowLabelOffset="[[60, 35]]"
+            showRowCounter="true"
+            showRowLabel="true"
+            translation="[60, 372]"
+            />
+
+        <Poster
+            translation="[0, 975]"
+            uri="pkg:/images/BG_dark_down.png"
+            width="3000"
+            height="142"
+            />
+
+        <SummaryDisplay
+            id="summary"
+            translation="[159, 145]"
+            itemSpacings="[10,25]"
+            />
+
+    </children>
+</component>
+

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+    <component name = "load_config_task" extends = "task" >
+    <interface>
+        <!-- input fields -->
+
+        <!-- response fields -->
+        <field id = "configuration" type = "assocarray" />
+        <field id = "error"         type = "string" />
+    </interface>
+    <script type="text/brightscript" uri="pkg:/components/tasks/load_config_task/load_config_task.brs"/>
+</component>
+
