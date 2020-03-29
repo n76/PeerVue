@@ -7,6 +7,7 @@ sub init()
     m.rowList       =   m.top.findNode("rowList")
     m.summary       =   m.top.findNode("summary")
     m.background    =   m.top.findNode("Background")
+    m.overhang      =   m.top.findNode("MyOverhang")
     m.content       =   [[]]
 
     m.top.observeField("visible", "onVisibleChange")
@@ -16,6 +17,7 @@ end sub
 
 function updateConfig(settings)
     m.server = settings.server
+    m.overhang.Title = settings.instance_name
     date = CreateObject("roDateTime")
 
     RowItems = createObject("roSGNode","ContentNode")

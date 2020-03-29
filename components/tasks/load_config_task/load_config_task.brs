@@ -30,6 +30,13 @@ function load()
         m.top.error = "Configuration file at "+filepath+" is invalid."
     else
         configuration.server = json.server
+        
+        '
+        ' Get name of instance
+        '
+        feedData = getFeed(json.server, "/api/v1/config")
+        configuration.instance_name = feedData.instance.name
+        
         videos = {}
         for each category in json.categories
             categoryVideos = []

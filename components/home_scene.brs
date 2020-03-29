@@ -181,6 +181,7 @@ sub onConfigResponse(obj)
     '
     settings = obj.getData()
     m.sidebar.callFunc("updateConfig",settings)
+    m.overhang.Title = settings.instance_name
 
     '? "[onConfiguration] server: "; obj.getData().server
     m.server = settings.server
