@@ -12,6 +12,8 @@
             alias="play_button.buttonSelected" />
         <field id="url"
             type="string" />
+        <field id="streamlist"
+            type="array" />
         <field id="streamformat"
             type="string" />
         <field id="duration"

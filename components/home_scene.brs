@@ -90,15 +90,19 @@ Function OnChangeContent()
     m.content_screen.setFocus(true)
 End Function
 
-sub OnRowItemSelected()    
+sub OnRowItemSelected()
     item = m.content_screen.focusedContent
     loadVideoInfo(item.uuid)
 end sub
 
 sub onPlayButtonPressed(obj)
     node = createObject("roSGNode","ContentNode")
-    node.streamformat = m.details_screen.streamformat    
-    node.url = m.details_screen.url
+    node.streamformat = m.details_screen.streamformat
+    if (m.details_screen.streamformat = "hls")
+        node.url = m.details_screen.url
+    else
+        node.streams = m.details_screen.streamlist
+    endif
     node.length = m.details_screen.duration
 
     m.details_screen.visible = false
@@ -235,7 +239,7 @@ sub onConfigResponse(obj)
     '   Pass server URL on to objects that might need it
     '
     m.details_screen.callFunc("updateConfig",m.server)
-    
+
     '
     '   Content screen needs server URL, locale strings and
     '   video list (basically everything)

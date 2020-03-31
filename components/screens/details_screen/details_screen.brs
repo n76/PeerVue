@@ -19,7 +19,7 @@ end sub
 
 sub OnContentChange(obj)
     item = obj.getData()
-    ? "details_screen :";item
+    '? "details_screen :";item
     if item.name <> Invalid then
         m.title.text = item.name
     else
@@ -48,23 +48,36 @@ sub OnContentChange(obj)
     '   First see if there are any HLS streams
     '
     for each stream in item.streamingPlaylists
-        ?"playlistUrl: "; stream.playlistUrl
         m.top.url = stream.playlistUrl
         m.top.streamformat = "hls"
     end for
     m.top.url = ""
+    '
+    '   If no HLS streams then work with available mp4 files
+    '
     if m.top.url = "" then
-        ? "No HLS stream available"
+        ? "[OnContentChange] No HLS stream available"
         best_res = 0
+        streams = []
         for each f in item.files
-            if (f.resolution.id > best_res) and (f.resolution.id <= 1080)
-                ?"resolution: "; f.resolution.id
-                ?"url: "; f.fileDownloadUrl
-                best_res = f.resolution.id
-                m.top.url = f.fileDownloadUrl
-                m.top.streamformat = "mp4"
+
+            streamQuality = false
+            if f.resolution.id > 720
+                streamQuality = true
             end if
+            '
+            '   Assume size is bytes that take 10 bits to transport (typical TCP/IP)
+            '   Assume Roku "bitrate" is kbps
+            '
+            thisStream = {}
+            thisStream.bitrate = (((f.size / item.duration) * 10) / 1024).ToStr().ToInt().ToStr()
+            thisStream.url = f.fileDownloadUrl
+            thisStream.quality = streamQuality
+            streams.push(thisStream)
+
         end for
+        m.top.streamformat = "mp4"
+        m.top.streamlist = streams
     end if
 end sub
 
