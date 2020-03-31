@@ -8,5 +8,6 @@
         <field id = "error"         type = "string" />
     </interface>
     <script type="text/brightscript" uri="pkg:/components/tasks/load_config_task/load_config_task.brs"/>
+    <script type="text/brightscript" uri="pkg:/source/utils/config.brs" />
 </component>
 

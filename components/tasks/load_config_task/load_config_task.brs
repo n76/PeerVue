@@ -29,12 +29,13 @@ function load()
         ? "[Load Config Task] Config: "; data
         m.top.error = "Configuration file at "+filepath+" is invalid."
     else
-        configuration.server = json.server
+        configuration.server = get_setting("server", json.server)
+        configuration.default_server = json.server
         
         '
         ' Get name of instance
         '
-        feedData = getFeed(json.server, "/api/v1/config")
+        feedData = getFeed(configuration.server, "/api/v1/config")
         configuration.instance_name = feedData.instance.name
         
         videos = {}
@@ -42,7 +43,7 @@ function load()
             categoryVideos = []
             feedTitle = category.str_id
             feedPath  = category.path
-            feedData  = getFeed(json.server, feedPath)
+            feedData  = getFeed(configuration.server, feedPath)
             
             '
             ' For "normal" feeds, we have "data" and "total". For "discover"

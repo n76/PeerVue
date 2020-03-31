@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="server_setup" extends="Group" >
+<script type="text/brightscript" uri="pkg:/components/screens/server_setup/server_setup.brs" />
+    <interface>
+        <field id="server_update_button_pressed"
+            type="int"
+            alwaysnotify="true"
+            alias="enter_button.buttonSelected" />
+
+        <field id="server_url"
+            type="string"
+            alias="keyboard.text" />
+        
+        <function name="updateConfig" />
+        
+    </interface>
+
+    <children>
+    
+        <Label
+            id="server_label"
+            font="font:MediumSystemFont"
+            width="800"
+            text="Server Address:"
+            translation="[100,250]"
+            />
+
+        <Keyboard 
+            id="keyboard"
+            translation="[100, 350]"
+            />
+
+        <Button
+            id="enter_button"
+            text="Update"
+            showFocusFootprint="true"
+            translation="[100, 800]"
+            />
+
+    </children>
+</component>

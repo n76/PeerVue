@@ -5,6 +5,7 @@ function init()
     m.sidebar = m.top.findNode("sidebar")
     m.content_screen = m.top.findNode("content_screen")
     m.details_screen = m.top.findNode("details_screen")
+    m.server_setup = m.top.findNode("server_setup")
     m.error_dialog = m.top.findNode("error_dialog")
     m.videoplayer = m.top.findNode("videoplayer")
     initializeVideoPlayer()
@@ -12,11 +13,8 @@ function init()
     m.sidebar.observeField("category_selected", "onCategorySelected")
     m.top.observeField("rowItemSelected", "OnRowItemSelected")
     m.details_screen.observeField("play_button_pressed", "onPlayButtonPressed")
+    m.server_setup.observeField("server_update_button_pressed", "onServerUpdatePressed")
 
-    m.content_screen.visible = false
-    m.sidebar.visible = false
-    m.overhang.visible = false
-    m.init_screen.visible = true
     loadConfig()
 end function
 
@@ -25,7 +23,14 @@ function onKeyEvent(key, press) as Boolean
     ? "[home_scene] onKeyEvent", key, press
 
     if (press)
-        if m.sidebar.visible and (key="right")
+        if m.server_setup.visible and (key="back")
+            m.server_setup.visible = false
+            m.server_setup.setFocus(false)
+            m.overhang.visible=true
+            m.sidebar.visible = true
+            m.sidebar.setFocus(true)
+            return true
+        else if m.sidebar.visible and ((key="right") or (key="back"))
             m.content_screen.visible=true
             m.overhang.visible=true
             m.sidebar.visible=false
@@ -60,8 +65,16 @@ sub onCategorySelected(obj)
     ? "onCategorySelected checkedItem: ";list.checkedItem
     ? "onCategorySelected selected ContentNode: ";list.content.getChild(obj.getData())
     item = list.content.getChild(obj.getData())
+    if item.cat_type = "settings"
+        m.server_setup.server_url = m.server
+        m.content_screen.visible = false
+        m.sidebar.visible = false
+        m.overhang.visible=true
+        m.server_setup.visible = true
+    else
         ? "Type not implemented: ";item.cat_type
         showErrorDialog(item.cat_type + " not yet implemented.")
+    end if
 end sub
 
 Function OnChangeContent()
@@ -159,7 +172,39 @@ sub showErrorDialog(message)
     m.top.dialog = m.error_dialog
 end sub
 
+sub onServerUpdatePressed(obj)
+    new_url = m.server_setup.server_url
+    if (INSTR(1,new_url,"http://") = 1) or (instr(1,new_url,"https://"))
+        if (m.server = new_url)
+            '
+            ' New server same as old. Treat the same as a back button
+            '
+            m.server_setup.visible = false
+            m.server_setup.setFocus(false)
+            m.overhang.visible=true
+            m.sidebar.visible = true
+            m.sidebar.setFocus(true)
+        else
+            ? "[onServerUpdatePressed] new server: ";new_url
+            set_setting("server", new_url)
+            loadConfig()
+        end if
+    end if
+end sub
+
 sub loadConfig()
+    '
+    ' Go into config loading mode: Hide everything but the init screen
+    '
+    m.content_screen.visible = false
+    m.sidebar.visible = false
+    m.server_setup.visible = false
+    m.overhang.visible = false
+    m.init_screen.visible = true
+
+    '
+    '   Start a task to load everything we need from our instance server
+    '
     loc = CreateObject("roLocalization")
     m.config_task = createObject("roSGNode", "load_config_task")
     m.config_task.observeField("configuration", "onConfigResponse")
@@ -195,6 +240,7 @@ sub onConfigResponse(obj)
     '   Content screen needs server URL, locale strings and
     '   video list (basically everything)
     m.content_screen.callFunc("updateConfig",settings)
+    m.server_setup.callFunc("updateConfig", settings)
 
 end sub
 
