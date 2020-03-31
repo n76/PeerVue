@@ -51,7 +51,13 @@ sub OnContentChange(obj)
         m.top.url = stream.playlistUrl
         m.top.streamformat = "hls"
     end for
+
+    '
+    ' HLS streams from PeerTube lack sound for unknown reasons, so clear
+    ' our indicator and force use of mp4 streams.
+    '
     m.top.url = ""
+
     '
     '   If no HLS streams then work with available mp4 files
     '
