@@ -23,6 +23,8 @@
 
     <script type="text/brightscript" uri="pkg:/components/screens/details_screen/details_screen.brs" />
     <script type="text/brightscript" uri="pkg:/source/utils/config.brs" />
+    <script type="text/brightscript" uri="pkg:/source/utils/locale.brs" />
+
     <children>
         <Poster
             id="thumbnail"

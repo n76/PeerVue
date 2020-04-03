@@ -11,6 +11,8 @@
         
     </interface>
 
+    <script type="text/brightscript" uri="pkg:/source/utils/locale.brs" />
+
     <children>
         <LabelList 
             id="category_list"

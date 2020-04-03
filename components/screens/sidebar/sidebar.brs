@@ -10,19 +10,17 @@ sub onVisibleChange()
 end sub
 
 function updateConfig(settings)
+    m.strings = settings.strings
+
     contentNode = createObject("roSGNode","ContentNode")
-    contentNode.appendChild(newCategory("settings",settings.strings))
-    contentNode.appendChild(newCategory("search",settings.strings))
+    contentNode.appendChild(newCategory("settings"))
+    contentNode.appendChild(newCategory("search"))
     m.category_list.content = contentNode
 end function
 
-function newCategory(key, localeStrings)
+function newCategory(key)
     node = createObject("roSGNode","category_node")
-    title = localeStrings.lookup(key)
-    if title = invalid then
-        title = key
-    end if
-    node.title = title
+    node.title = get_locale_string(key, m.strings)
     node.cat_type = key
     return node
 end function

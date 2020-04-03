@@ -2,6 +2,7 @@ function init()
     m.top.observeField("visible", "onVisibleChange")
     m.keyboard = m.top.FindNode("keyboard")
     m.enter_button = m.top.FindNode("enter_button")
+    m.server_label = m.top.FindNode("server_label")
 end function
 
 sub onVisibleChange()
@@ -12,6 +13,10 @@ end sub
 
 function updateConfig(settings)
     m.keyboard.text = settings.server
+
+    m.server_label.text = get_locale_string("server_url", settings.strings)
+    m.enter_button.text = get_locale_string("update", settings.strings)
+
 end function
 
 function onKeyEvent(key, press) as Boolean

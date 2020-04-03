@@ -1,9 +1,9 @@
 {
-    "settings":       "Paramètres",
-    "search":         "Chercher...",
     "discover":       "Découvrir",
-    "trending":       "Tendances",
     "liked":          "Les plus appréciées",
-    "recent":         "Récemment ajoutées",
     "local":          "Locales"
+    "recent":         "Récemment ajoutées",
+    "search":         "Chercher...",
+    "settings":       "Paramètres",
+    "trending":       "Tendances",
 }

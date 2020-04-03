@@ -7,8 +7,9 @@ sub init()
     m.play_button.setFocus(true)
 end sub
 
-function updateConfig(serverUrl)
-    m.server = serverUrl
+function updateConfig(settings)
+    m.server = settings.serverUrl
+    m.play_button.text = get_locale_string("play", settings.strings)
 end function
 
 sub onVisibleChange()

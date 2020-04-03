@@ -1,10 +1,13 @@
 {
-    "settings":       "Settings",
-    "search":         "Search...",
-    "discover":       "Discover",
-    "trending":       "Trending",
-    "liked":          "Most Liked",
-    "recent":         "Recently Added",
-    "local":          "Local"
+    "discover":     "Discover",
+    "liked":        "Most Liked",
+    "local":        "Local",
+    "play":         "PLAY",
+    "recent":       "Recently Added",
+    "search":       "Search...",
+    "server_url":   "Server Address:",
+    "settings":     "Settings",
+    "trending":     "Trending",
+    "update":       "Update"
 }
 

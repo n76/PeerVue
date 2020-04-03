@@ -17,6 +17,8 @@
         <function name="updateConfig" />
     </interface>
 
+    <script type="text/brightscript" uri="pkg:/source/utils/locale.brs" />
+
     <children>
         <background
             id="Background"

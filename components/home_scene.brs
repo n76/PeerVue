@@ -225,26 +225,19 @@ sub onConfigResponse(obj)
     '    ? "[configuration] discover item: "; item
     'end for
 
-    '
-    ' Sidebar needs locale strings, so initialize it
-    '
     settings = obj.getData()
-    m.sidebar.callFunc("updateConfig",settings)
-    m.overhang.Title = settings.instance_name
-
-    '? "[onConfiguration] server: "; obj.getData().server
     m.server = settings.server
 
-    '
-    '   Pass server URL on to objects that might need it
-    '
-    m.details_screen.callFunc("updateConfig",m.server)
+    m.overhang.Title = settings.instance_name
 
     '
-    '   Content screen needs server URL, locale strings and
-    '   video list (basically everything)
+    '   Various screens need the configuration too to setup
+    '   locale based text and/or server address, etc.
+    '
     m.content_screen.callFunc("updateConfig",settings)
+    m.details_screen.callFunc("updateConfig",settings)
     m.server_setup.callFunc("updateConfig", settings)
+    m.sidebar.callFunc("updateConfig",settings)
 
 end sub
 

@@ -26,11 +26,7 @@ function updateConfig(settings)
         '? "[content_screen] : value: "; settings.videos[category]
         row = createObject("RoSGNode","ContentNode")
 
-        title = settings.strings.lookup(category)
-        if title = invalid then
-            title = category
-        end if
-        row.Title = title
+        row.Title = get_locale_string(category, settings.strings)
 
         for each item in settings.videos[category]
             node = createObject("roSGNode","summary_node")
