@@ -17,6 +17,7 @@ function load()
         m.top.error = "Locale strings at "+filepath+" is invalid."
     else
         configuration.strings = json
+        localeStrings = json
     end if
     
     '
@@ -33,15 +34,25 @@ function load()
         configuration.default_server = json.server
         
         '
-        ' Get name of instance
+        '   Get name of instance
         '
         feedData = getFeed(configuration.server, "/api/v1/config")
         configuration.instance_name = feedData.instance.name
         
-        videos = {}
+        '
+        '   Done with basic configuration, give it to our home scene
+        '
+        m.top.configuration = configuration
+        
+        '
+        '   Get configured video lists
+        '
+        ?"[load_config_task] getting videos"
         for each category in json.categories
+            vids = {}
             categoryVideos = []
-            feedTitle = category.str_id
+            
+            vids.title = get_locale_string(category.str_id, localeStrings)
             feedPath  = category.path
             feedData  = getFeed(configuration.server, feedPath)
             
@@ -66,11 +77,14 @@ function load()
                     end if
                 end if
             end for
-            videos.AddReplace(feedTitle, categoryVideos)
+
+            '
+            ' Report this set of videos to our home scene
+            '
+            vids.videos = categoryVideos
+            m.top.videos = vids
         end for
-        configuration.videos = videos
     end if
-    m.top.configuration = configuration
 end function
 
 function getFeed(server, path)

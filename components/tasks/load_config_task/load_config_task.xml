@@ -6,8 +6,10 @@
         <!-- response fields -->
         <field id = "configuration" type = "assocarray" />
         <field id = "error"         type = "string" />
+        <field id = "videos"        type = "assocarray" />
     </interface>
     <script type="text/brightscript" uri="pkg:/components/tasks/load_config_task/load_config_task.brs"/>
     <script type="text/brightscript" uri="pkg:/source/utils/config.brs" />
+    <script type="text/brightscript" uri="pkg:/source/utils/locale.brs" />
 </component>
 

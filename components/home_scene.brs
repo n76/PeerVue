@@ -77,19 +77,6 @@ sub onCategorySelected(obj)
     end if
 end sub
 
-Function OnChangeContent()
-    ? "[home_scene] OnContentChange()"
-    '
-    '   Set content visibility
-    '
-    m.init_screen.visible = false
-    m.sidebar.visible = false
-    m.overhang.visible=true
-
-    m.content_screen.visible = true
-    m.content_screen.setFocus(true)
-End Function
-
 sub OnRowItemSelected()
     item = m.content_screen.focusedContent
     loadVideoInfo(item.uuid)
@@ -213,6 +200,7 @@ sub loadConfig()
     m.config_task = createObject("roSGNode", "load_config_task")
     m.config_task.observeField("configuration", "onConfigResponse")
     m.config_task.observeField("error", "onConfigError")
+    m.config_task.observeField("videos", "onConfigVideos")
     m.config_task.control="RUN"
 end sub
 
@@ -227,6 +215,7 @@ sub onConfigResponse(obj)
 
     settings = obj.getData()
     m.server = settings.server
+    m.strings = settings.strings
 
     m.overhang.Title = settings.instance_name
 
@@ -239,6 +228,20 @@ sub onConfigResponse(obj)
     m.server_setup.callFunc("updateConfig", settings)
     m.sidebar.callFunc("updateConfig",settings)
 
+    '
+    '   Set content visibility
+    '
+    m.init_screen.visible = false
+    m.sidebar.visible = false
+    m.overhang.visible=true
+
+    m.content_screen.visible = true
+    m.content_screen.setFocus(true)
+end sub
+
+sub onConfigVideos(obj)
+    info = obj.getData()
+    m.content_screen.callFunc("addContent",info)
 end sub
 
 sub onConfigError(obj)
