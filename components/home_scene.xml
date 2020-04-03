@@ -53,6 +53,11 @@
             height="1080" 
             />
             
+        <search_screen
+            id="search_screen"
+            visible="false"
+            />
+            
         <server_setup
             id="server_setup"
             visible="false"

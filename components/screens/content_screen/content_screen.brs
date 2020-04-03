@@ -2,8 +2,6 @@ sub init()
     m.rowList = m.top.FindNode("rowList")
     m.top.observeField("visible", "onVisibleChange")
 
-    ? "[GridScreen] Init"
-
     m.rowList       =   m.top.findNode("rowList")
     m.summary       =   m.top.findNode("summary")
     m.background    =   m.top.findNode("Background")
@@ -28,7 +26,7 @@ end function
 function newContent(videoInfo)
     m.content = createObject("roSGNode","ContentNode")
     m.rowList.content = m.content
-    addContent(title, videos)
+    addContent(videoInfo)
 end function
 
 '
@@ -77,6 +75,15 @@ function addContent(videoInfo)
     m.rowList.content.appendChild(row)
 end function
 
+function saveContent()
+    m.savedContent = m.rowList.content
+end function
+
+function restoreContent()
+    m.content = m.savedContent
+    m.rowList.content = m.savedContent
+end function
+
 ' handler of focused item in RowList
 Sub OnItemFocused()
     itemFocused = m.top.itemFocused
@@ -95,9 +102,7 @@ Sub OnItemFocused()
 End Sub
 
 sub onVisibleChange()
-    ?"[content_screen] onVisibleChange: ";m.top.visible
     if m.top.visible = true then
-        ? "[content_screen] onVisibleChange: setting focus."
         m.rowList.setFocus(true)
     end if
 end sub

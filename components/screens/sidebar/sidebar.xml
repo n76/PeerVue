@@ -18,7 +18,6 @@
             id="category_list"
             translation="[50, 150]"
             itemSize="[400,48]"
-            jumpToItem="2"
         />
         
     </children>

@@ -1,19 +1,44 @@
+'
+'   Our content screen (and thus things shown in our details and
+'   video player) can be from either our configuration specified set
+'   of URLs or from a URL derived from a search term.
+'
+'   We use the m.content_contains variable to keep track of what
+'   is in the content screen. Values are:
+'
+'   "config_videos"     - content contains video information from
+'                         the URLs in our config.json file
+'   "search_videos"     - content contains video information from
+'                         our most recent search
+'
+
 function init()
     ? "[home_scene] init"
-    m.init_screen = m.top.findNode("MyInitDisplay")
-    m.overhang = m.top.findNode("MyOverhang")
-    m.sidebar = m.top.findNode("sidebar")
+    '
+    '   Find all of our screens and components
+    '
     m.content_screen = m.top.findNode("content_screen")
     m.details_screen = m.top.findNode("details_screen")
-    m.server_setup = m.top.findNode("server_setup")
     m.error_dialog = m.top.findNode("error_dialog")
+    m.init_screen = m.top.findNode("MyInitDisplay")
+    m.overhang = m.top.findNode("MyOverhang")
+    m.search_screen = m.top.findNode("search_screen")
+    m.server_setup = m.top.findNode("server_setup")
+    m.sidebar = m.top.findNode("sidebar")
     m.videoplayer = m.top.findNode("videoplayer")
+    
+    m.content_contains = "config_videos"
+
     initializeVideoPlayer()
 
+    '
+    '   Setup all our observers
+    '
+    m.details_screen.observeField("play_button_pressed", "onPlayButtonPressed")
+    m.search_screen.observeField("search_screen_button_pressed","onSearchPressed")
+    m.server_setup.observeField("server_update_button_pressed", "onServerUpdatePressed")
     m.sidebar.observeField("category_selected", "onCategorySelected")
     m.top.observeField("rowItemSelected", "OnRowItemSelected")
-    m.details_screen.observeField("play_button_pressed", "onPlayButtonPressed")
-    m.server_setup.observeField("server_update_button_pressed", "onServerUpdatePressed")
 
     loadConfig()
 end function
@@ -23,7 +48,16 @@ function onKeyEvent(key, press) as Boolean
     ? "[home_scene] onKeyEvent", key, press
 
     if (press)
-        if m.server_setup.visible and (key="back")
+        if m.search_screen.visible and (key="back")
+            m.content_screen.callFunc("restoreContent")
+            m.content_contains = "config_videos"
+            m.search_screen.visible = false
+            m.search_screen.setFocus(false)
+            m.overhang.visible=true
+            m.sidebar.visible = true
+            m.sidebar.setFocus(true)
+            return true
+        else if m.server_setup.visible and (key="back")
             m.server_setup.visible = false
             m.server_setup.setFocus(false)
             m.overhang.visible=true
@@ -36,12 +70,22 @@ function onKeyEvent(key, press) as Boolean
             m.sidebar.visible=false
             m.sidebar.setFocus(false)
             return true
-        else if m.content_screen.visible and (key="left")
-            m.content_screen.visible=false
-            m.overhang.visible=true
-            m.sidebar.visible=true
-            m.sidebar.setFocus(true)
-            return true
+        else if m.content_screen.visible
+            if (key="left")
+                m.content_screen.visible=false
+                m.overhang.visible=true
+                m.sidebar.visible=true
+                m.sidebar.setFocus(true)
+                return true
+            else if (key="back") and (m.content_contains="search_videos")
+                ? "[home_scene] contents contains: "; m.content_contains
+                m.content_screen.visible = false
+                m.search_screen.visible = true
+                m.search_screen.setFocus(true)
+                m.overhang.visible = true
+                m.sidebar.visible = false
+                return true
+            end if
         else if m.details_screen.visible and (key="back")
             m.details_screen.visible=false
             m.overhang.visible=true
@@ -59,11 +103,7 @@ function onKeyEvent(key, press) as Boolean
 end function
 
 sub onCategorySelected(obj)
-    ? "onCategorySelected field: ";obj.getField()
-    ? "onCategorySelected data: ";obj.getData()
     list = m.sidebar.findNode("category_list")
-    ? "onCategorySelected checkedItem: ";list.checkedItem
-    ? "onCategorySelected selected ContentNode: ";list.content.getChild(obj.getData())
     item = list.content.getChild(obj.getData())
     if item.cat_type = "settings"
         m.server_setup.server_url = m.server
@@ -71,6 +111,12 @@ sub onCategorySelected(obj)
         m.sidebar.visible = false
         m.overhang.visible=true
         m.server_setup.visible = true
+    else if item.cat_type = "search"
+        m.content_screen.visible = false
+        m.content_screen.callFunc("saveContent")
+        m.sidebar.visible = false
+        m.overhang.visible=true
+        m.search_screen.visible = true
     else
         ? "Type not implemented: ";item.cat_type
         showErrorDialog(item.cat_type + " not yet implemented.")
@@ -183,6 +229,56 @@ sub onServerUpdatePressed(obj)
     end if
 end sub
 
+sub onSearchPressed(obj)
+    search_string = m.search_screen.search_string
+    ? "[onSearchPressed] new server: ";search_string
+    
+    m.url_task = createObject("roSGNode", "load_url_task")
+    m.url_task.observeField("response", "onSearchResponse")
+    m.url_task.url = get_setting("server", m.server) + "/api/v1/search/videos/?start=0&count=30&sort=-match&search=" + url_encode(search_string)
+    m.url_task.control = "RUN"
+end sub
+
+function url_encode(s):
+    unreserved = createObject("roRegex", "[\w\d\-_.]", "")
+    ba = createObject("roByteArray")
+    res = ""
+    for each ch in s.split(""):
+        if unreserved.isMatch(ch):
+            res += ch
+        else
+            ba.fromAsciiString(ch): hex = ba.toHexString()
+            for i = 1 to len(hex) step 2: res += "%" + mid(hex,i,2): next      
+        end if
+    end for
+    return res
+end function
+
+sub onSearchResponse(obj)
+    response = obj.getData()
+    '? "[onSearchResponse] response: " response
+    json = parseJSON(response)
+    if json = invalid
+        ? "[getFeed] bad JSON: "; rsltString
+        m.top.error = "Error parsing feed from server "+server
+    end if
+
+    m.content_contains = "search_videos"
+    vids = {}
+    vids.title = m.search_screen.search_string
+    vids.videos = json.data
+    m.content_screen.callFunc("newContent",vids)
+    
+    m.search_screen.visible = false
+    m.init_screen.visible = false
+    m.sidebar.visible = false
+    m.overhang.visible=true
+
+    m.content_screen.visible = true
+    m.content_screen.setFocus(true)
+end sub
+
+
 sub loadConfig()
     '
     ' Go into config loading mode: Hide everything but the init screen
@@ -225,6 +321,7 @@ sub onConfigResponse(obj)
     '
     m.content_screen.callFunc("updateConfig",settings)
     m.details_screen.callFunc("updateConfig",settings)
+    m.search_screen.callFunc("updateConfig", settings)
     m.server_setup.callFunc("updateConfig", settings)
     m.sidebar.callFunc("updateConfig",settings)
 

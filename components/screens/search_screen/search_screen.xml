@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<component name="server_setup" extends="Group" >
-<script type="text/brightscript" uri="pkg:/components/screens/server_setup/server_setup.brs" />
+<component name="search_screen" extends="Group" >
+<script type="text/brightscript" uri="pkg:/components/screens/search_screen/search_screen.brs" />
     <interface>
-        <field id="server_update_button_pressed"
+        <field id="search_screen_button_pressed"
             type="int"
             alwaysnotify="true"
             alias="enter_button.buttonSelected" />
 
-        <field id="server_url"
+        <field id="search_string"
             type="string"
             alias="keyboard.text" />
 
