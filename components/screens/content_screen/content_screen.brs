@@ -7,8 +7,7 @@ sub init()
     m.background    =   m.top.findNode("Background")
     m.overhang      =   m.top.findNode("MyOverhang")
 
-    m.content = createObject("roSGNode","ContentNode")
-    m.rowList.content = m.content
+    resetContent()
 
     m.top.observeField("visible", "onVisibleChange")
     m.top.observeField("focusedChild", "OnFocusedChildChange")
@@ -18,6 +17,17 @@ end sub
 function updateConfig(settings)
     m.server = settings.server
     m.overhang.Title = settings.instance_name
+end function
+
+'
+'   Clear existing content
+'
+function resetContent()
+    m.savedContent = createObject("roSGNode","ContentNode")
+    m.summary.content = createObject("roSGNode","ContentNode")
+    m.background.url = ""
+    m.content = createObject("roSGNode","ContentNode")
+    m.rowList.content = m.content
 end function
 
 '

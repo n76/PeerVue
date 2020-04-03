@@ -14,6 +14,8 @@ Sub OnContentChanged()
     title = item.title.toStr()
     if title <> invalid then
         m.top.Title.text = title.toStr()
+    else
+        m.top.Title.text = ""
     end if
     
     value = item.description
@@ -21,7 +23,7 @@ Sub OnContentChanged()
         if value.toStr() <> "" then
             m.top.Description.text = value.toStr()
         else
-            m.top.Description.text = "No description"
+            m.top.Description.text = ""
         end if
     end if
     
@@ -30,7 +32,7 @@ Sub OnContentChanged()
         if value <> ""
             m.top.ReleaseDate.text = value.toStr()
         else
-            m.top.ReleaseDate.text = "No release date"
+            m.top.ReleaseDate.text = ""
         end if
     end if
 End Sub

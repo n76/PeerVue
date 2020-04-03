@@ -17,6 +17,7 @@
         <function name="updateConfig" />
         <function name="newContent" />
         <function name="addContent" />
+        <function name="resetContent" />
 
         <function name="saveContent" />
         <function name="restoreContent" />

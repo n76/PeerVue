@@ -289,6 +289,9 @@ sub loadConfig()
     m.overhang.visible = false
     m.init_screen.visible = true
 
+    m.content_screen.callFunc("resetContent")
+    m.content_contains = "config_videos"
+
     '
     '   Start a task to load everything we need from our instance server
     '
