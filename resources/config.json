@@ -3,19 +3,19 @@
   "categories": [
     {
       "str_id":         "recent",
-      "path":           "/api/v1/videos/?start=0&count=20&sort=-publishedAt"
+      "path":           "/api/v1/videos/?start=0&count=30&sort=-publishedAt"
     },
     {
       "str_id":         "trending",
-      "path":           "/api/v1/videos/?start=0&count=20&sort=-trending"
+      "path":           "/api/v1/videos/?start=0&count=30&sort=-trending"
     },
     {
       "str_id":         "liked",
-      "path":           "/api/v1/videos/?start=0&count=20&sort=-likes"
+      "path":           "/api/v1/videos/?start=0&count=30&sort=-likes"
     },
     {
       "str_id":         "local",
-      "path":           "/api/v1/videos/?start=0&count=20&filter=local"
+      "path":           "/api/v1/videos/?start=0&count=40&filter=local"
     },
     {
       "str_id":         "discover",
