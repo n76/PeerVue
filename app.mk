@@ -192,7 +192,7 @@ get_images:
 
 	echo "Creating image files"
 	@convert -background none -gravity west  -density 1200 -scale 300x300 -extent 1080x300 $(BANNER_SOURCE) $(OUTPUT_DIR)/splash_image.png
-	#@convert -pointsize 90 -font "CalibriB" -fill white -draw "text 350,150 'PeerTube' " $(OUTPUT_DIR)/splash_image.png $(OUTPUT_DIR)/test.png
+	#@convert -pointsize 90 -font "CalibriB" -fill white -draw "text 350,150 'PeerVue' " $(OUTPUT_DIR)/splash_image.png $(OUTPUT_DIR)/test.png
 	rm $(OUTPUT_DIR)/splash_image.png
 
 	@convert -background "#000b25" -gravity center -density 1200 -resize 380x380 -extent 540x405 $(BANNER_SOURCE) $(OUTPUT_DIR)/channel-poster_fhd.png
@@ -200,11 +200,11 @@ get_images:
 	@convert -background "#000b25" -gravity center -density 1200 -resize 130x130 -extent 246x140 $(BANNER_SOURCE) $(OUTPUT_DIR)/channel-poster_sd.png
 
 	@convert -background none -gravity west  -density 1200 -scale 48x48 -extent 200x48 $(BANNER_SOURCE) $(OUTPUT_DIR)/logo_image.png
-	@convert -pointsize 30 -font "CalibriB" -fill white -draw "text 50,33 'PeerTube' " $(OUTPUT_DIR)/logo_image.png $(OUTPUT_DIR)/logo.png
+	@convert -pointsize 30 -font "CalibriB" -fill white -draw "text 50,33 'PeerVue' " $(OUTPUT_DIR)/logo_image.png $(OUTPUT_DIR)/logo.png
 	rm $(OUTPUT_DIR)/logo_image.png
 
 	@convert -background none -gravity west  -density 1200 -scale 300x300 -extent 1080x300 $(BANNER_SOURCE) $(OUTPUT_DIR)/splash1.png
-	@convert -pointsize 90 -font "CalibriB" -fill white -draw "text 350,175 'PeerTube' " $(OUTPUT_DIR)/splash1.png $(OUTPUT_DIR)/splash2.png
+	@convert -pointsize 90 -font "CalibriB" -fill white -draw "text 350,175 'PeerVue' " $(OUTPUT_DIR)/splash1.png $(OUTPUT_DIR)/splash2.png
 	@convert -background "#000b25" -gravity center -extent 1920x1080 $(OUTPUT_DIR)/splash2.png $(OUTPUT_DIR)/splash-screen_fhd.jpg
 	rm $(OUTPUT_DIR)/splash1.png $(OUTPUT_DIR)/splash2.png
 	@convert $(OUTPUT_DIR)/splash-screen_fhd.jpg -resize 1280x720 $(OUTPUT_DIR)/splash-screen_hd.jpg

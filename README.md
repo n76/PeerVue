@@ -1,4 +1,4 @@
-# A PeerTube channel for Roku
+# PeerVue - A PeerTube channel for Roku
 
 **This app is not complete!**
 
@@ -20,13 +20,13 @@ Put your Roku device in [developer mode](https://blog.roku.com/developer/2016/02
 Navigate to where you'd like to install the app then copy the application files:
 
 ```bash
-git clone https://github.com/n76/PeerTube.git
+git clone https://github.com/n76/PeerVue.git
 ```
 
 Open up the new folder:
 
 ```bash
-cd PeerTube
+cd PeerVue
 ```
 
 ### Install Necessary Packages
@@ -54,11 +54,11 @@ Package up the application, send it to your Roku, and launch the channel:
 make install
 ```
 
-Note: You only have to run this command once if you are not a developer. The PeerTube channel will still be installed after rebooting your Roku device.
+Note: You only have to run this command once if you are not a developer. The PeerVue channel will still be installed after rebooting your Roku device.
 
 ### Bug/Crash Reports
 
-Did the app crash? Find a nasty bug? Use the this command to view the error log and [report it to the developers](https://github.com/n76/PeerTube/issues):
+Did the app crash? Find a nasty bug? Use the this command to view the error log and [report it to the developers](https://github.com/n76/PeerVue/issues):
 
 ```bash
 telnet ${ROKU_DEV_TARGET} 8085
@@ -121,27 +121,11 @@ telnet ${ROKU_DEV_TARGET} 8085
 
 To exit telnet: `CTRL + ]` and then type `quit + ENTER`
 
-### (Optional) Update Images
-
-This repo already contains all necessary images for the app. This script only needs to be run when the [official PeerTube images](https://github.com/Chocobozzz/PeerTube/tree/develop/client/src/assets/images) are changed to allow us to update the repo images.
-
-Install necessary packages:
-
-```bash
-sudo apt-get install imagemagick
-```
-
-Download and convert images:
-
-```bash
-make get_images
-```
-
-## Improving PeerTube for Roku
+## Improving PeerVue for Roku
 
 ### Internationalization
 
-All display strings used in this channel are from localized string files in JSON format. A complete set of string definitions is contained in locale/default/strings.json See the [Roku documentation](https://developer.roku.com/docs/developer-program/core-concepts/localization.md) for information about how localization is supported by the Roku device. In the case of PeerTube, creating or updating an appropriate locale/language/strings.json file where "language" is the Roku code for the language and country combination.
+All display strings used in this channel are from localized string files in JSON format. A complete set of string definitions is contained in locale/default/strings.json See the [Roku documentation](https://developer.roku.com/docs/developer-program/core-concepts/localization.md) for information about how localization is supported by the Roku device. In the case of PeerVue, creating or updating an appropriate locale/language/strings.json file where "language" is the Roku code for the language and country combination.
 
 Pull requests for language additions or corrections will be greatly appreciated.
 

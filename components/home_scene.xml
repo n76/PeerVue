@@ -21,7 +21,7 @@
             visible="true"
             translation="[0,0]"
             logoUri="pkg:/images/logo.png"
-            title = "PeerTube"
+            title = "PeerVue"
             showOptions="false"
             logoBaselineOffset="25"
             height="115"

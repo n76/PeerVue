@@ -31,9 +31,9 @@ function registry_delete(key, section=invalid)
 end function
 
 
-' "PeerTube" registry accessors for the default global settings
+' "PeerVue" registry accessors for the default global settings
 function get_setting(key, default=invalid)
-    value = registry_read(key, "PeerTube")
+    value = registry_read(key, "PeerVue")
     if value = invalid then
         return default
     end if
@@ -41,10 +41,10 @@ function get_setting(key, default=invalid)
 end function
 
 function set_setting(key, value)
-    registry_write(key, value, "PeerTube")
+    registry_write(key, value, "PeerVue")
 end function
 
 function unset_setting(key)
-    registry_delete(key, "PeerTube")
+    registry_delete(key, "PeerVue")
 end function
 
