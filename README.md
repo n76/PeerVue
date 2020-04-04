@@ -1,12 +1,11 @@
-# PeerTube app for Roku
+# A PeerTube channel for Roku
 
 **This app is not complete!**
 
-Currently, the data stored on your Roku device are server name, server port,
-user id, and some user preferences like movie sort order.
+Currently, the data stored on your Roku device is the server name.
 
-The format that is used to save those settings could change at any time and
-your data could be lost and you'd have to re-enter it.
+The format that is used to save the settings could change at any time and
+you would have to re-enter it.
 
 ## Getting Started
 
@@ -21,13 +20,13 @@ Put your Roku device in [developer mode](https://blog.roku.com/developer/2016/02
 Navigate to where you'd like to install the app then copy the application files:
 
 ```bash
-git clone https://github.com/n76/PeerTubeRoku.git
+git clone https://github.com/n76/PeerTube.git
 ```
 
 Open up the new folder:
 
 ```bash
-cd PeerTubeRoku
+cd PeerTube
 ```
 
 ### Install Necessary Packages
@@ -59,7 +58,7 @@ Note: You only have to run this command once if you are not a developer. The Pee
 
 ### Bug/Crash Reports
 
-Did the app crash? Find a nasty bug? Use the this command to view the error log and [report it to the developers](https://github.com/n76/PeerTubeRoku/issues):
+Did the app crash? Find a nasty bug? Use the this command to view the error log and [report it to the developers](https://github.com/n76/PeerTube/issues):
 
 ```bash
 telnet ${ROKU_DEV_TARGET} 8085
@@ -137,3 +136,15 @@ Download and convert images:
 ```bash
 make get_images
 ```
+
+## Improving PeerTube for Roku
+
+### Internationalization
+
+All display strings used in this channel are from localized string files in JSON format. A complete set of string definitions is contained in locale/default/strings.json See the [Roku documentation](https://developer.roku.com/docs/developer-program/core-concepts/localization.md) for information about how localization is supported by the Roku device. In the case of PeerTube, creating or updating an appropriate locale/language/strings.json file where "language" is the Roku code for the language and country combination.
+
+Pull requests for language additions or corrections will be greatly appreciated.
+
+### Customization
+
+The resources/config.json file contains number of configuration items. These include the default PeerTube instance to connect to and definitions of the content to display. See the [PeerTube API documentation](https://docs.joinpeertube.org/api-rest-reference.html) details on the queries used.
