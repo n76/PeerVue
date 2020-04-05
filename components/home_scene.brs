@@ -322,10 +322,12 @@ sub onSearchResponse2(obj)
         m.top.error = "Error parsing feed from server "+server
     end if
 
-    vids = {}
-    vids.title = get_locale_string("related", m.strings)
-    vids.videos = json.data
-    m.content_screen.callFunc("addContent",vids)
+    if json.data.count() > 0
+        vids = {}
+        vids.title = get_locale_string("related", m.strings)
+        vids.videos = json.data
+        m.content_screen.callFunc("addContent",vids)
+    end if
 
     m.search_screen.visible = false
     m.init_screen.visible = false
