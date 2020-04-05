@@ -22,7 +22,7 @@
         <Label
             id="server_label"
             font="font:MediumSystemFont"
-            width="800"
+            width="1500"
             text="Server Address:"
             translation="[100,250]"
             />

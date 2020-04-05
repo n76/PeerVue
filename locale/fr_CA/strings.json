@@ -1,9 +1,10 @@
 {
-    "discover":       "Découvrir",
-    "liked":          "Les plus appréciées",
-    "local":          "Locales"
-    "recent":         "Récemment ajoutées",
-    "search":         "Chercher...",
-    "settings":       "Paramètres",
-    "trending":       "Tendances",
+    "discover":     "Découvrir",
+    "liked":        "Les plus appréciées",
+    "local":        "Locales"
+    "recent":       "Récemment ajoutées",
+    "search":       "Chercher...",
+    "server_url":   "Server Address (example: https://video.ploud.fr):",
+    "settings":     "Paramètres",
+    "trending":     "Tendances"
 }

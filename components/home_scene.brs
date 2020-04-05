@@ -106,7 +106,7 @@ sub onCategorySelected(obj)
     list = m.sidebar.findNode("category_list")
     item = list.content.getChild(obj.getData())
     if item.cat_type = "settings"
-        m.server_setup.server_url = m.server
+        m.server_setup.server_url = get_setting("server","")
         m.content_screen.visible = false
         m.sidebar.visible = false
         m.overhang.visible=true
@@ -150,7 +150,7 @@ end sub
 sub loadVideoInfo(uuid)
     m.url_task = createObject("roSGNode", "load_url_task")
     m.url_task.observeField("response", "onVideoInfoResponse")
-    m.url_task.url = get_setting("server", m.server) + "/api/v1/videos/" + uuid
+    m.url_task.url = get_setting("server","") + "/api/v1/videos/" + uuid
     m.url_task.control = "RUN"
 end sub
 
@@ -211,8 +211,12 @@ end sub
 
 sub onServerUpdatePressed(obj)
     new_url = m.server_setup.server_url
-    if (INSTR(1,new_url,"http://") = 1) or (instr(1,new_url,"https://"))
-        if (m.server = new_url)
+    '
+    '   URL must start with either "http://" or "https://" and it must
+    '   contain at least one "." separator.
+    '
+    if ((INSTR(1,new_url,"http://") = 1) or (instr(1,new_url,"https://"))) and (INSTR(1,new_url,".") > 1)
+        if (get_setting("server","") = new_url)
             '
             ' New server same as old. Treat the same as a back button
             '
@@ -235,7 +239,7 @@ sub onSearchPressed(obj)
     
     m.url_task = createObject("roSGNode", "load_url_task")
     m.url_task.observeField("response", "onSearchResponse")
-    m.url_task.url = get_setting("server", m.server) + "/api/v1/search/videos/?start=0&count=30&sort=-match&search=" + url_encode(search_string)
+    m.url_task.url = get_setting("server","") + "/api/v1/search/videos/?start=0&count=30&sort=-match&search=" + url_encode(search_string)
     m.url_task.control = "RUN"
 end sub
 
@@ -313,7 +317,6 @@ sub onConfigResponse(obj)
     'end for
 
     settings = obj.getData()
-    m.server = settings.server
     m.strings = settings.strings
 
     m.overhang.Title = settings.instance_name
@@ -328,15 +331,28 @@ sub onConfigResponse(obj)
     m.server_setup.callFunc("updateConfig", settings)
     m.sidebar.callFunc("updateConfig",settings)
 
-    '
-    '   Set content visibility
-    '
-    m.init_screen.visible = false
-    m.sidebar.visible = false
-    m.overhang.visible=true
+    if get_setting("server","") = ""
+        '
+        '   If no server defined (initial start up) then
+        '   start with server setup screen
+        '
+        m.init_screen.visible = false
+        m.server_setup.server_url = ""
+        m.content_screen.visible = false
+        m.sidebar.visible = false
+        m.overhang.visible=true
+        m.server_setup.visible = true
+    else
+        '
+        '   Server defined, set content visibility
+        '
+        m.init_screen.visible = false
+        m.sidebar.visible = false
+        m.overhang.visible=true
 
-    m.content_screen.visible = true
-    m.content_screen.setFocus(true)
+        m.content_screen.visible = true
+        m.content_screen.setFocus(true)
+    end if
 end sub
 
 sub onConfigVideos(obj)

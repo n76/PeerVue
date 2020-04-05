@@ -5,7 +5,7 @@
     "play":         "PLAY",
     "recent":       "Recently Added",
     "search":       "Search...",
-    "server_url":   "Server Address:",
+    "server_url":   "Server Address (example: https://video.ploud.fr):",
     "settings":     "Settings",
     "trending":     "Trending",
     "update":       "Update"

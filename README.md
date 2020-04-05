@@ -131,4 +131,4 @@ Pull requests for language additions or corrections will be greatly appreciated.
 
 ### Customization
 
-The resources/config.json file contains number of configuration items. These include the default PeerTube instance to connect to and definitions of the content to display. See the [PeerTube API documentation](https://docs.joinpeertube.org/api-rest-reference.html) details on the queries used.
+The resources/config.json file contains number of configuration items. This includes the definitions of the queries used to display the default content. See the [PeerTube API documentation](https://docs.joinpeertube.org/api-rest-reference.html) details on the queries used.

@@ -8,7 +8,6 @@ sub init()
 end sub
 
 function updateConfig(settings)
-    m.server = settings.serverUrl
     m.play_button.text = get_locale_string("play", settings.strings)
 end function
 
@@ -41,7 +40,7 @@ sub OnContentChange(obj)
         m.description.text = ""
     end if
 
-    m.thumbnail.uri = get_setting("server", m.server) + item.thumbnailPath
+    m.thumbnail.uri = get_setting("server", "") + item.thumbnailPath
     m.top.url = ""
     m.top.streamformat = ""
     m.top.duration = item.duration

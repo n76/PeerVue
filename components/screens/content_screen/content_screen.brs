@@ -15,7 +15,6 @@ sub init()
 end sub
 
 function updateConfig(settings)
-    m.server = settings.server
     m.overhang.Title = settings.instance_name
 end function
 
@@ -52,7 +51,7 @@ function addContent(videoInfo)
         node.title = item.name
 
         node.uuid = item.uuid
-        node.url = get_setting("server", m.server) + item.previewPath
+        node.url = get_setting("server", "") + item.previewPath
 
         '
         ' PeerTube descriptions use markdown and, at the least, we want
@@ -71,7 +70,7 @@ function addContent(videoInfo)
             node.description = ""
         end if
 
-        node.HdGridPosterUrl = get_setting("server", m.server) + item.thumbnailPath
+        node.HdGridPosterUrl = get_setting("server", "") + item.thumbnailPath
         node.ShortDescriptionLine1 = item.name
         node.ShortDescriptionLine2 = ""
         node.Length=item.duration
