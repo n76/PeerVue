@@ -11,7 +11,7 @@
 # 3) and set up the ROKU_DEV_PASSWORD environment variable, too
 ##########################################################################
 
-APPNAME = Peertube_Roku
+APPNAME = PeerVue
 VERSION = 0.0.1
 ROKU_TEST_ID = 1
 ROKU_TEST_WAIT_DURATION = 5
