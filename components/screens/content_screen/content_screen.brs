@@ -7,6 +7,8 @@ sub init()
     m.background    =   m.top.findNode("Background")
     m.overhang      =   m.top.findNode("MyOverhang")
 
+    m.savedContent = createObject("roSGNode","ContentNode")
+
     resetContent()
 
     m.top.observeField("visible", "onVisibleChange")
@@ -22,20 +24,10 @@ end function
 '   Clear existing content
 '
 function resetContent()
-    m.savedContent = createObject("roSGNode","ContentNode")
     m.summary.content = createObject("roSGNode","ContentNode")
     m.background.url = ""
     m.content = createObject("roSGNode","ContentNode")
     m.rowList.content = m.content
-end function
-
-'
-'   Replace content with new videos
-'
-function newContent(videoInfo)
-    m.content = createObject("roSGNode","ContentNode")
-    m.rowList.content = m.content
-    addContent(videoInfo)
 end function
 
 '

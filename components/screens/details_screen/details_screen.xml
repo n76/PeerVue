@@ -18,6 +18,8 @@
             type="string" />
         <field id="duration"
             type="integer" />
+        <field id="title"
+            type="string" />
         <function name="updateConfig" />
     </interface>
 

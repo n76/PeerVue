@@ -1,7 +1,7 @@
 '
 '   Our content screen (and thus things shown in our details and
 '   video player) can be from either our configuration specified set
-'   of URLs or from a URL derived from a search term.
+'   of URLs or from URLs derived from a search term.
 '
 '   We use the m.content_contains variable to keep track of what
 '   is in the content screen. Values are:
@@ -114,6 +114,7 @@ sub onCategorySelected(obj)
     else if item.cat_type = "search"
         m.content_screen.visible = false
         m.content_screen.callFunc("saveContent")
+        m.content_contains = "search_videos"
         m.sidebar.visible = false
         m.overhang.visible=true
         m.search_screen.visible = true
@@ -137,6 +138,7 @@ sub onPlayButtonPressed(obj)
         node.streams = m.details_screen.streamlist
     endif
     node.length = m.details_screen.duration
+    node.title = m.details_screen.title
 
     m.details_screen.visible = false
     m.overhang.visible=false
@@ -235,10 +237,10 @@ end sub
 
 sub onSearchPressed(obj)
     search_string = m.search_screen.search_string
-    ? "[onSearchPressed] new server: ";search_string
+    ? "[onSearchPressed] search string: ";search_string
     
     m.url_task = createObject("roSGNode", "load_url_task")
-    m.url_task.observeField("response", "onSearchResponse")
+    m.url_task.observeField("response", "onSearchResponse1")
     m.url_task.url = get_setting("server","") + "/api/v1/search/videos/?start=0&count=30&sort=-match&search=" + url_encode(search_string)
     m.url_task.control = "RUN"
 end sub
@@ -258,7 +260,59 @@ function url_encode(s):
     return res
 end function
 
-sub onSearchResponse(obj)
+sub onSearchResponse1(obj)
+    response = obj.getData()
+    '? "[onSearchResponse] response: " response
+    json = parseJSON(response)
+    if json = invalid
+        ? "[getFeed] bad JSON: "; rsltString
+        m.top.error = "Error parsing feed from server "+server
+    end if
+    m.content_screen.callFunc("resetContent")
+
+    categories = {}
+
+    if json.data.count() > 0
+        vids = {}
+        vids.title = m.search_screen.search_string
+        vids.videos = json.data
+        m.content_screen.callFunc("addContent",vids)
+    
+        m.search_screen.visible = false
+        m.init_screen.visible = false
+        m.sidebar.visible = false
+        m.overhang.visible=true
+
+        m.content_screen.visible = true
+        m.content_screen.setFocus(true)
+        
+        for each vid in json.data
+            ? "[OnSearchResponse1] vid info: ";vid.category
+            categories.AddReplace(vid.category.label, vid.category.id)
+        end for
+    end if
+    
+    query = "/api/v1/search/videos/?start=0&count=30&sort=-match"
+    ? "[onSearchResponse1] search string: ";m.search_screen.search_string
+    tags = (m.search_screen.search_string).tokenize(" ")
+    for each tag in tags
+        query = query + "&tagsOneOf=" + url_encode(tag)
+    end for
+    
+'    for each cat in categories
+'        if (categories[cat] <> invalid)
+'            query = query + "&categoryOneOf=" + Str(categories[cat]).Trim()
+'        end if
+'    end for
+    ? "[onSearchResponse1] query: " + query
+    
+    m.url_task = createObject("roSGNode", "load_url_task")
+    m.url_task.observeField("response", "onSearchResponse2")
+    m.url_task.url = get_setting("server","") + query
+    m.url_task.control = "RUN"
+end sub
+
+sub onSearchResponse2(obj)
     response = obj.getData()
     '? "[onSearchResponse] response: " response
     json = parseJSON(response)
@@ -267,12 +321,11 @@ sub onSearchResponse(obj)
         m.top.error = "Error parsing feed from server "+server
     end if
 
-    m.content_contains = "search_videos"
     vids = {}
-    vids.title = m.search_screen.search_string
+    vids.title = get_locale_string("related", m.strings)
     vids.videos = json.data
-    m.content_screen.callFunc("newContent",vids)
-    
+    m.content_screen.callFunc("addContent",vids)
+
     m.search_screen.visible = false
     m.init_screen.visible = false
     m.sidebar.visible = false

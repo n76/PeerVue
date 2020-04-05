@@ -4,6 +4,7 @@
     "local":        "Local",
     "play":         "PLAY",
     "recent":       "Recently Added",
+    "related":      "Related Videos",
     "search":       "Search...",
     "server_url":   "Server Address (example: https://video.ploud.fr):",
     "settings":     "Settings",

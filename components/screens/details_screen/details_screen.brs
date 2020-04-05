@@ -44,6 +44,7 @@ sub OnContentChange(obj)
     m.top.url = ""
     m.top.streamformat = ""
     m.top.duration = item.duration
+    m.top.title = item.name
     '
     '   First see if there are any HLS streams
     '
