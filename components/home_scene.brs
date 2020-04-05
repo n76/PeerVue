@@ -13,7 +13,6 @@
 '
 
 function init()
-    ? "[home_scene] init"
     '
     '   Find all of our screens and components
     '
@@ -78,7 +77,6 @@ function onKeyEvent(key, press) as Boolean
                 m.sidebar.setFocus(true)
                 return true
             else if (key="back") and (m.content_contains="search_videos")
-                ? "[home_scene] contents contains: "; m.content_contains
                 m.content_screen.visible = false
                 m.search_screen.visible = true
                 m.search_screen.setFocus(true)
@@ -158,16 +156,14 @@ end sub
 
 sub onVideoInfoResponse(obj)
     response = obj.getData()
-'    ? "onVideoInfoResponse: "; obj.getData()
     data = parseJSON(response)
-'    ? "parsed JSON: ";data
     if data <> Invalid
         m.content_screen.visible = false
         m.overhang.visible=true
         m.details_screen.visible = true
         m.details_screen.content = data
     else
-        ? "FEED RESPONSE IS EMPTY!"
+        ? "[onVideoInfoResponse]: Feed response is empty!"
     end if
 end sub
 
@@ -181,7 +177,7 @@ sub initializeVideoPlayer()
 end sub
 
 sub onPlayerPositionChanged(obj)
-    ? "Player Position: ", obj.getData()
+    '? "Player Position: ", obj.getData()
 end sub
 
 sub onPlayerStateChanged(obj)
@@ -228,7 +224,7 @@ sub onServerUpdatePressed(obj)
             m.sidebar.visible = true
             m.sidebar.setFocus(true)
         else
-            ? "[onServerUpdatePressed] new server: ";new_url
+            '? "[onServerUpdatePressed] new server: ";new_url
             set_setting("server", new_url)
             loadConfig()
         end if
@@ -237,7 +233,7 @@ end sub
 
 sub onSearchPressed(obj)
     search_string = m.search_screen.search_string
-    ? "[onSearchPressed] search string: ";search_string
+    '? "[onSearchPressed] search string: ";search_string
     
     m.url_task = createObject("roSGNode", "load_url_task")
     m.url_task.observeField("response", "onSearchResponse1")
@@ -287,16 +283,21 @@ sub onSearchResponse1(obj)
         m.content_screen.setFocus(true)
         
         for each vid in json.data
-            ? "[OnSearchResponse1] vid info: ";vid.category
+            '? "[OnSearchResponse1] vid info: ";vid.category
             categories.AddReplace(vid.category.label, vid.category.id)
         end for
     end if
     
     query = "/api/v1/search/videos/?start=0&count=30&sort=-match"
-    ? "[onSearchResponse1] search string: ";m.search_screen.search_string
+    '? "[onSearchResponse1] search string: ";m.search_screen.search_string
     tags = (m.search_screen.search_string).tokenize(" ")
+    previousTag = ""
     for each tag in tags
         query = query + "&tagsOneOf=" + url_encode(tag)
+        if previousTag <> ""
+            query = query + "&tagsOneOf=" + url_encode(previousTag + " " + tag)
+        end if
+        previousTag = tag
     end for
     
 '    for each cat in categories
@@ -361,14 +362,6 @@ sub loadConfig()
 end sub
 
 sub onConfigResponse(obj)
-    '? "[onConfiguration]: "; obj.getData()
-    '? "[onConfiguration] strings: "; obj.getData().strings
-    '? "[onConfiguration] videos: "; obj.getData().videos
-    '? "[onConfiguration] videos.discover: "; obj.getData().videos.discover
-    'for each item in obj.getData().videos.discover
-    '    ? "[configuration] discover item: "; item
-    'end for
-
     settings = obj.getData()
     m.strings = settings.strings
 
