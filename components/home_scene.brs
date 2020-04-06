@@ -42,14 +42,27 @@ function init()
     loadConfig()
 end function
 
+sub setContentContains(newContains)
+    if newContains = m.content_contains
+        ? "[setContentContains] set to current value: ";m.content_contains
+    else
+        if newContains = "search_videos"
+            m.content_contains = "search_videos"
+            m.content_screen.callFunc("saveContent")
+        else
+            m.content_contains = "config_videos"
+            m.content_screen.callFunc("restoreContent")
+        end if
+    end if
+end sub
+
 ' Main Remote keypress handler
 function onKeyEvent(key, press) as Boolean
     ? "[home_scene] onKeyEvent", key, press
 
     if (press)
         if m.search_screen.visible and (key="back")
-            m.content_screen.callFunc("restoreContent")
-            m.content_contains = "config_videos"
+            setContentContains("config_videos")
             m.search_screen.visible = false
             m.search_screen.setFocus(false)
             m.overhang.visible=true
@@ -111,8 +124,7 @@ sub onCategorySelected(obj)
         m.server_setup.visible = true
     else if item.cat_type = "search"
         m.content_screen.visible = false
-        m.content_screen.callFunc("saveContent")
-        m.content_contains = "search_videos"
+        setContentContains("search_videos")
         m.sidebar.visible = false
         m.overhang.visible=true
         m.search_screen.visible = true
@@ -349,8 +361,7 @@ sub loadConfig()
     m.overhang.visible = false
     m.init_screen.visible = true
 
-    m.content_screen.callFunc("resetContent")
-    m.content_contains = "config_videos"
+    setContentContains("config_videos")
 
     '
     '   Start a task to load everything we need from our instance server
