@@ -15,6 +15,7 @@ function updateConfig(settings)
     contentNode = createObject("roSGNode","ContentNode")
     contentNode.appendChild(newCategory("search"))
     contentNode.appendChild(newCategory("settings"))
+    contentNode.appendChild(newCategory("about"))
     m.category_list.content = contentNode
 end function
 

@@ -16,6 +16,7 @@ function init()
     '
     '   Find all of our screens and components
     '
+    m.about_screen = m.top.findNode("about_screen")
     m.content_screen = m.top.findNode("content_screen")
     m.details_screen = m.top.findNode("details_screen")
     m.error_dialog = m.top.findNode("error_dialog")
@@ -25,7 +26,7 @@ function init()
     m.server_setup = m.top.findNode("server_setup")
     m.sidebar = m.top.findNode("sidebar")
     m.videoplayer = m.top.findNode("videoplayer")
-    
+
     m.content_contains = "config_videos"
 
     initializeVideoPlayer()
@@ -61,7 +62,14 @@ function onKeyEvent(key, press) as Boolean
     ? "[home_scene] onKeyEvent", key, press
 
     if (press)
-        if m.search_screen.visible and (key="back")
+        if m.about_screen.visible and (key="back")
+            m.about_screen.visible = false
+            m.about_screen.setFocus(false)
+            m.overhang.visible=true
+            m.sidebar.visible = true
+            m.sidebar.setFocus(true)
+            return true
+        else if m.search_screen.visible and (key="back")
             setContentContains("config_videos")
             m.search_screen.visible = false
             m.search_screen.setFocus(false)
@@ -128,6 +136,11 @@ sub onCategorySelected(obj)
         m.sidebar.visible = false
         m.overhang.visible=true
         m.search_screen.visible = true
+    else if item.cat_type = "about"
+        m.content_screen.visible = false
+        m.sidebar.visible = false
+        m.overhang.visible=true
+        m.about_screen.visible = true
     else
         ? "Type not implemented: ";item.cat_type
         showErrorDialog(item.cat_type + " not yet implemented.")
@@ -246,7 +259,7 @@ end sub
 sub onSearchPressed(obj)
     search_string = m.search_screen.text_content
     '? "[onSearchPressed] search string: ";search_string
-    
+
     m.url_task = createObject("roSGNode", "load_url_task")
     m.url_task.observeField("response", "onSearchResponse1")
     m.url_task.url = get_setting("server","") + "/api/v1/search/videos/?start=0&count=30&sort=-match&search=" + url_encode(search_string)
@@ -262,7 +275,7 @@ function url_encode(s):
             res += ch
         else
             ba.fromAsciiString(ch): hex = ba.toHexString()
-            for i = 1 to len(hex) step 2: res += "%" + mid(hex,i,2): next      
+            for i = 1 to len(hex) step 2: res += "%" + mid(hex,i,2): next
         end if
     end for
     return res
@@ -285,7 +298,7 @@ sub onSearchResponse1(obj)
         vids.title = m.search_screen.text_content
         vids.videos = json.data
         m.content_screen.callFunc("addContent",vids)
-    
+
         m.search_screen.visible = false
         m.init_screen.visible = false
         m.sidebar.visible = false
@@ -293,13 +306,13 @@ sub onSearchResponse1(obj)
 
         m.content_screen.visible = true
         m.content_screen.setFocus(true)
-        
+
         for each vid in json.data
             '? "[OnSearchResponse1] vid info: ";vid.category
             categories.AddReplace(vid.category.label, vid.category.id)
         end for
     end if
-    
+
     query = "/api/v1/search/videos/?start=0&count=30&sort=-match"
     '? "[onSearchResponse1] search string: ";m.search_screen.text_content
     tags = (m.search_screen.text_content).tokenize(" ")
@@ -311,14 +324,14 @@ sub onSearchResponse1(obj)
         end if
         previousTag = tag
     end for
-    
+
 '    for each cat in categories
 '        if (categories[cat] <> invalid)
 '            query = query + "&categoryOneOf=" + Str(categories[cat]).Trim()
 '        end if
 '    end for
     ? "[onSearchResponse1] query: " + query
-    
+
     m.url_task = createObject("roSGNode", "load_url_task")
     m.url_task.observeField("response", "onSearchResponse2")
     m.url_task.url = get_setting("server","") + query
@@ -353,14 +366,20 @@ end sub
 
 sub loadConfig()
     '
-    ' Go into config loading mode: Hide everything but the init screen
+    '   Start configuration: Hide everything but the init screen
     '
-    m.content_screen.visible = false
-    m.sidebar.visible = false
-    m.server_setup.visible = false
-    m.overhang.visible = false
-    m.init_screen.visible = true
+    m.about_screen.visible      = false
+    m.content_screen.visible    = false
+    m.init_screen.visible       = true
+    m.overhang.visible          = false
+    m.search_screen.visible     = false
+    m.server_setup.visible      = false
+    m.sidebar.visible           = false
 
+    '
+    '   Assure we are in configured content mode and clear the existing
+    '   content if any.
+    '
     setContentContains("config_videos")
     m.content_screen.callFunc("resetContent")
 
@@ -389,7 +408,7 @@ sub onConfigResponse(obj)
     m.details_screen.callFunc("updateConfig",settings)
     m.server_setup.callFunc("updateConfig", settings)
     m.sidebar.callFunc("updateConfig",settings)
-    
+
     '
     '   Set button text on text entry screens
     '
@@ -401,6 +420,8 @@ sub onConfigResponse(obj)
     m.server_setup.callFunc("setEnterButtonText", get_locale_string("update", settings.strings))
     m.server_setup.callFunc("setClearButtonText", get_locale_string("clear", settings.strings))
     m.server_setup.callFunc("setClearContentText", "https://")
+
+    m.about_screen.text = get_locale_string("peervue", settings.strings)
 
     if get_setting("server","") = ""
         '

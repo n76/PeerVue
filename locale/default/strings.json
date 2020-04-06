@@ -1,8 +1,10 @@
 {
+    "about":        "About",
     "clear":        "Clear",
     "discover":     "Discover",
     "liked":        "Most Liked",
     "local":        "Local",
+    "peervue":      "PeerVue is an open source channel to view content hosted by a PeerTube instance.\n\rSource for this channel is at https://github.com/n76/PeerVue\n\rFor information about PeerTube see https://https://joinpeertube.org/",
     "play":         "PLAY",
     "recent":       "Recently Added",
     "related":      "Related Videos",
@@ -12,4 +14,3 @@
     "trending":     "Trending",
     "update":       "Update"
 }
-

@@ -68,5 +68,15 @@
             title="Error"
             visible="false"
             id="error_dialog" />
+        
+        <Label
+            id="about_screen"
+            visible="false"
+            font="font:MediumSystemFont"
+            color="0xFFFFFF"
+            wrap="true"
+            width="1500"
+            text=""
+            translation="[200,300]" />
     </children>
 </component>
