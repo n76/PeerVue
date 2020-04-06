@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<component name="search_screen" extends="Group" >
-<script type="text/brightscript" uri="pkg:/components/screens/search_screen/search_screen.brs" />
+<component name="text_entry" extends="Group" >
+
     <interface>
-        <field id="search_screen_button_pressed"
+        <field id="enter_button_pressed"
             type="int"
             alwaysnotify="true"
             alias="enter_button.buttonSelected" />
 
-        <field id="search_string"
+        <field id="text_content"
             type="string"
             alias="keyboard.text" />
 
@@ -17,6 +17,7 @@
 
     </interface>
 
+    <script type="text/brightscript" uri="pkg:/components/screens/text_entry/text_entry.brs" />
     <script type="text/brightscript" uri="pkg:/source/utils/locale.brs" />
 
     <children>
@@ -24,7 +25,7 @@
         <Label
             id="server_label"
             font="font:MediumSystemFont"
-            width="800"
+            width="1500"
             text="Server Address:"
             translation="[100,250]"
             />

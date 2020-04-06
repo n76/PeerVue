@@ -34,8 +34,8 @@ function init()
     '   Setup all our observers
     '
     m.details_screen.observeField("play_button_pressed", "onPlayButtonPressed")
-    m.search_screen.observeField("search_screen_button_pressed","onSearchPressed")
-    m.server_setup.observeField("server_update_button_pressed", "onServerUpdatePressed")
+    m.search_screen.observeField("enter_button_pressed","onSearchPressed")
+    m.server_setup.observeField("enter_button_pressed", "onServerUpdatePressed")
     m.sidebar.observeField("category_selected", "onCategorySelected")
     m.top.observeField("rowItemSelected", "OnRowItemSelected")
 
@@ -117,7 +117,7 @@ sub onCategorySelected(obj)
     list = m.sidebar.findNode("category_list")
     item = list.content.getChild(obj.getData())
     if item.cat_type = "settings"
-        m.server_setup.server_url = get_setting("server","")
+        m.server_setup.text_content = get_setting("server","")
         m.content_screen.visible = false
         m.sidebar.visible = false
         m.overhang.visible=true
@@ -220,7 +220,7 @@ sub showErrorDialog(message)
 end sub
 
 sub onServerUpdatePressed(obj)
-    new_url = m.server_setup.server_url
+    new_url = m.server_setup.text_content
     '
     '   URL must start with either "http://" or "https://" and it must
     '   contain at least one "." separator.
@@ -238,13 +238,14 @@ sub onServerUpdatePressed(obj)
         else
             '? "[onServerUpdatePressed] new server: ";new_url
             set_setting("server", new_url)
+            m.content_screen.callFunc("resetContent")
             loadConfig()
         end if
     end if
 end sub
 
 sub onSearchPressed(obj)
-    search_string = m.search_screen.search_string
+    search_string = m.search_screen.text_content
     '? "[onSearchPressed] search string: ";search_string
     
     m.url_task = createObject("roSGNode", "load_url_task")
@@ -282,7 +283,7 @@ sub onSearchResponse1(obj)
 
     if json.data.count() > 0
         vids = {}
-        vids.title = m.search_screen.search_string
+        vids.title = m.search_screen.text_content
         vids.videos = json.data
         m.content_screen.callFunc("addContent",vids)
     
@@ -301,8 +302,8 @@ sub onSearchResponse1(obj)
     end if
     
     query = "/api/v1/search/videos/?start=0&count=30&sort=-match"
-    '? "[onSearchResponse1] search string: ";m.search_screen.search_string
-    tags = (m.search_screen.search_string).tokenize(" ")
+    '? "[onSearchResponse1] search string: ";m.search_screen.text_content
+    tags = (m.search_screen.text_content).tokenize(" ")
     previousTag = ""
     for each tag in tags
         query = query + "&tagsOneOf=" + url_encode(tag)
@@ -390,12 +391,15 @@ sub onConfigResponse(obj)
     m.sidebar.callFunc("updateConfig",settings)
     
     '
-    '   Set button text on search screen
+    '   Set button text on text entry screens
     '
     m.search_screen.callFunc("setLabelText", get_locale_string("search", settings.strings))
     m.search_screen.callFunc("setEnterButtonText", get_locale_string("search", settings.strings))
     m.search_screen.callFunc("setClearButtonText", get_locale_string("clear", settings.strings))
 
+    m.server_setup.callFunc("setLabelText", get_locale_string("server_url", settings.strings))
+    m.server_setup.callFunc("setEnterButtonText", get_locale_string("update", settings.strings))
+    m.server_setup.callFunc("setClearButtonText", get_locale_string("clear", settings.strings))
 
     if get_setting("server","") = ""
         '
@@ -403,7 +407,7 @@ sub onConfigResponse(obj)
         '   start with server setup screen
         '
         m.init_screen.visible = false
-        m.server_setup.server_url = ""
+        m.server_setup.text_content = ""
         m.content_screen.visible = false
         m.sidebar.visible = false
         m.overhang.visible=true

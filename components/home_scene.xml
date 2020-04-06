@@ -54,12 +54,12 @@
             height="1080" 
             />
             
-        <search_screen
+        <text_entry
             id="search_screen"
             visible="false"
             />
             
-        <server_setup
+        <text_entry
             id="server_setup"
             visible="false"
             />
