@@ -14,6 +14,7 @@
         <function name="setLabelText" />
         <function name="setEnterButtonText" />
         <function name="setClearButtonText" />
+        <function name="setClearContentText" />
 
     </interface>
 

@@ -3,8 +3,9 @@ function init()
     m.enter_button  = m.top.FindNode("enter_button")
     m.keyboard      = m.top.FindNode("keyboard")
     m.server_label  = m.top.FindNode("server_label")
+    m.clear_content = ""
 
-    m.keyboard.text = ""
+    m.keyboard.text = m.clear_content
     
     m.top.observeField("visible", "onVisibleChange")
     m.clear_button.observeField("buttonSelected", "onClearButtonPressed")
@@ -17,7 +18,7 @@ sub onVisibleChange()
 end sub
 
 sub onClearButtonPressed()
-    m.keyboard.text = ""
+    m.keyboard.text = m.clear_content
 end sub
 
 function setLabelText(newText)
@@ -32,6 +33,9 @@ function setClearButtonText(newText)
     m.clear_button.text = newText
 end function
 
+function setClearContentText(newText)
+    m.clear_content = newText
+end function
 
 function onKeyEvent(key, press) as Boolean
     handled = false

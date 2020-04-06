@@ -238,7 +238,6 @@ sub onServerUpdatePressed(obj)
         else
             '? "[onServerUpdatePressed] new server: ";new_url
             set_setting("server", new_url)
-            m.content_screen.callFunc("resetContent")
             loadConfig()
         end if
     end if
@@ -363,6 +362,7 @@ sub loadConfig()
     m.init_screen.visible = true
 
     setContentContains("config_videos")
+    m.content_screen.callFunc("resetContent")
 
     '
     '   Start a task to load everything we need from our instance server
@@ -400,6 +400,7 @@ sub onConfigResponse(obj)
     m.server_setup.callFunc("setLabelText", get_locale_string("server_url", settings.strings))
     m.server_setup.callFunc("setEnterButtonText", get_locale_string("update", settings.strings))
     m.server_setup.callFunc("setClearButtonText", get_locale_string("clear", settings.strings))
+    m.server_setup.callFunc("setClearContentText", "https://")
 
     if get_setting("server","") = ""
         '
