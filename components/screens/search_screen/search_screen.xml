@@ -11,7 +11,9 @@
             type="string"
             alias="keyboard.text" />
 
-        <function name="updateConfig" />
+        <function name="setLabelText" />
+        <function name="setEnterButtonText" />
+        <function name="setClearButtonText" />
 
     </interface>
 
@@ -37,6 +39,13 @@
             text="Update"
             showFocusFootprint="true"
             translation="[100, 800]"
+            />
+
+        <Button
+            id="clear_button"
+            text="Clear"
+            showFocusFootprint="true"
+            translation="[500, 800]"
             />
 
     </children>

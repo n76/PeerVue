@@ -386,9 +386,16 @@ sub onConfigResponse(obj)
     '
     m.content_screen.callFunc("updateConfig",settings)
     m.details_screen.callFunc("updateConfig",settings)
-    m.search_screen.callFunc("updateConfig", settings)
     m.server_setup.callFunc("updateConfig", settings)
     m.sidebar.callFunc("updateConfig",settings)
+    
+    '
+    '   Set button text on search screen
+    '
+    m.search_screen.callFunc("setLabelText", get_locale_string("search", settings.strings))
+    m.search_screen.callFunc("setEnterButtonText", get_locale_string("search", settings.strings))
+    m.search_screen.callFunc("setClearButtonText", get_locale_string("clear", settings.strings))
+
 
     if get_setting("server","") = ""
         '
