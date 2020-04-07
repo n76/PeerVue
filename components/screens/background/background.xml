@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
+<!--
+SPDX-FileCopyrightText: 2020 Tod Fitch <tod@fitchfamily.org>
+
+SPDX-License-Identifier: MIT
+-->
 
 <!-- Description 
     Background for all nodes. It is a poster that gets picture Url

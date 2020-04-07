@@ -1,3 +1,7 @@
+' SPDX-FileCopyrightText: 2020 Tod Fitch <tod@fitchfamily.org>
+'
+' SPDX-License-Identifier: MIT
+
 sub main()
     screen = createObject("roSGScreen")
     scene = screen.createScene("home_scene")

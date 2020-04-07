@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+SPDX-FileCopyrightText: 2020 Tod Fitch <tod@fitchfamily.org>
+
+SPDX-License-Identifier: MIT
+-->
 <component   name="content_screen"   extends="Group"   initialFocus="rowList" >
     <script type="text/brightscript" uri="pkg:/components/screens/content_screen/content_screen.brs" />
     <script type="text/brightscript" uri="pkg:/source/utils/config.brs" />

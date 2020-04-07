@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
+<!--
+SPDX-FileCopyrightText: 2020 Tod Fitch <tod@fitchfamily.org>
+
+SPDX-License-Identifier: MIT
+-->
+
 <component name="sidebar" extends="Group" >
 <script type="text/brightscript" uri="pkg:/components/screens/sidebar/sidebar.brs" />
     <interface>

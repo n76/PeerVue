@@ -1,3 +1,7 @@
+' SPDX-FileCopyrightText: 2020 Tod Fitch <tod@fitchfamily.org>
+'
+' SPDX-License-Identifier: MIT
+
 function init()
     m.clear_button  = m.top.FindNode("clear_button")
     m.enter_button  = m.top.FindNode("enter_button")

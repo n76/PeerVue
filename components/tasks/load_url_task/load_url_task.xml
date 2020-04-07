@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8" ?>
+<!--
+SPDX-FileCopyrightText: 2020 Tod Fitch <tod@fitchfamily.org>
+
+SPDX-License-Identifier: MIT
+-->
+
 <component name = "load_url_task" extends = "task" >
-  <interface>
-    <field id = "url" type = "string" />
-    <field id = "response" type = "string" />
-    <field id = "error" type = "string" />
-  </interface>
-  <script type="text/brightscript" uri="pkg:/components/tasks/load_url_task/load_url_task.brs"/>
+    <interface>
+        <field id = "url"       type = "string" />
+        <field id = "response"  type = "string" />
+        <field id = "error"     type = "string" />
+    </interface>
+
+    <script type="text/brightscript" uri="pkg:/components/tasks/load_url_task/load_url_task.brs"/>
+
 </component>
 

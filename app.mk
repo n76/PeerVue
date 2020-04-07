@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2020 Tod Fitch <tod@fitchfamily.org>
+#
+# SPDX-License-Identifier: GPL-2.0-only
+
 #########################################################################
 # common include file for application Makefiles
 #
@@ -174,43 +178,6 @@ remove:
 	else \
 		curl -s -S -F "mysubmit=Delete" -F "archive=" -F "passwd=" http://$(ROKU_DEV_TARGET)/plugin_install | grep "<font color" | sed "s/<font color=\"red\">//" | sed "s[</font>[[" ; \
 	fi
-
-get_images:
-	@if [ ! -d $(OUTPUT_DIR) ]; \
-	then \
-		mkdir -p $(OUTPUT_DIR); \
-		echo "Creating images folder"; \
-	fi
-
-	echo "Downloading SVG source files from $(BRANDING_ROOT)"
-	rm -f $(BANNER_SOURCE)* $(ICON_SOURCE)*
-	@wget -O $(ICON_SOURCE) $(BRANDING_ROOT)/$(ICON_SOURCE) > /dev/null
-	@if [ "$(BANNER_SOURCE)" != "$(ICON_SOURCE)" ]; then \
-		@wget -O $(BANNER_SOURCE) $(BRANDING_ROOT)/$(BANNER_SOURCE) > /dev/null; \
-	fi
-	echo "Finished downloading SVG files"
-
-	echo "Creating image files"
-	@convert -background none -gravity west  -density 1200 -scale 300x300 -extent 1080x300 $(BANNER_SOURCE) $(OUTPUT_DIR)/splash_image.png
-	#@convert -pointsize 90 -font "CalibriB" -fill white -draw "text 350,150 'PeerVue' " $(OUTPUT_DIR)/splash_image.png $(OUTPUT_DIR)/test.png
-	rm $(OUTPUT_DIR)/splash_image.png
-
-	@convert -background "#000b25" -gravity center -density 1200 -resize 380x380 -extent 540x405 $(BANNER_SOURCE) $(OUTPUT_DIR)/channel-poster_fhd.png
-	@convert -background "#000b25" -gravity center -density 1200 -resize 200x200 -extent 336x210 $(BANNER_SOURCE) $(OUTPUT_DIR)/channel-poster_hd.png
-	@convert -background "#000b25" -gravity center -density 1200 -resize 130x130 -extent 246x140 $(BANNER_SOURCE) $(OUTPUT_DIR)/channel-poster_sd.png
-
-	@convert -background none -gravity west  -density 1200 -scale 48x48 -extent 200x48 $(BANNER_SOURCE) $(OUTPUT_DIR)/logo_image.png
-	@convert -pointsize 30 -font "CalibriB" -fill white -draw "text 50,33 'PeerVue' " $(OUTPUT_DIR)/logo_image.png $(OUTPUT_DIR)/logo.png
-	rm $(OUTPUT_DIR)/logo_image.png
-
-	@convert -background none -gravity west  -density 1200 -scale 300x300 -extent 1080x300 $(BANNER_SOURCE) $(OUTPUT_DIR)/splash1.png
-	@convert -pointsize 90 -font "CalibriB" -fill white -draw "text 350,175 'PeerVue' " $(OUTPUT_DIR)/splash1.png $(OUTPUT_DIR)/splash2.png
-	@convert -background "#000b25" -gravity center -extent 1920x1080 $(OUTPUT_DIR)/splash2.png $(OUTPUT_DIR)/splash-screen_fhd.jpg
-	rm $(OUTPUT_DIR)/splash1.png $(OUTPUT_DIR)/splash2.png
-	@convert $(OUTPUT_DIR)/splash-screen_fhd.jpg -resize 1280x720 $(OUTPUT_DIR)/splash-screen_hd.jpg
-	@convert $(OUTPUT_DIR)/splash-screen_fhd.jpg -resize 720x480 $(OUTPUT_DIR)/splash-screen_sd.jpg
-
-	echo "Finished creating image files"
 
 screenshot:
 	SCREENSHOT_TIME=`date "+%s"`; \

@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <!--
+SPDX-FileCopyrightText: 2020 Tod Fitch <tod@fitchfamily.org>
+
+SPDX-License-Identifier: MIT
+-->
+
+<!--
     A part of the content screen, shows a summary of the currently
     focused content row list item
 -->

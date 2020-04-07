@@ -1,3 +1,7 @@
+' SPDX-FileCopyrightText: 2020 Tod Fitch <tod@fitchfamily.org>
+'
+' SPDX-License-Identifier: MIT
+
 '
 ' Our poster is the background of the content screen.
 ' If a new poster image is given (executing OnBackgroundUrlChange)

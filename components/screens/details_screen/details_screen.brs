@@ -1,3 +1,7 @@
+' SPDX-FileCopyrightText: 2020 Tod Fitch <tod@fitchfamily.org>
+'
+' SPDX-License-Identifier: MIT
+
 sub init()
     m.title = m.top.FindNode("title")
     m.description = m.top.FindNode("description")

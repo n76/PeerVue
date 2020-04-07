@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2020 Tod Fitch <tod@fitchfamily.org>
+
+SPDX-License-Identifier: MIT
+-->
+
 # PeerVue - A PeerTube channel for Roku
 
 **This app is not complete!**

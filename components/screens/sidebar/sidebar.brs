@@ -1,3 +1,7 @@
+' SPDX-FileCopyrightText: 2020 Tod Fitch <tod@fitchfamily.org>
+'
+' SPDX-License-Identifier: MIT
+
 function init()
     m.category_list=m.top.findNode("category_list")
     m.top.observeField("visible", "onVisibleChange")

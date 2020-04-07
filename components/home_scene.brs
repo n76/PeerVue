@@ -1,3 +1,7 @@
+' SPDX-FileCopyrightText: 2020 Tod Fitch <tod@fitchfamily.org>
+'
+' SPDX-License-Identifier: MIT
+
 '
 '   Our content screen (and thus things shown in our details and
 '   video player) can be from either our configuration specified set
