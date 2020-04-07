@@ -46,11 +46,6 @@ GITCOMMIT = $(shell git rev-parse --short HEAD)
 BUILDDATE = $(shell date -u | awk '{ print $$2,$$3,$$6,$$4 }')
 BUILD_NUMBER_FILE=build-number.txt
 
-BRANDING_ROOT = https://raw.githubusercontent.com/Chocobozzz/PeerTube/develop/client/src/assets/images
-ICON_SOURCE = logo.svg
-BANNER_SOURCE = logo.svg
-OUTPUT_DIR = ./images
-
 ifdef ROKU_DEV_PASSWORD
 	USERPASS = rokudev:$(ROKU_DEV_PASSWORD)
 else
