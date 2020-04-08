@@ -6,12 +6,14 @@ SPDX-License-Identifier: MIT
 
 # PeerVue - A PeerTube channel for Roku
 
-**This app is not complete!**
+<img src="images/splash-screen_SD.png"/>
 
-Currently, the data stored on your Roku device is the server name.
+This is a Roku “channel” that allows you to watch videos hosted on a PeerTube instance on your TV.
 
-The format that is used to save the settings could change at any time and
-you would have to re-enter it.
+## Screenshots
+<img src="screenshots/setting_screen.jpg"/>
+<img src="screenshots/content_screen.jpg"/>
+<img src="screenshots/detail_screen.jpg"/>
 
 ## Getting Started
 
@@ -94,38 +96,7 @@ Read below and also checkout the [Development Guide For New Devs](DEVGUIDE.md)
 
 Modify code -> `make install` -> Use Roku remote to test changes -> `telnet ${ROKU_DEV_TARGET} 8085` -> `CTRL + ]` -> `quit + ENTER`
 
-Unfortunately there is no debuger. You will need to use telnet to see log statements, warnings, and error reports. You won't always need to telnet into your device but the workflow above is typical when you are new to Brightscript or are working on tricky code.
-
-### Testing
-
-Testing is done with the [Rooibos](https://github.com/georgejecook/rooibos/) library. This works by including tests in the deployment and then looking at telnet
-for the test results.
-
-Install necessary packages:
-
-```bash
-sudo apt-get install nodejs npm
-```
-
-Install [rooibos-cli](https://github.com/georgejecook/rooibos-cli):
-
-```bash
-npm install -g rooibos-cli
-```
-
-Deploy the application with tests:
-
-```bash
-make test
-```
-
-View test results:
-
-```bash
-telnet ${ROKU_DEV_TARGET} 8085
-```
-
-To exit telnet: `CTRL + ]` and then type `quit + ENTER`
+Unfortunately there is no debugger. You will need to use telnet to see log statements, warnings, and error reports. You won't always need to telnet into your device but the workflow above is typical when you are new to Brightscript or are working on tricky code.
 
 ## Improving PeerVue for Roku
 
