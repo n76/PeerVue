@@ -9,7 +9,6 @@ sub init()
     m.rowList       =   m.top.findNode("rowList")
     m.summary       =   m.top.findNode("summary")
     m.background    =   m.top.findNode("Background")
-    m.overhang      =   m.top.findNode("MyOverhang")
 
     m.savedContent = createObject("roSGNode","ContentNode")
 
@@ -19,10 +18,6 @@ sub init()
     m.top.observeField("focusedChild", "OnFocusedChildChange")
 
 end sub
-
-function updateConfig(settings)
-    m.overhang.Title = settings.instance_name
-end function
 
 '
 '   Clear existing content

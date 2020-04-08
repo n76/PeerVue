@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+SPDX-FileCopyrightText: 2020 Tod Fitch <tod@fitchfamily.org>
+
+SPDX-License-Identifier: MIT
+-->
+
+<component name="side_icons" extends="Group" >
+
+    <children>
+
+        <Poster
+            width="50"
+            height="50"
+            translation="[10,0]"
+            uri="pkg:/images/settings-icon.png"
+            />
+
+        <Poster
+            width="50"
+            height="50"
+            translation="[10,100]"
+            uri="pkg:/images/search-icon.png"
+            />
+
+    </children>
+</component>

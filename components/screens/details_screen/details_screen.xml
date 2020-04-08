@@ -38,13 +38,13 @@ SPDX-License-Identifier: MIT
             id="thumbnail"
             width="500"
             height="280"
-            translation="[200,200]"
+            translation="[160,200]"
             />
 
         <Button
             id="play_button"
             text="PLAY"
-            translation="[200, 600]"
+            translation="[160, 600]"
             />
 
         <Label

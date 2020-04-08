@@ -408,7 +408,6 @@ sub onConfigResponse(obj)
     '   Various screens need the configuration too to setup
     '   locale based text and/or server address, etc.
     '
-    m.content_screen.callFunc("updateConfig",settings)
     m.details_screen.callFunc("updateConfig",settings)
     m.server_setup.callFunc("updateConfig", settings)
     m.sidebar.callFunc("updateConfig",settings)

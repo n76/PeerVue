@@ -23,23 +23,6 @@ SPDX-License-Identifier: MIT
             height="1080"
             />
             
-        <overhang
-            id="MyOverhang"
-            visible="true"
-            translation="[0,0]"
-            logoUri="pkg:/images/logo.png"
-            title = "PeerVue"
-            showOptions="false"
-            logoBaselineOffset="25"
-            height="115"
-            />
-            
-        <sidebar
-            id="sidebar"
-            visible="true"
-            translation="[0,0]"
-            />
-            
         <content_screen
             id="content_screen"
             visible="false"
@@ -58,6 +41,23 @@ SPDX-License-Identifier: MIT
             translation="[0,0]"
             width="1920"
             height="1080" 
+            />
+            
+        <overhang
+            id="MyOverhang"
+            visible="true"
+            translation="[0,0]"
+            logoUri="pkg:/images/logo.png"
+            title = "PeerVue"
+            showOptions="false"
+            logoBaselineOffset="25"
+            height="115"
+            />
+            
+        <sidebar
+            id="sidebar"
+            visible="true"
+            translation="[0,0]"
             />
             
         <text_entry
