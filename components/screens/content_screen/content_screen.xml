@@ -45,7 +45,7 @@ SPDX-License-Identifier: MIT
 
         <RowList
             id="rowList"
-            itemSize="[1900, 327]"
+            itemSize="[1760, 327]"
             itemSpacing="[20, 0]"
             numRows="2"
             rowFocusAnimationStyle="floatingFocus"
