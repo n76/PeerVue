@@ -7,18 +7,14 @@ title=PeerVue Alpha
 
 ## Channel Icons
 #### Per: https://developer.roku.com/docs/developer-program/getting-started/architecture/channel-manifest.md
-#### Image size for mm_icon_focus_hd: 336x210px
-#### Image size for mm_icon_focus_sd: 246x140px
-#### Looks like channel icons sizes are: SD=214x144, HD=290x218, FHD=540x405
-mm_icon_focus_fhd=pkg:/images/channel-poster_fhd.png
-mm_icon_focus_hd=pkg:/images/channel-poster_hd.png
-mm_icon_focus_sd=pkg:/images/channel-poster_sd.png
+mm_icon_focus_fhd=pkg:/images/channel-icon_FHD.png
+mm_icon_focus_hd=pkg:/images/channel-icon_HD.png
+mm_icon_focus_sd=pkg:/images/channel-icon_SD.png
 
 ###  Splash Screen + Loading Screen Artwork
-#### Image sizes are splash_screen_fhd: 1920x1080px | splash_screen_hd: 1280x720px
-splash_screen_fhd=pkg:/images/splash-screen_fhd.jpg
-splash_screen_hd=pkg:/images/splash-screen_hd.jpg
-splash_screen_sd=pkg:/images/splash-screen_sd.jpg
+splash_screen_fhd=pkg:/images/splash-screen_FHD.png
+splash_screen_hd=pkg:/images/splash-screen_HD.png
+splash_screen_sd=pkg:/images/splash-screen_SD.png
 
 splash_min_time=1500
 
