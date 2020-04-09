@@ -53,6 +53,7 @@ function load()
         
         if (server = "")
             ?"[load_config_task] no server defined"
+            m.top.complete = "done"
         else
             '
             '   Get configured video lists
@@ -96,6 +97,10 @@ function load()
             end for
         end if
     end if
+    '
+    '   Tell home scene that we have loaded all the configured videos
+    '
+    m.top.complete = "done"
 end function
 
 function getFeed(server, path)

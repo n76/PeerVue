@@ -43,6 +43,11 @@ function init()
     m.server_setup.observeField("enter_button_pressed", "onServerUpdatePressed")
     m.sidebar.observeField("category_selected", "onCategorySelected")
     m.top.observeField("rowItemSelected", "OnRowItemSelected")
+    
+    '
+    '   Flag that we need to send a launch complete signal beacon
+    '
+    m.launchCompleteSent = false
 
     loadConfig()
 end function
@@ -58,6 +63,14 @@ sub setContentContains(newContains)
             m.content_contains = "config_videos"
             m.content_screen.callFunc("restoreContent")
         end if
+    end if
+end sub
+
+sub sendLaunchComplete()
+    if m.launchCompleteSent = false
+        m.launchCompleteSent = true
+        ? "[sendLaunchComplete] Application launch complete."
+        m.top.signalBeacon("AppLaunchComplete")
     end if
 end sub
 
@@ -395,6 +408,7 @@ sub loadConfig()
     m.config_task.observeField("configuration", "onConfigResponse")
     m.config_task.observeField("error", "onConfigError")
     m.config_task.observeField("videos", "onConfigVideos")
+    m.config_task.observeField("complete", "onConfigComplete")
     m.config_task.control="RUN"
 end sub
 
@@ -409,7 +423,6 @@ sub onConfigResponse(obj)
     '   locale based text and/or server address, etc.
     '
     m.details_screen.callFunc("updateConfig",settings)
-    m.server_setup.callFunc("updateConfig", settings)
     m.sidebar.callFunc("updateConfig",settings)
 
     '
@@ -448,6 +461,10 @@ sub onConfigResponse(obj)
         m.content_screen.visible = true
         m.content_screen.setFocus(true)
     end if
+end sub
+
+sub onConfigComplete(obj)
+    sendLaunchComplete()
 end sub
 
 sub onConfigVideos(obj)
