@@ -69,7 +69,6 @@ end sub
 sub sendLaunchComplete()
     if m.launchCompleteSent = false
         m.launchCompleteSent = true
-        ? "[sendLaunchComplete] Application launch complete."
         m.top.signalBeacon("AppLaunchComplete")
     end if
 end sub

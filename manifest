@@ -23,6 +23,12 @@ ui_resolutions=fhd
 screensaver_private=0
 screensaver_title=PeerVue
 
+#
+#   Got a handler in the main.brs file/task but haven't a clue what do
+#   do with any messages that might be received
+#
+supports_input_launch=1
+
 ## Channel version
 major_version=1
 minor_version=1

@@ -8,10 +8,22 @@ sub main()
     screen.Show()
     port = createObject("roMessagePort")
     screen.setMessagePort(m.port)
-    ' this loop is necessary to keep the application open
-    ' otherwise the channel will exit when it reaches the end of main()
+
+
+    msgPort = CreateObject("roMessagePort")
+    input = CreateObject("roInput")
+    input.SetMessagePort(msgPort)
+
+    '
+    '   Waiting for messages
+    '
     while(true)
-        ' nothing happens in here, yet
-        ' the HOME and BACK buttons on the remote will nuke the app
+        msg = wait(0, msgPort)
+        if type(msg) = "roInputEvent"
+            if msg.IsInput()
+                info = msg.GetInfo()
+                ? "Received input: "; FormatJSON(info)
+            end if
+        end if
     end while
 end sub
