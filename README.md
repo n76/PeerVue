@@ -17,7 +17,9 @@ This is a Roku “channel” that allows you to watch videos hosted on a PeerTub
 
 ## Getting Started
 
-Follow the steps below to install the app on your personal Roku device
+If you simply wish to use the channel, add the [private channel code Z6RVGKD](https://my.roku.com/add/Z6RVGKD) to your Roku account.
+
+If you wish to help improve the channel, follow the developer steps below to install the app on your personal Roku device.
 
 ### Developer Mode
 
