@@ -3,7 +3,7 @@
     "clear":        "Effacer",
     "discover":     "Découvrir",
     "liked":        "Les plus appréciées",
-    "local":        "Locales"
+    "local":        "Locales",
     "peervue":      "PeerVue est une chaîne à code source ouvert permettant de visualiser des contenus hébergés par une instance de PeerTube.\n\rLa source de cette chaîne se trouve sur https://github.com/n76/PeerVue\n\rPour des informations sur PeerTube, voir https://https://joinpeertube.org/",
     "play":         "JOUER",
     "recent":       "Récemment ajoutées",
