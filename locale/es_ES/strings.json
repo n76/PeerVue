@@ -1,0 +1,16 @@
+{
+    "about":        "Sobre",
+    "clear":        "Borrar",
+    "discover":     "Descubrir",
+    "liked":        "Más Gustado",
+    "local":        "Locales",
+    "peervue":      "PeerVue es un canal de código abierto para ver contenido alojado en una instancia de PeerTube.\n\rLa fuente de este canal se encuentra en https://github.com/n76/PeerVue\n\r Para obtener información sobre PeerTube, consulte https: https://joinpeertube.org/",
+    "play":         "Jugar",
+    "recent":       "Recientes",
+    "related":      "Videos Similares",
+    "search":       "Buscar...",
+    "server_url":   "URL del servidor (por ejemplo: https://video.ploud.fr):",
+    "settings":     "Ajustes",
+    "trending":     "Tendencias",
+    "update":       "Actualizar"
+}
