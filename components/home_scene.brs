@@ -43,7 +43,7 @@ function init()
     m.server_setup.observeField("enter_button_pressed", "onServerUpdatePressed")
     m.sidebar.observeField("category_selected", "onCategorySelected")
     m.top.observeField("rowItemSelected", "OnRowItemSelected")
-    
+
     '
     '   Flag that we need to send a launch complete signal beacon
     '
@@ -169,22 +169,16 @@ sub OnRowItemSelected()
 end sub
 
 sub onPlayButtonPressed(obj)
-    node = createObject("roSGNode","ContentNode")
-    node.streamformat = m.details_screen.streamformat
-    if (m.details_screen.streamformat = "hls")
-        node.url = m.details_screen.url
-    else
-        node.streams = m.details_screen.streamlist
-    endif
-    node.length = m.details_screen.duration
-    node.title = m.details_screen.title
-
     m.details_screen.visible = false
     m.overhang.visible=false
     m.videoplayer.visible = true
     m.videoplayer.setFocus(true)
 
-    m.videoplayer.content = node
+    '
+    '   The video player content has been set in the preBufferVideo()
+    '   routine when we entered the details screen. So all we have to
+    '   do is tell the player to start.
+    '
     m.videoplayer.control = "play"
 end sub
 
@@ -203,9 +197,72 @@ sub onVideoInfoResponse(obj)
         m.overhang.visible=true
         m.details_screen.visible = true
         m.details_screen.content = data
+        preBufferVideo(data)
     else
         ? "[onVideoInfoResponse]: Feed response is empty!"
     end if
+end sub
+
+sub preBufferVideo(item)
+    '
+    '   Attempt to "fast start" video per:
+    '   https://developer.roku.com/docs/developer-program/media-playback/fast-video-start.md
+    '
+    '   We build the content node when we enter the details screen and
+    '   tell it to pre-buffer. Then when the play button is pressed we
+    '   should just be able to make it visible and tell it to play.
+    '
+    content = createObject("roSGNode","ContentNode")
+    if item.name <> Invalid then
+        content.title = item.name
+    else
+        content.title = ""
+    end if
+    content.length = item.duration
+
+    '
+    '   Build list of URLs of the various bitrate/sizes available
+    '
+    streams = []
+    hls_url = ""
+    for each f in item.files
+        streamQuality = false
+        if f.resolution.id > 720
+            streamQuality = true
+        end if
+
+        '
+        '   Assume size is bytes that take 10 bits to transport (typical TCP/IP)
+        '   Assume Roku "bitrate" is kbps
+        '
+        thisStream = {}
+        thisStream.bitrate = (((f.size / item.duration) * 10) / 1024).ToStr().ToInt().ToStr()
+        thisStream.url = f.fileUrl
+        thisStream.quality = streamQuality
+        streams.push(thisStream)
+        
+    end for
+    
+    '
+    '   See if there is a HLS stream defined
+    '
+    for each stream in item.streamingPlaylists
+        hls_url = stream.playlistUrl
+    end for
+
+    '
+    '   Since HLS sound is broken, give preference to MP4 list
+    '
+    if (streams.count() > 0)
+        content.streamformat = "mp4"
+        content.streams = streams
+    else
+        content.url = hls_url
+        content.streamformat = "hls"
+    end if
+
+    m.videoplayer.content = content
+    m.videoplayer.control = "prebuffer"
 end sub
 
 sub initializeVideoPlayer()

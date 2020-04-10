@@ -45,50 +45,6 @@ sub OnContentChange(obj)
     end if
 
     m.thumbnail.uri = get_setting("server", "") + item.thumbnailPath
-    m.top.url = ""
-    m.top.streamformat = ""
-    m.top.duration = item.duration
-    m.top.title = item.name
-    '
-    '   First see if there are any HLS streams
-    '
-    for each stream in item.streamingPlaylists
-        m.top.url = stream.playlistUrl
-        m.top.streamformat = "hls"
-    end for
-
-    '
-    ' HLS streams from PeerTube lack sound for unknown reasons, so clear
-    ' our indicator and force use of mp4 streams.
-    '
-    m.top.url = ""
-
-    '
-    '   If no HLS streams then work with available mp4 files
-    '
-    if m.top.url = "" then
-        ? "[OnContentChange] No HLS stream available"
-        best_res = 0
-        streams = []
-        for each f in item.files
-
-            streamQuality = false
-            if f.resolution.id > 720
-                streamQuality = true
-            end if
-            '
-            '   Assume size is bytes that take 10 bits to transport (typical TCP/IP)
-            '   Assume Roku "bitrate" is kbps
-            '
-            thisStream = {}
-            thisStream.bitrate = (((f.size / item.duration) * 10) / 1024).ToStr().ToInt().ToStr()
-            thisStream.url = f.fileDownloadUrl
-            thisStream.quality = streamQuality
-            streams.push(thisStream)
-
-        end for
-        m.top.streamformat = "mp4"
-        m.top.streamlist = streams
-    end if
+    'm.top.duration = item.duration
 end sub
 
