@@ -207,6 +207,8 @@ sub preBufferVideo(item)
     '
     '   Attempt to "fast start" video per:
     '   https://developer.roku.com/docs/developer-program/media-playback/fast-video-start.md
+    '   and:
+    '   https://developer.roku.com/docs/references/scenegraph/media-playback-nodes/video.md
     '
     '   We build the content node when we enter the details screen and
     '   tell it to pre-buffer. Then when the play button is pressed we
@@ -220,29 +222,43 @@ sub preBufferVideo(item)
     end if
     content.length = item.duration
 
+    streams = []
+    hls_url = ""
     '
     '   Build list of URLs of the various bitrate/sizes available
     '
-    streams = []
-    hls_url = ""
+    '   See:
+    '   https://developer.roku.com/docs/developer-program/getting-started/architecture/content-metadata.md
+    '
     for each f in item.files
-        streamQuality = false
+        thisStream = {}
+
+        thisStream.quality = false
         if f.resolution.id > 720
-            streamQuality = true
+            thisStream.quality = true
         end if
 
-        '
-        '   Assume size is bytes that take 10 bits to transport (typical TCP/IP)
-        '   Assume Roku "bitrate" is kbps
-        '
-        thisStream = {}
-        thisStream.bitrate = (((f.size / item.duration) * 10) / 1024).ToStr().ToInt().ToStr()
         thisStream.url = f.fileUrl
-        thisStream.quality = streamQuality
+        thisStream.stickyredirects = false
+
+        '
+        '   PeerTube gives file size in bytes, Roku wants bitrate, so compute
+        '   an average bitrate from file size and video duration.
+        '
+        '   Assume each byte take 10 bits to transport (typical TCP/IP)
+        '   Assume Roku "bitrate" is kbps and "k" means 1024 rather than 1000
+        '
+        '   We want an integer expressed as a string. Can't find a round()
+        '   or trunc() function in the Brightscript docs, so we'll turn the
+        '   floating point to a string, convert the string to integer.
+        '
+        bitrate = (((f.size / item.duration) * 10) / 1024).ToStr().ToInt()
+        thisStream.bitrate = bitrate
+        thisStream.contentid = item.uuid + "-" + f.resolution.label + "-" + bitrate.ToStr()
         streams.push(thisStream)
-        
+
     end for
-    
+
     '
     '   See if there is a HLS stream defined
     '
@@ -251,7 +267,11 @@ sub preBufferVideo(item)
     end for
 
     '
-    '   Since HLS sound is broken, give preference to MP4 list
+    '   Since HLS sound is broken and the assumed problem is in PeerTube
+    '   as the HLS it provides fails the Apple mediastreamvalidator, give
+    '   preference to stream list of MP4 URLs
+    '
+    '   Bug: Need to revisit HLS when PeerTube HLS passes validation.
     '
     if (streams.count() > 0)
         content.streamformat = "mp4"
@@ -295,6 +315,8 @@ sub closeVideo()
     m.videoplayer.visible=false
     m.overhang.visible=true
     m.details_screen.visible=true
+
+    ? "[closeVideo] completedStreamInfo:";m.videoplayer.completedStreamInfo
 end sub
 
 sub showErrorDialog(message)

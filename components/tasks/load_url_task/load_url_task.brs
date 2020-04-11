@@ -9,7 +9,7 @@ end sub
 
 function request()
     url = m.top.url
-    ? "Feed Task URL: ";url
+    ? "[load_url_task]: ";url
     http = createObject("roUrlTransfer")
     http.RetainBodyOnError(true)
     port = createObject("roMessagePort")
