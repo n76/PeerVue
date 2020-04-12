@@ -34,6 +34,8 @@ function load()
         ? "[Load Config Task] Config: "; data
         m.top.error = "Configuration file at "+filepath+" is invalid."
     else
+        configuration.iso639_1 = json.iso639_1
+
         server = get_setting("server", "")
         if (server = "")
             configuration.instance_name = ""

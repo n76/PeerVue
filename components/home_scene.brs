@@ -290,6 +290,30 @@ sub preBufferVideo(item)
         content.streamformat = "hls"
     end if
 
+    '
+    '   Build list of subtitle/captions available on video
+    '
+    '   Peertube uses 2 letter ISO 639-1 codes while
+    '   Roku uses 3 letter ISO 639-2B codes. So we convert
+    '   them with a look up table.
+    '
+    if item.captions <> invalid
+        captions = []
+        for each cap in item.captions
+            isoInfo =  m.iso639_1.lookup(cap.language.id)
+            if isoInfo <> invalid then
+                thisCaption = {}
+                thisCaption.Language = isoInfo.iso639_2b
+                thisCaption.Description = isoInfo.NativeName
+                thisCaption.TrackName = get_setting("server","") + cap.captionPath
+                captions.push(thisCaption)
+            end if
+        end for
+        if captions.count() > 0
+            content.SubtitleTracks = captions
+        end if
+    end if
+
     m.videoplayer.content = content
     m.videoplayer.control = "prebuffer"
 end sub
@@ -495,6 +519,7 @@ end sub
 sub onConfigResponse(obj)
     settings = obj.getData()
     m.strings = settings.strings
+    m.iso639_1 = settings.iso639_1
 
     m.overhang.Title = settings.instance_name
 

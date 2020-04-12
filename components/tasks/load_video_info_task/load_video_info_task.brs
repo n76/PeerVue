@@ -35,7 +35,7 @@ function request()
         '   response
         extraJson = getFeed(url + "/captions")
         if (extraJson <> invalid)
-            json.captions = extraJson.captions
+            json.captions = extraJson.data
         end if
         m.top.response = json
     end if
