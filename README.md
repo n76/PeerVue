@@ -21,7 +21,7 @@ See the [FAQ page](FAQ.md).
 
 ## Getting Started
 
-If you simply wish to use the channel, add the [private channel code ZQNJRR](https://my.roku.com/add/Z6RVGKD) to your Roku account.
+If you simply wish to use the channel, add the [private channel code PEERVUE](https://my.roku.com/add/PEERVUE) to your Roku account.
 
 If you wish to help improve the channel, follow the developer steps below to install the app on your personal Roku device.
 

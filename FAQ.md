@@ -17,7 +17,7 @@ We support adding PeerVue via side loading and with a private channel code.
 
 **What is the private channel code?**
 
-The code is [Z6RVGKD](https://my.roku.com/add/Z6RVGKD).
+The code is [PEERVUE](https://my.roku.com/add/PEERVUE).
 
 **The Private Channel Code Doesn’t Work**
 
