@@ -15,6 +15,10 @@ This is a Roku “channel” that allows you to watch videos hosted on a PeerTub
 <img src="screenshots/content_screen.jpg"/>
 <img src="screenshots/detail_screen.jpg"/>
 
+## Have Questions?
+
+See the [FAQ page](FAQ.md).
+
 ## Getting Started
 
 If you simply wish to use the channel, add the [private channel code ZQNJRR](https://my.roku.com/add/ZQNJRR) to your Roku account.
