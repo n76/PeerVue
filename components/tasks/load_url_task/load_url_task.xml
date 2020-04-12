@@ -8,11 +8,12 @@ SPDX-License-Identifier: MIT
 <component name = "load_url_task" extends = "task" >
     <interface>
         <field id = "url"       type = "string" />
-        <field id = "response"  type = "string" />
+        <field id = "response"  type = "assocarray" />
         <field id = "error"     type = "string" />
     </interface>
 
     <script type="text/brightscript" uri="pkg:/components/tasks/load_url_task/load_url_task.brs"/>
+    <script type="text/brightscript" uri="pkg:/source/utils/get_feed.brs" />
 
 </component>
 

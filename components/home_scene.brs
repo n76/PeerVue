@@ -190,14 +190,25 @@ sub loadVideoInfo(uuid)
 end sub
 
 sub onVideoInfoResponse(obj)
-    response = obj.getData()
-    data = parseJSON(response)
+    data = obj.getData()
     if data <> Invalid
         m.content_screen.visible = false
         m.overhang.visible=true
         m.details_screen.visible = true
         m.details_screen.content = data
         preBufferVideo(data)
+        '
+        '   Fix me: Need to get full description for details screen
+        '       /api/v1/videos/<video id>/description
+        '   Fix me: Need to get captions, if they exist, for video object
+        '       /api/v1/videos/<video id>/captions
+        '       See: SubtitleTracks at
+        '       https://developer.roku.com/en-gb/docs/developer-program/getting-started/architecture/content-metadata.md
+        '
+        '       Also, see https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+        '       for list of ISO 639-1 2 and ISO 639.2B 3 letter codes. Probably
+        '       need a table lookup to do the conversion
+        '
     else
         ? "[onVideoInfoResponse]: Feed response is empty!"
     end if
@@ -377,72 +388,65 @@ function url_encode(s):
 end function
 
 sub onSearchResponse1(obj)
-    response = obj.getData()
-    '? "[onSearchResponse] response: " response
-    json = parseJSON(response)
-    if json = invalid
-        ? "[getFeed] bad JSON: "; rsltString
-        m.top.error = "Error parsing feed from server "+server
-    end if
-    m.content_screen.callFunc("resetContent")
+    json = obj.getData()
+    '? "[onSearchResponse1] response: " json
 
-    categories = {}
+    if (json <> invalid)
+        m.content_screen.callFunc("resetContent")
 
-    if json.data.count() > 0
-        vids = {}
-        vids.title = m.search_screen.text_content
-        vids.videos = json.data
-        m.content_screen.callFunc("addContent",vids)
+        categories = {}
 
-        m.search_screen.visible = false
-        m.init_screen.visible = false
-        m.sidebar.visible = false
-        m.overhang.visible=true
+        if json.data.count() > 0
+            vids = {}
+            vids.title = m.search_screen.text_content
+            vids.videos = json.data
+            m.content_screen.callFunc("addContent",vids)
 
-        m.content_screen.visible = true
-        m.content_screen.setFocus(true)
+            m.search_screen.visible = false
+            m.init_screen.visible = false
+            m.sidebar.visible = false
+            m.overhang.visible=true
 
-        for each vid in json.data
-            '? "[OnSearchResponse1] vid info: ";vid.category
-            categories.AddReplace(vid.category.label, vid.category.id)
-        end for
-    end if
+            m.content_screen.visible = true
+            m.content_screen.setFocus(true)
 
-    query = "/api/v1/search/videos/?start=0&count=30&sort=-match"
-    '? "[onSearchResponse1] search string: ";m.search_screen.text_content
-    tags = (m.search_screen.text_content).tokenize(" ")
-    previousTag = ""
-    for each tag in tags
-        query = query + "&tagsOneOf=" + url_encode(tag)
-        if previousTag <> ""
-            query = query + "&tagsOneOf=" + url_encode(previousTag + " " + tag)
+            for each vid in json.data
+                '? "[OnSearchResponse1] vid info: ";vid.category
+                categories.AddReplace(vid.category.label, vid.category.id)
+            end for
         end if
-        previousTag = tag
-    end for
 
-'    for each cat in categories
-'        if (categories[cat] <> invalid)
-'            query = query + "&categoryOneOf=" + Str(categories[cat]).Trim()
-'        end if
-'    end for
-    ? "[onSearchResponse1] query: " + query
+        query = "/api/v1/search/videos/?start=0&count=30&sort=-match"
+        '? "[onSearchResponse1] search string: ";m.search_screen.text_content
+        tags = (m.search_screen.text_content).tokenize(" ")
+        previousTag = ""
+        for each tag in tags
+            query = query + "&tagsOneOf=" + url_encode(tag)
+            if previousTag <> ""
+                query = query + "&tagsOneOf=" + url_encode(previousTag + " " + tag)
+            end if
+            previousTag = tag
+        end for
 
-    m.url_task = createObject("roSGNode", "load_url_task")
-    m.url_task.observeField("response", "onSearchResponse2")
-    m.url_task.url = get_setting("server","") + query
-    m.url_task.control = "RUN"
+    '    for each cat in categories
+    '        if (categories[cat] <> invalid)
+    '            query = query + "&categoryOneOf=" + Str(categories[cat]).Trim()
+    '        end if
+    '    end for
+        ? "[onSearchResponse1] query: " + query
+
+        m.url_task = createObject("roSGNode", "load_url_task")
+        m.url_task.observeField("response", "onSearchResponse2")
+        m.url_task.url = get_setting("server","") + query
+        m.url_task.control = "RUN"
+    end if
 end sub
 
 sub onSearchResponse2(obj)
-    response = obj.getData()
-    '? "[onSearchResponse] response: " response
-    json = parseJSON(response)
-    if json = invalid
-        ? "[getFeed] bad JSON: "; rsltString
-        m.top.error = "Error parsing feed from server "+server
-    end if
+    json = obj.getData()
+    '? "[onSearchResponse2] response: " json
 
-    if json.data.count() > 0
+    if (json <> invalid) and (json.data.count() > 0)
         vids = {}
         vids.title = get_locale_string("related", m.strings)
         vids.videos = json.data
