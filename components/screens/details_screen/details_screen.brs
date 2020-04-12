@@ -3,10 +3,12 @@
 ' SPDX-License-Identifier: MIT
 
 sub init()
-    m.title = m.top.FindNode("title")
-    m.description = m.top.FindNode("description")
-    m.thumbnail = m.top.FindNode("thumbnail")
-    m.play_button = m.top.FindNode("play_button")
+    m.description   = m.top.FindNode("description")
+    m.duration      = m.top.FindNode("duration")
+    m.play_button   = m.top.FindNode("play_button")
+    m.publishdate   = m.top.FindNode("publishdate")
+    m.thumbnail     = m.top.FindNode("thumbnail")
+    m.title         = m.top.FindNode("title")
 
     m.top.observeField("visible", "onVisibleChange")
     m.play_button.setFocus(true)
@@ -46,6 +48,35 @@ sub OnContentChange(obj)
     end if
 
     m.thumbnail.uri = get_setting("server", "") + item.thumbnailPath
-    'm.top.duration = item.duration
-end sub
 
+    '
+    '   Show duration as h:mm:ss
+    '
+    '   Seems like there should be a built-in function for formatting
+    '   seconds to a string but I don't see it so we do it the hard way
+    '
+    sec = item.duration
+    hr = (sec / 3600).ToStr().ToInt()
+    sec = sec - (hr * 3600)
+    min = (sec / 60).ToStr().ToInt()
+    sec = sec - (min * 60)
+
+    if (min > 9)
+        min = min.toStr()
+    else
+        min = "0" + min.toStr()
+    end if
+    if (sec > 9)
+        sec = sec.toStr()
+    else
+        sec = "0" + sec.toStr()
+    end if
+    m.duration.text = hr.toStr() + ":" + min + ":" + sec
+
+    '
+    '   Show publish date.
+    '
+    date = CreateObject("roDateTime")
+    date.FromISO8601String(item.publishedAt)
+    m.publishdate.text = date.AsDateString("short-month-no-weekday")
+end sub

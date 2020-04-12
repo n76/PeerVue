@@ -31,6 +31,16 @@ SPDX-License-Identifier: MIT
             translation="[160,200]"
             />
 
+        <Label
+            id="duration"
+            font="font:SmallestSystemFont"
+            color="0xFFFFFF"
+            wrap="true"
+            width="150"
+            text=""
+            translation="[160,500]"
+            />
+
         <Button
             id="play_button"
             text="PLAY"
@@ -43,6 +53,16 @@ SPDX-License-Identifier: MIT
             color="0xFFFFFF"
             text=""
             translation="[800,200]"
+            />
+
+        <Label
+            id="publishdate"
+            font="font:SmallestSystemFont"
+            color="0xFFFFFF"
+            wrap="true"
+            width="500"
+            text=""
+            translation="[800,250]"
             />
 
         <Label

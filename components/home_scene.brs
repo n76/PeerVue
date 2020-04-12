@@ -183,7 +183,7 @@ sub onPlayButtonPressed(obj)
 end sub
 
 sub loadVideoInfo(uuid)
-    m.url_task = createObject("roSGNode", "load_url_task")
+    m.url_task = createObject("roSGNode", "load_video_info_task")
     m.url_task.observeField("response", "onVideoInfoResponse")
     m.url_task.url = get_setting("server","") + "/api/v1/videos/" + uuid
     m.url_task.control = "RUN"
@@ -198,8 +198,6 @@ sub onVideoInfoResponse(obj)
         m.details_screen.content = data
         preBufferVideo(data)
         '
-        '   Fix me: Need to get full description for details screen
-        '       /api/v1/videos/<video id>/description
         '   Fix me: Need to get captions, if they exist, for video object
         '       /api/v1/videos/<video id>/captions
         '       See: SubtitleTracks at
