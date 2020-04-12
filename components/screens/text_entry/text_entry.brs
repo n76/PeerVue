@@ -39,6 +39,7 @@ end function
 
 function setClearContentText(newText)
     m.clear_content = newText
+    m.keyboard.text = m.clear_content
 end function
 
 function onKeyEvent(key, press) as Boolean
