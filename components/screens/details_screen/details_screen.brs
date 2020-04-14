@@ -3,21 +3,43 @@
 ' SPDX-License-Identifier: MIT
 
 sub init()
-    m.category      = m.top.FindNode("category")
-    m.description   = m.top.FindNode("description")
-    m.duration      = m.top.FindNode("duration")
-    m.play_button   = m.top.FindNode("play_button")
-    m.publishdate   = m.top.FindNode("publishdate")
-    m.tags          = m.top.FindNode("tags")
-    m.thumbnail     = m.top.FindNode("thumbnail")
-    m.title         = m.top.FindNode("title")
+    m.category          = m.top.FindNode("category")
+    m.description       = m.top.FindNode("description")
+    m.duration          = m.top.FindNode("duration")
+    m.play_button       = m.top.FindNode("play_button")
+    m.publishdate       = m.top.FindNode("publishdate")
+    m.related_button    = m.top.FindNode("related_button")
+    m.tags              = m.top.FindNode("tags")
+    m.thumbnail         = m.top.FindNode("thumbnail")
+    m.title             = m.top.FindNode("title")
 
     m.top.observeField("visible", "onVisibleChange")
     m.play_button.setFocus(true)
 end sub
 
+function onKeyEvent(key, press) as Boolean
+    handled = false
+
+    if (m.top.related_tags <> invalid) and (m.top.related_tags.Count() > 0)
+        ? "[server_select] onKeyEvent", key, press
+        if (press)
+            if (key="up" or key="down") and m.play_button.hasFocus()
+                m.related_button.setFocus(true)
+                m.play_button.setFocus(false)
+                handled = true
+            else if (key="up" or key="down") and m.related_button.hasFocus()
+                m.related_button.setFocus(false)
+                m.play_button.setFocus(true)
+                handled = true
+            end if
+        end if
+    end if
+    return handled
+end function
+
 function updateConfig(settings)
-    m.play_button.text = get_locale_string("play", settings.strings)
+    m.play_button.text      = get_locale_string("play", settings.strings)
+    m.related_button.text   = get_locale_string("related", settings.strings)
 end function
 
 sub onVisibleChange()
@@ -91,6 +113,12 @@ sub OnContentChange(obj)
         tagString = tagString + t
     end for
     m.tags.text = tagString
+    m.top.related_tags = item.tags
+    if (m.top.related_tags <> invalid) and (m.top.related_tags.Count() > 0)
+        m.related_button.visible=true
+    else
+        m.related_button.visible=false
+    end if
 
     '
     '   Show publish date.

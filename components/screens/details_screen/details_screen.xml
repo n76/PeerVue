@@ -16,6 +16,13 @@ SPDX-License-Identifier: MIT
             type="int"
             alwaysnotify="true"
             alias="play_button.buttonSelected" />
+        <field id="related_button_pressed"
+            type="int"
+            alwaysnotify="true"
+            alias="related_button.buttonSelected" />
+
+        <field id="related_tags" type="array" />
+
         <function name="updateConfig" />
     </interface>
 
@@ -67,7 +74,16 @@ SPDX-License-Identifier: MIT
         <Button
             id="play_button"
             text=""
+            showFocusFootprint="true"
             translation="[160, 700]"
+            minWidth="150"
+            />
+
+        <Button
+            id="related_button"
+            text=""
+            showFocusFootprint="true"
+            translation="[160, 800]"
             minWidth="150"
             />
 

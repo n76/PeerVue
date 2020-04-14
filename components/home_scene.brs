@@ -39,6 +39,7 @@ function init()
     '   Setup all our observers
     '
     m.details_screen.observeField("play_button_pressed", "onPlayButtonPressed")
+    m.details_screen.observeField("related_button_pressed", "onRelatedButtonPressed")
     m.search_screen.observeField("enter_button_pressed","onSearchPressed")
     m.server_setup.observeField("enter_button_pressed", "onServerUpdatePressed")
     m.sidebar.observeField("category_selected", "onCategorySelected")
@@ -179,6 +180,36 @@ sub onPlayButtonPressed(obj)
     '   do is tell the player to start.
     '
     m.videoplayer.control = "play"
+end sub
+
+sub onRelatedButtonPressed(obj)
+    ?"[onRelatedButtonPressed] tags:";m.details_screen.related_tags
+
+    search_string = ""
+    for each tag in m.details_screen.related_tags
+        if search_string = ""
+            search_string = tag
+        else
+            search_string = search_string + " " + tag
+        end if
+        ?"[onRelatedButtonPressed] tag:";tag
+    end for
+
+    if (search_string <> "")
+        m.search_screen.text_content = search_string
+        '? "[onRelatedButtonPressed] search string: ";search_string
+
+        setContentContains("search_videos")
+        m.details_screen.visible = false
+        setContentContains("search_videos")
+        m.sidebar.visible = false
+        m.overhang.visible=true
+
+        m.url_task = createObject("roSGNode", "load_url_task")
+        m.url_task.observeField("response", "onSearchResponse1")
+        m.url_task.url = get_setting("server","") + "/api/v1/search/videos/?start=0&count=30&sort=-match&search=" + url_encode(search_string)
+        m.url_task.control = "RUN"
+    end if
 end sub
 
 sub loadVideoInfo(uuid)
@@ -423,6 +454,7 @@ sub onSearchResponse1(obj)
             vids.videos = json.data
             m.content_screen.callFunc("addContent",vids)
 
+            m.details_screen.visible = false
             m.search_screen.visible = false
             m.init_screen.visible = false
             m.sidebar.visible = false
