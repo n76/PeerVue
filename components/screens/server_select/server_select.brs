@@ -43,24 +43,11 @@ sub onClearButtonPressed()
     updateServerInfo(m.keyboard.text)
 end sub
 
-function setLabelText(newText)
-    m.prompt_text.text = newText
-end function
-
-function setEnterButtonText(newText)
-    m.enter_button.text = newText
-end function
-
-function setClearButtonText(newText)
-    m.clear_button.text = newText
-end function
-
-function setClearContentText(newText)
-    m.clear_content = newText
-end function
-
-function setKnownInstances(peertubeInstances)
-    m.instances = peertubeInstances
+function updateConfig(settings)
+    m.prompt_text.text  = get_locale_string("server_url", settings.strings)
+    m.enter_button.text = get_locale_string("update", settings.strings)
+    m.clear_button.text = get_locale_string("clear", settings.strings)
+    m.instances = settings.instances
 end function
 
 function onKeyEvent(key, press) as Boolean

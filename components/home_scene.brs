@@ -527,9 +527,8 @@ sub onConfigResponse(obj)
     '   locale based text and/or server address, etc.
     '
     m.details_screen.callFunc("updateConfig",settings)
+    m.server_setup.callFunc("updateConfig",settings)
     m.sidebar.callFunc("updateConfig",settings)
-    
-    m.server_setup.callFunc("setKnownInstances",settings.instances)
 
     '
     '   Set button text on text entry screens
@@ -537,11 +536,6 @@ sub onConfigResponse(obj)
     m.search_screen.callFunc("setLabelText", get_locale_string("search", settings.strings))
     m.search_screen.callFunc("setEnterButtonText", get_locale_string("search", settings.strings))
     m.search_screen.callFunc("setClearButtonText", get_locale_string("clear", settings.strings))
-
-    m.server_setup.callFunc("setLabelText", get_locale_string("server_url", settings.strings))
-    m.server_setup.callFunc("setEnterButtonText", get_locale_string("update", settings.strings))
-    m.server_setup.callFunc("setClearButtonText", get_locale_string("clear", settings.strings))
-    m.server_setup.callFunc("setClearContentText", "https://")
 
     m.about_screen.text = get_locale_string("peervue", settings.strings)
 

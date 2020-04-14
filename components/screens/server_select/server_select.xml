@@ -17,22 +17,18 @@ SPDX-License-Identifier: MIT
             type="string"
             alias="server_url.text" />
 
-        <function name="setLabelText" />
-        <function name="setEnterButtonText" />
-        <function name="setClearButtonText" />
-        <function name="setClearContentText" />
-
-        <function name="setKnownInstances" />
+        <function name="updateConfig" />
     </interface>
 
     <script type="text/brightscript" uri="pkg:/components/screens/server_select/server_select.brs" />
     <script type="text/brightscript" uri="pkg:/source/utils/config.brs" />
+    <script type="text/brightscript" uri="pkg:/source/utils/locale.brs" />
 
     <children>
 
         <Label
             id="server_name"
-            font="font:MediumSystemFont"
+            font="font:LargeBoldSystemFont"
             width="1500"
             text="Server Address:"
             translation="[100,150]"
