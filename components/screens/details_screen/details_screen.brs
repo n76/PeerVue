@@ -96,6 +96,10 @@ sub OnContentChange(obj)
     '   Show publish date.
     '
     date = CreateObject("roDateTime")
-    date.FromISO8601String(item.publishedAt)
+    if (item.originallyPublishedAt <> invalid)
+        date.FromISO8601String(item.originallyPublishedAt)
+    else
+        date.FromISO8601String(item.publishedAt)
+    end if
     m.publishdate.text = date.AsDateString("short-month-no-weekday")
 end sub

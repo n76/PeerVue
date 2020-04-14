@@ -66,7 +66,11 @@ function addContent(videoInfo)
         node.ShortDescriptionLine2 = ""
         node.Length=item.duration
 
-        date.FromISO8601String(item.publishedAt)
+        if (item.originallyPublishedAt <> invalid)
+            date.FromISO8601String(item.originallyPublishedAt)
+        else
+            date.FromISO8601String(item.publishedAt)
+        end if
         node.ReleaseDate = date.AsDateString("short-month-no-weekday")
         row.appendChild(node)
     end for
