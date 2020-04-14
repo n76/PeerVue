@@ -208,6 +208,7 @@
         "zu":{"iso639_2b":"zul","NativeName":"isiZulu"}
     },
     "instances": [
+        {"name":"Ploud Video France","alt_name":"video.ploud.fr","url":"https://video.ploud.fr"},
         {"name":":-: ThanaTube | PeerTube :-:","alt_name":"v.mbius.io","url":"https://v.mbius.io"},
         {"name":":/42 - WeTuBE","alt_name":"pt.forty-two.nl","url":"https://pt.forty-two.nl"},
         {"name":"♪ Ɛxoɖe ♫","alt_name":"exode.me","url":"https://exode.me"},
@@ -534,7 +535,6 @@
         {"name":"PirePeerTube","alt_name":"pire.artisanlogiciel.net","url":"https://pire.artisanlogiciel.net"},
         {"name":"PiWeb","alt_name":"tube.piweb.be","url":"https://tube.piweb.be"},
         {"name":"Plaftube","alt_name":"tube.plaf.fr","url":"https://tube.plaf.fr"},
-        {"name":"Ploud Video France","alt_name":"video.ploud.fr","url":"https://video.ploud.fr"},
         {"name":"Ploud Video Japan","alt_name":"video.ploud.jp","url":"https://video.ploud.jp"},
         {"name":"Pontostroy peertube","alt_name":"peertube.pontostroy.gq","url":"https://peertube.pontostroy.gq"},
         {"name":"Pony.Tube","alt_name":"pony.tube","url":"https://pony.tube"},
