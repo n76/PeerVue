@@ -33,9 +33,11 @@ The region is associated with your account and is set when you created your acco
 
 Short answer is we cannot.
 
-The longer answer is that Roku’s certification and developer’s terms are incompatible with a generic channel accessing an arbitrary server. Since we have no control over what PeerTube instance you decide to connect to we cannot:
+The longer answer is that Roku’s certification and developer’s terms are incompatible with a generic channel accessing a server not controlled by the channel author. Since we have little control over what PeerTube instance you decide to connect to we cannot:
 * Guarantee the videos meet Roku’s technical quality standards (resolution, closed captioning, speed of loading, etc.)
-* Guarantee the videos meet Roku’s content standards (family friendly, etc.)
+* Guarantee the videos meet Roku’s content standards (family friendly, honoring copyrights, etc.)
+
+The only way we could meet Roku’s requirements would be to lock this channel to a single PeerTube instance controlled by the PeerVue author, tightly control the videos on that server and probably not have it federated with any other instance.
 
 **Why I can’t just type the URL in the PeerTube instance URL?**
 
@@ -46,3 +48,7 @@ My reading of the Roku developer agreement forbids a channel or app from allowin
 Either it is new and I've not rebuilt the list (create an issue on GitHub to get my attention).
 
 Or that is an instance that I’ve decided not so support. If you don’t like it, you can fork this project and side load your own channel app.
+
+**When I connect to an instance I don’t see any videos**
+
+It could be the server is down. Or it could be that there is an issue with the definition for that server in PeerVue. Submit an issue on GitHub against PeerVue to notify me of the problem and name of instance and I will investigate it.
