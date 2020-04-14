@@ -46,13 +46,15 @@ SPDX-License-Identifier: MIT
             text="Update"
             showFocusFootprint="true"
             translation="[100, 800]"
+            minWidth="150"
             />
 
         <Button
             id="clear_button"
             text="Clear"
             showFocusFootprint="true"
-            translation="[500, 800]"
+            translation="[400, 800]"
+            minWidth="150"
             />
 
     </children>

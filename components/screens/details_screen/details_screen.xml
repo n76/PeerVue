@@ -43,8 +43,9 @@ SPDX-License-Identifier: MIT
 
         <Button
             id="play_button"
-            text="PLAY"
+            text=""
             translation="[160, 600]"
+            minWidth="150"
             />
 
         <Label
