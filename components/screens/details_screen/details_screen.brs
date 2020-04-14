@@ -3,10 +3,12 @@
 ' SPDX-License-Identifier: MIT
 
 sub init()
+    m.category      = m.top.FindNode("category")
     m.description   = m.top.FindNode("description")
     m.duration      = m.top.FindNode("duration")
     m.play_button   = m.top.FindNode("play_button")
     m.publishdate   = m.top.FindNode("publishdate")
+    m.tags          = m.top.FindNode("tags")
     m.thumbnail     = m.top.FindNode("thumbnail")
     m.title         = m.top.FindNode("title")
 
@@ -72,6 +74,23 @@ sub OnContentChange(obj)
         sec = "0" + sec.toStr()
     end if
     m.duration.text = hr.toStr() + ":" + min + ":" + sec
+
+    '
+    '   Show video category
+    '
+    m.category.text = item.category.label
+
+    '
+    '   Show video tags
+    '
+    tagString = ""
+    for each t in item.tags
+        if (tagString <> "")
+            tagString = tagString + ", "
+        end if
+        tagString = tagString + t
+    end for
+    m.tags.text = tagString
 
     '
     '   Show publish date.

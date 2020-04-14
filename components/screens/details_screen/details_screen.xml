@@ -36,15 +36,38 @@ SPDX-License-Identifier: MIT
             font="font:SmallestSystemFont"
             color="0xFFFFFF"
             wrap="true"
-            width="150"
+            width="500"
             text=""
             translation="[160,500]"
+            horizAlign = "right"
+            />
+
+        <Label
+            id="category"
+            font="font:SmallestSystemFont"
+            color="0xFFFFFF"
+            wrap="true"
+            width="500"
+            text=""
+            translation="[160,500]"
+            horizAlign = "left"
+            />
+
+        <Label
+            id="tags"
+            font="font:SmallestSystemFont"
+            color="0xFFFFFF"
+            wrap="true"
+            width="500"
+            text=""
+            translation="[160,550]"
+            horizAlign = "left"
             />
 
         <Button
             id="play_button"
             text=""
-            translation="[160, 600]"
+            translation="[160, 700]"
             minWidth="150"
             />
 
