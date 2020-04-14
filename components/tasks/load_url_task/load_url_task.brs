@@ -5,7 +5,7 @@
 sub init()
     m.top.functionname = "request"
     m.top.response = {}
-end sub  
+end sub
 
 function request()
     url = m.top.url

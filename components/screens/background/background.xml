@@ -5,7 +5,7 @@ SPDX-FileCopyrightText: 2020 Tod Fitch <tod@fitchfamily.org>
 SPDX-License-Identifier: MIT
 -->
 
-<!-- Description 
+<!-- Description
     Background for all nodes. It is a poster that gets picture Url
     from HDBackgroundImageUrl field of content meta-data of current
     focused item. Between switching url, starts animation with
@@ -19,7 +19,7 @@ SPDX-License-Identifier: MIT
         <field id="url"    type="string"   onChange="OnBackgroundUrlChange"/>
 
     </interface>
-    
+
     <!-- main handler -->
     <script type="text/brightscript" uri="pkg:/components/screens/background/background.brs" />
 
@@ -35,7 +35,7 @@ SPDX-License-Identifier: MIT
             id="shade"
             color="0x000000"
             opacity="0.65"/>
-            
+
         <Animation
             id="fadeoutAnimation"
             repeat="false"
@@ -46,7 +46,7 @@ SPDX-License-Identifier: MIT
                 keyValue="[1.0, 0.0]"
                 fieldToInterp="oldBackground.opacity"/>
         </Animation>
-        
+
         <Animation
             id="fadeinAnimation"
             repeat="false"

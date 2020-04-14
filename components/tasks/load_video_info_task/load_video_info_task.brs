@@ -5,7 +5,7 @@
 sub init()
     m.top.functionname = "request"
     m.top.response = {}
-end sub  
+end sub
 
 '
 '   PeerTube does not give all the information we want about a video when

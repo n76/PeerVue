@@ -10,7 +10,7 @@ function init()
     m.clear_content = ""
 
     m.keyboard.text = m.clear_content
-    
+
     m.top.observeField("visible", "onVisibleChange")
     m.clear_button.observeField("buttonSelected", "onClearButtonPressed")
 end function
