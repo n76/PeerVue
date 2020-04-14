@@ -141,7 +141,6 @@ sub onCategorySelected(obj)
     list = m.sidebar.findNode("category_list")
     item = list.content.getChild(obj.getData())
     if item.cat_type = "settings"
-        m.server_setup.text_content = get_setting("server","")
         m.content_screen.visible = false
         m.sidebar.visible = false
         m.overhang.visible=true
@@ -361,7 +360,7 @@ sub showErrorDialog(message)
 end sub
 
 sub onServerUpdatePressed(obj)
-    new_url = m.server_setup.text_content
+    new_url = m.server_setup.server_url
     '
     '   URL must start with either "http://" or "https://" and it must
     '   contain at least one "." separator.
@@ -529,6 +528,8 @@ sub onConfigResponse(obj)
     '
     m.details_screen.callFunc("updateConfig",settings)
     m.sidebar.callFunc("updateConfig",settings)
+    
+    m.server_setup.callFunc("setKnownInstances",settings.instances)
 
     '
     '   Set button text on text entry screens

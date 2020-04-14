@@ -8,7 +8,7 @@ end sub
 
 function load()
     configuration = {}
-       
+
     '
     '   Get localized strings
     '
@@ -23,7 +23,7 @@ function load()
         configuration.strings = json
         localeStrings = json
     end if
-    
+
     '
     '   Get configuration
     '
@@ -34,7 +34,9 @@ function load()
         ? "[Load Config Task] Config: "; data
         m.top.error = "Configuration file at "+filepath+" is invalid."
     else
+
         configuration.iso639_1 = json.iso639_1
+        configuration.instances = json.instances
 
         server = get_setting("server", "")
         if (server = "")
@@ -47,12 +49,12 @@ function load()
             feedData = getFeed(server + "/api/v1/config")
             configuration.instance_name = feedData.instance.name
         end if
-        
+
         '
         '   Done with basic configuration, give it to our home scene
         '
         m.top.configuration = configuration
-        
+
         if (server = "")
             ?"[load_config_task] no server defined"
             m.top.complete = "done"
@@ -64,11 +66,11 @@ function load()
             for each category in json.categories
                 vids = {}
                 categoryVideos = []
-            
+
                 vids.title = get_locale_string(category.str_id, localeStrings)
                 feedPath  = category.path
                 feedData  = getFeed(server + feedPath)
-            
+
                 '
                 ' For "normal" feeds, we have "data" and "total". For "discover"
                 ' there is an associative array of the kind (channels, categories,

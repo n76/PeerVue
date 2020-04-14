@@ -9,7 +9,7 @@
     "recent":       "Récemment ajoutées",
     "related":      "Vidéos Vonnexes",
     "search":       "Chercher...",
-    "server_url":   "Adresse du serveur (exemple: https://video.ploud.fr):",
+    "server_url":   "Nom du serveur (exemple: Ploud Video France):",
     "settings":     "Paramètres",
     "trending":     "Tendances",
     "update":       "Actualisation"

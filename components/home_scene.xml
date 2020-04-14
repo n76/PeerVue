@@ -65,7 +65,7 @@ SPDX-License-Identifier: MIT
             visible="false"
             />
             
-        <text_entry
+        <server_select
             id="server_setup"
             visible="false"
             />

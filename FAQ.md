@@ -34,8 +34,15 @@ The region is associated with your account and is set when you created your acco
 Short answer is we cannot.
 
 The longer answer is that Roku’s certification and developer’s terms are incompatible with a generic channel accessing an arbitrary server. Since we have no control over what PeerTube instance you decide to connect to we cannot:
-1. Guarantee that the time from when PeerVue start until all content is displayed and available meets Roku’s standards. The instance server might not be provisioned properly for the load it is carrying.
-2. Guarantee that the time from when play is pressed until the video starts meets Roku’s standards. Again, server might be improperly provisioned for the load.
-3. Guarantee that the video quality meets Roku’s standards. The content creator may have only uploaded a low resolution copy or the PeerTube instance administrator may not have enabled transcoding to resolutions usable by Roku.
-4. Guarantee that all videos can play. Again, transcoding settings by the administrator may not have created a version that is playable by all Roku devices.
-5. Guarantee that all content available for viewing meets Roku’s standards with respect to “adult content”. There is only a loose correlation between Roku’s standards and PeerTube’s “not suitable for work” (NSFW) tagging. And tagging a video as NSFW is on an honor system so PeerVue cannot be guaranteed to follow Roku’s requirements.
+* Guarantee the videos meet Roku’s technical quality standards (resolution, closed captioning, speed of loading, etc.)
+* Guarantee the videos meet Roku’s content standards (family friendly, etc.)
+
+**Why I can’t just type the URL in the PeerTube instance URL?**
+
+My reading of the Roku developer agreement forbids a channel or app from allowing the end user to type in a URL.
+
+**The PeerTube instance I want to connect to is not listed**
+
+Either it is new and I've not rebuilt the list (create an issue on GitHub to get my attention).
+
+Or that is an instance that I’ve decided not so support. If you don’t like it, you can fork this project and side load your own channel app.

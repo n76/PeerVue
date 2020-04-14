@@ -5,7 +5,7 @@ SPDX-FileCopyrightText: 2020 Tod Fitch <tod@fitchfamily.org>
 SPDX-License-Identifier: MIT
 -->
 
-<component name="text_entry" extends="Group" >
+<component name="server_select" extends="Group" >
 
     <interface>
         <field id="enter_button_pressed"
@@ -13,27 +13,45 @@ SPDX-License-Identifier: MIT
             alwaysnotify="true"
             alias="enter_button.buttonSelected" />
 
-        <field id="text_content"
+        <field id="server_url"
             type="string"
-            alias="keyboard.text" />
+            alias="server_url.text" />
 
         <function name="setLabelText" />
         <function name="setEnterButtonText" />
         <function name="setClearButtonText" />
         <function name="setClearContentText" />
 
+        <function name="setKnownInstances" />
     </interface>
 
-    <script type="text/brightscript" uri="pkg:/components/screens/text_entry/text_entry.brs" />
+    <script type="text/brightscript" uri="pkg:/components/screens/server_select/server_select.brs" />
+    <script type="text/brightscript" uri="pkg:/source/utils/config.brs" />
 
     <children>
+
+        <Label
+            id="server_name"
+            font="font:MediumSystemFont"
+            width="1500"
+            text="Server Address:"
+            translation="[100,150]"
+            />
+
+        <Label
+            id="server_url"
+            font="font:MediumSystemFont"
+            width="1500"
+            text="Server Address:"
+            translation="[100,200]"
+            />
 
         <Label
             id="prompt_text"
             font="font:MediumSystemFont"
             width="1500"
             text="Server Address:"
-            translation="[100,250]"
+            translation="[100,300]"
             />
 
         <Keyboard
