@@ -32,6 +32,7 @@ function init()
     m.videoplayer = m.top.findNode("videoplayer")
 
     m.content_contains = "config_videos"
+    m.searchResultsReceived = false
 
     initializeVideoPlayer()
 
@@ -185,31 +186,27 @@ end sub
 sub onRelatedButtonPressed(obj)
     ?"[onRelatedButtonPressed] tags:";m.details_screen.related_tags
 
-    search_string = ""
+    m.search_task = createObject("roSGNode", "search_task")
+    m.search_task.observeField("videos", "onSearchVideos")
+    m.search_task.observeField("error", "onTaskError")
+
+    searches = []
     for each tag in m.details_screen.related_tags
-        if search_string = ""
-            search_string = tag
-        else
-            search_string = search_string + " " + tag
-        end if
-        ?"[onRelatedButtonPressed] tag:";tag
+        s = {}
+        s.title = tag
+        s.path = "/api/v1/search/videos/?start=0&count=30&sort=-match&tagsOneOf=" + url_encode(tag)
+        searches.push(s)
     end for
 
-    if (search_string <> "")
-        m.search_screen.text_content = search_string
-        '? "[onRelatedButtonPressed] search string: ";search_string
+    '
+    ' Indicate we are haven't yet seen first search response
+    '
+    m.searchResultsReceived = false
 
-        setContentContains("search_videos")
-        m.details_screen.visible = false
-        setContentContains("search_videos")
-        m.sidebar.visible = false
-        m.overhang.visible=true
+    m.search_task.searchlist = searches
+    m.search_task.localeStrings = m.strings
 
-        m.url_task = createObject("roSGNode", "load_url_task")
-        m.url_task.observeField("response", "onSearchResponse1")
-        m.url_task.url = get_setting("server","") + "/api/v1/search/videos/?start=0&count=30&sort=-match&search=" + url_encode(search_string)
-        m.url_task.control = "RUN"
-    end if
+    m.search_task.control = "RUN"
 end sub
 
 sub loadVideoInfo(uuid)
@@ -418,10 +415,41 @@ sub onSearchPressed(obj)
     search_string = m.search_screen.text_content
     '? "[onSearchPressed] search string: ";search_string
 
-    m.url_task = createObject("roSGNode", "load_url_task")
-    m.url_task.observeField("response", "onSearchResponse1")
-    m.url_task.url = get_setting("server","") + "/api/v1/search/videos/?start=0&count=30&sort=-match&search=" + url_encode(search_string)
-    m.url_task.control = "RUN"
+    m.search_task = createObject("roSGNode", "search_task")
+    m.search_task.observeField("videos", "onSearchVideos")
+    m.search_task.observeField("error", "onTaskError")
+
+    searches = []
+    s = {}
+    s.title = m.search_screen.text_content
+    s.path = "/api/v1/search/videos/?start=0&count=30&sort=-match&search=" + url_encode(search_string)
+    searches.push(s)
+
+    s = {}
+    s.title = get_locale_string("related", m.strings)
+    query = "/api/v1/search/videos/?start=0&count=30&sort=-match"
+    '? "[onSearchPressed] search string: ";m.search_screen.text_content
+    tags = (m.search_screen.text_content).tokenize(" ")
+    previousTag = ""
+    for each tag in tags
+        query = query + "&tagsOneOf=" + url_encode(tag)
+        if previousTag <> ""
+            query = query + "&tagsOneOf=" + url_encode(previousTag + " " + tag)
+        end if
+        previousTag = tag
+    end for
+    s.path = query
+    searches.push(s)
+
+    '
+    ' Indicate we are haven't yet seen first search response
+    '
+    m.searchResultsReceived = false
+
+    m.search_task.searchlist = searches
+    m.search_task.localeStrings = m.strings
+
+    m.search_task.control = "RUN"
 end sub
 
 function url_encode(s):
@@ -439,82 +467,28 @@ function url_encode(s):
     return res
 end function
 
-sub onSearchResponse1(obj)
-    json = obj.getData()
-    '? "[onSearchResponse1] response: " json
-
-    if (json <> invalid)
+sub onSearchVideos(obj)
+    info = obj.getData()
+    ? "[home_scene] onSearchVideos info: ";info
+    setContentContains("search_videos")
+    if (m.searchResultsReceived = false)
         m.content_screen.callFunc("resetContent")
-
-        categories = {}
-
-        if json.data.count() > 0
-            vids = {}
-            vids.title = m.search_screen.text_content
-            vids.videos = json.data
-            m.content_screen.callFunc("addContent",vids)
-
-            m.details_screen.visible = false
-            m.search_screen.visible = false
-            m.init_screen.visible = false
-            m.sidebar.visible = false
-            m.overhang.visible=true
-
-            m.content_screen.visible = true
-            m.content_screen.setFocus(true)
-
-            for each vid in json.data
-                '? "[OnSearchResponse1] vid info: ";vid.category
-                categories.AddReplace(vid.category.label, vid.category.id)
-            end for
-        end if
-
-        query = "/api/v1/search/videos/?start=0&count=30&sort=-match"
-        '? "[onSearchResponse1] search string: ";m.search_screen.text_content
-        tags = (m.search_screen.text_content).tokenize(" ")
-        previousTag = ""
-        for each tag in tags
-            query = query + "&tagsOneOf=" + url_encode(tag)
-            if previousTag <> ""
-                query = query + "&tagsOneOf=" + url_encode(previousTag + " " + tag)
-            end if
-            previousTag = tag
-        end for
-
-    '    for each cat in categories
-    '        if (categories[cat] <> invalid)
-    '            query = query + "&categoryOneOf=" + Str(categories[cat]).Trim()
-    '        end if
-    '    end for
-        ? "[onSearchResponse1] query: " + query
-
-        m.url_task = createObject("roSGNode", "load_url_task")
-        m.url_task.observeField("response", "onSearchResponse2")
-        m.url_task.url = get_setting("server","") + query
-        m.url_task.control = "RUN"
+        m.searchResultsReceived = true
     end if
-end sub
+    m.content_screen.callFunc("addContent",info)
 
-sub onSearchResponse2(obj)
-    json = obj.getData()
-    '? "[onSearchResponse2] response: " json
+    if (m.content_screen.visible = false)
+        m.details_screen.visible = false
+        m.search_screen.visible = false
+        m.init_screen.visible = false
+        m.sidebar.visible = false
+        m.overhang.visible=true
 
-    if (json <> invalid) and (json.data.count() > 0)
-        vids = {}
-        vids.title = get_locale_string("related", m.strings)
-        vids.videos = json.data
-        m.content_screen.callFunc("addContent",vids)
+        m.content_screen.visible = true
+        m.content_screen.setFocus(true)
     end if
 
-    m.search_screen.visible = false
-    m.init_screen.visible = false
-    m.sidebar.visible = false
-    m.overhang.visible=true
-
-    m.content_screen.visible = true
-    m.content_screen.setFocus(true)
 end sub
-
 
 sub loadConfig()
     '
@@ -541,7 +515,7 @@ sub loadConfig()
     loc = CreateObject("roLocalization")
     m.config_task = createObject("roSGNode", "load_config_task")
     m.config_task.observeField("configuration", "onConfigResponse")
-    m.config_task.observeField("error", "onConfigError")
+    m.config_task.observeField("error", "onTaskError")
     m.config_task.observeField("videos", "onConfigVideos")
     m.config_task.observeField("complete", "onConfigComplete")
     m.config_task.control="RUN"
@@ -604,6 +578,6 @@ sub onConfigVideos(obj)
     m.content_screen.callFunc("addContent",info)
 end sub
 
-sub onConfigError(obj)
+sub onTaskError(obj)
     showErrorDialog(obj.getData())
 end sub

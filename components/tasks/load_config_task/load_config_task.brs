@@ -59,46 +59,7 @@ function load()
             ?"[load_config_task] no server defined"
             m.top.complete = "done"
         else
-            '
-            '   Get configured video lists
-            '
-            ?"[load_config_task] getting videos"
-            for each category in json.categories
-                vids = {}
-                categoryVideos = []
-
-                vids.title = get_locale_string(category.str_id, localeStrings)
-                feedPath  = category.path
-                feedData  = getFeed(server + feedPath)
-
-                '
-                ' For "normal" feeds, we have "data" and "total". For "discover"
-                ' there is an associative array of the kind (channels, categories,
-                ' tags, etc). Within each of those are associative arrays with some
-                ' ID information (tag value, etc.) and a list of videos.
-                '
-                ' We only want the videos.
-                '
-                for each key in feedData
-                    if key <> "total" then
-                        if key = "data" then
-                            categoryVideos.Append(feedData[key])
-                        else
-                            keyData = feedData[key]
-                            for each thing in keyData
-                                categoryVideos.Append(thing.videos)
-                            end for
-                            'categoryVideos.Append(keyData.videos)
-                        end if
-                    end if
-                end for
-
-                '
-                ' Report this set of videos to our home scene
-                '
-                vids.videos = categoryVideos
-                m.top.videos = vids
-            end for
+            doSearches( json.categories, localeStrings )
         end if
     end if
     '
