@@ -110,12 +110,13 @@ SPDX-License-Identifier: MIT
             translation="[800,250]"
             />
 
-        <Label
+        <ScrollableText
             id="description"
             font="font:MediumSystemFont"
             color="0xFFFFFF"
             wrap="true"
-            width="800"
+            width="1000"
+            height="600"
             text=""
             translation="[800,300]"
             />

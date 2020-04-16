@@ -34,6 +34,17 @@ function onKeyEvent(key, press) as Boolean
                 m.related_button.setFocus(false)
                 m.play_button.setFocus(true)
                 handled = true
+            else if (key="right" or key="left")
+                if (m.description.hasFocus())
+                    m.description.setFocus(false)
+                    m.play_button.setFocus(true)
+                    m.related_button.setFocus(false)
+                else
+                    m.description.setFocus(true)
+                    m.play_button.setFocus(false)
+                    m.related_button.setFocus(false)
+                end if
+                handled = true
             end if
         end if
     end if
