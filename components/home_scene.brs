@@ -56,6 +56,16 @@ function init()
     loadConfig()
 end function
 
+sub pushContent()
+    m.details_screen.callFunc("pushContent")
+    m.content_screen.callFunc("pushContent")
+end sub
+
+sub popContent() as boolean
+    m.details_screen.callFunc("popContent")
+    return m.content_screen.callFunc("popContent")
+end sub
+
 sub setContentContains(newContains)
     if newContains = m.content_contains
         ? "[setContentContains] set to current value: ";m.content_contains
@@ -63,8 +73,8 @@ sub setContentContains(newContains)
         '
         '   Changing modes, rewind content history stack
         '
-        while (m.content_screen.callFunc("popContent"))
-            m.details_screen.callFunc("popContent")
+        while (popContent())
+            ? "[setContentContains] popping content stack"
         end while
 
         if newContains = "search_videos"
@@ -126,8 +136,7 @@ function onKeyEvent(key, press) as Boolean
                 m.sidebar.setFocus(true)
                 handled = true
             else if (key="back")
-                m.details_screen.callFunc("popContent")
-                rslt = m.content_screen.callFunc("popContent")
+                rslt = popContent()
                 ?"[home_scene] onKeyPress result from popContent: ";rslt
                 if (rslt)
                     m.content_screen.visible = false
@@ -187,13 +196,11 @@ sub onCategorySelected(obj)
 end sub
 
 sub OnRowItemSelected()
-    stopSearch()
     item = m.content_screen.focusedContent
     loadVideoInfo(item.uuid)
 end sub
 
 sub onPlayButtonPressed(obj)
-    stopSearch()
     m.details_screen.visible = false
     m.overhang.visible=false
     m.videoplayer.visible = true
@@ -216,13 +223,6 @@ sub onRelatedButtonPressed(obj)
     '
     if (m.ConfigComplete)
         '
-        '   Tell the details page and the content page to save their current
-        '   state so we can get back to it.
-        '
-        m.content_screen.callFunc("pushContent")
-        m.details_screen.callFunc("pushContent")
-
-        '
         '   Build searches from the tags associated with the current
         '   video
         '
@@ -233,7 +233,7 @@ sub onRelatedButtonPressed(obj)
             s.path = "/api/v1/search/videos/?start=0&count=30&sort=-match&tagsOneOf=" + url_encode(tag)
             searches.push(s)
         end for
-        initiateSearchCommon(searches)
+        initiateSearchCommon(searches, true)
     end if
 end sub
 
@@ -493,15 +493,30 @@ sub onSearchPressed(obj)
         s.path = query
         searches.push(s)
 
-        initiateSearchCommon(searches)
+        initiateSearchCommon(searches, false)
     end if
 end sub
 
-sub initiateSearchCommon(searches)
-    stopSearch()
+sub initiateSearchCommon(searches, related)
+    '
+    '   If there is an existing search task that is running, stop it.
+    '
+    if (m.search_task <> invalid) and (m.search_task.state = "run")
+        ? "[initiateSearchCommon] Existing search task is running, stopping it."
+        m.search_task.control = "stop"
+    end if
 
+    '
+    '   In theory we should be able to reuse the old task node but it seems
+    '   that it doesn't handle new search lists very well if we do that.
+    '
     m.search_task = createObject("roSGNode", "search_task")
-    m.search_task.observeField("videos", "onSearchVideos")
+
+    if (related)
+        m.search_task.observeField("videos", "onRelatedVideosResponse")
+    else
+        m.search_task.observeField("videos", "onSearchVideosResponse")
+    end if
     m.search_task.observeField("error", "onTaskError")
 
     '
@@ -509,6 +524,7 @@ sub initiateSearchCommon(searches)
     '
     m.searchResultsReceived = false
 
+    m.search_task.searchlist = invalid
     m.search_task.searchlist = searches
     m.search_task.localeStrings = m.strings
 
@@ -530,24 +546,33 @@ function url_encode(s):
     return res
 end function
 
-sub onSearchVideos(obj)
+sub onRelatedVideosResponse(obj)
+    if (m.searchResultsReceived = false)
+        '
+        '   Tell the details page and the content page to save their current
+        '   state so we can get back to it.
+        '
+        pushContent()
+    end if
+    onSearchVideosResponse(obj)
+end sub
+
+sub onSearchVideosResponse(obj)
     info = obj.getData()
     if (m.searchResultsReceived = false)
         m.content_screen.callFunc("resetContent")
         m.searchResultsReceived = true
+        if (m.content_screen.visible = false)
+            m.details_screen.visible = false
+            m.search_screen.visible = false
+            m.sidebar.visible = false
+            m.overhang.visible=true
+
+            m.content_screen.visible = true
+            m.content_screen.setFocus(true)
+        end if
     end if
     m.content_screen.callFunc("addContent",info)
-
-    if (m.content_screen.visible = false)
-        m.details_screen.visible = false
-        m.search_screen.visible = false
-        m.sidebar.visible = false
-        m.overhang.visible=true
-
-        m.content_screen.visible = true
-        m.content_screen.setFocus(true)
-    end if
-
 end sub
 
 sub loadConfig()
@@ -647,11 +672,3 @@ sub onTaskError(obj)
     showErrorDialog(obj.getData())
 end sub
 
-sub stopSearch()
-    '
-    '   If the previous search is still in progress, kill it
-    '
-    if (m.search_task <> invalid) and (m.search_task.state <> "done")
-        m.search_task.control = "STOP"
-    end if
-end sub
