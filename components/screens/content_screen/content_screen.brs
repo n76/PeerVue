@@ -25,7 +25,6 @@ end sub
 '   Clear existing content
 '
 function resetContent()
-    ?"[content_screen] resetContent() entry"
     m.summary.content = createObject("roSGNode","ContentNode")
     m.background.url = ""
     m.content = createObject("roSGNode","ContentNode")
@@ -88,19 +87,16 @@ function saveContent()
 end function
 
 function restoreContent()
-    ?"[content_screen] restoreContent() entry"
     m.content = m.savedContent
     m.rowList.content = m.savedContent
     m.rowList.jumpToRowItem = m.savedContentFocus
 end function
 
 function resetStack()
-    ?"[content_screen] resetStack() entry"
     m.contentStack = []
 end function
 
 function pushContent()
-    ?"[content_screen] pushContent() entry"
     state = {}
     state.focus = m.rowList.rowItemFocused
     state.content = m.rowList.content
@@ -108,11 +104,8 @@ function pushContent()
 end function
 
 function popContent() as Boolean
-    ?"[content_screen] popContent() entry: ";m.contentStack
-
     result = false
     state = m.contentStack.Pop()
-    ?"[content_screen] popContent() state: ";state
     if (state <> invalid)
         m.content = state.content
         m.rowList.content = state.content
