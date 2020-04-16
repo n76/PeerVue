@@ -31,7 +31,7 @@ function getFeed(url)
             end if
             http.asynccancel()
         else if (msg = invalid)
-            ? "[getFeed] failed, reason unknown."
+            ? "[getFeed] failed, reason unknown. url: ";url
             'm.top.error = "Feed failed to load. Unknown reason."
             http.asynccancel()
         end if
