@@ -104,7 +104,6 @@ function pushContent()
     state = {}
     state.focus = m.rowList.rowItemFocused
     state.content = m.rowList.content
-    ?"[content_screen] pushContent() focus: ";state.focus
     m.contentStack.Push(state)
 end function
 

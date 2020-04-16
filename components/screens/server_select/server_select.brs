@@ -13,24 +13,18 @@ function init()
     m.instances     = []
 
     m.keyboard.text = ""
-    
+
     m.top.observeField("visible", "onVisibleChange")
     m.clear_button.observeField("buttonSelected", "onClearButtonPressed")
 end function
 
 sub onVisibleChange()
-    ?"[server_select] onVisibleChange() entry."
     if m.top.visible = true then
-        ?"[server_select] became visible."
         current_server = get_setting("server","")
         current_name = serverName(current_server)
-        ?"[server_select] onVisibleChange() name: ";current_name
-        ?"[server_select] onVisibleChange() url: ";current_server
         if (current_name = "")
             current_server = ""
         end if
-        ?"[server_select] onVisibleChange() name: ";current_name
-        ?"[server_select] onVisibleChange() url: ";current_server
         m.server_url.text = current_server
         m.server_name.text = current_name
         m.keyboard.text = current_name
@@ -53,7 +47,6 @@ end function
 function onKeyEvent(key, press) as Boolean
     handled = false
 
-    ? "[server_select] onKeyEvent", key, press
     if (press)
         if (key="down") and not m.enter_button.hasFocus()
             m.keyboard.setFocus(false)
