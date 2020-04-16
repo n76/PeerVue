@@ -58,6 +58,13 @@ sub setContentContains(newContains)
     if newContains = m.content_contains
         ? "[setContentContains] set to current value: ";m.content_contains
     else
+        '
+        '   Changing modes, rewind content history stack
+        '
+        while (m.content_screen.callFunc("popContent"))
+            m.details_screen.callFunc("popContent")
+        end while
+
         if newContains = "search_videos"
             m.content_contains = "search_videos"
             m.content_screen.callFunc("saveContent")
@@ -78,6 +85,7 @@ end sub
 ' Main Remote keypress handler
 function onKeyEvent(key, press) as Boolean
     ? "[home_scene] onKeyEvent", key, press
+    handled = false
 
     if (press)
         if m.about_screen.visible and (key="back")
@@ -86,7 +94,7 @@ function onKeyEvent(key, press) as Boolean
             m.overhang.visible=true
             m.sidebar.visible = true
             m.sidebar.setFocus(true)
-            return true
+            handled = true
         else if m.search_screen.visible and (key="back")
             setContentContains("config_videos")
             m.search_screen.visible = false
@@ -94,49 +102,60 @@ function onKeyEvent(key, press) as Boolean
             m.overhang.visible=true
             m.sidebar.visible = true
             m.sidebar.setFocus(true)
-            return true
+            handled = true
         else if m.server_setup.visible and (key="back")
             m.server_setup.visible = false
             m.server_setup.setFocus(false)
             m.overhang.visible=true
             m.sidebar.visible = true
             m.sidebar.setFocus(true)
-            return true
+            handled = true
         else if m.sidebar.visible and ((key="right") or (key="back"))
             m.content_screen.visible=true
             m.overhang.visible=true
             m.sidebar.visible=false
             m.sidebar.setFocus(false)
-            return true
+            handled = true
         else if m.content_screen.visible
             if (key="left")
                 m.content_screen.visible=false
                 m.overhang.visible=true
                 m.sidebar.visible=true
                 m.sidebar.setFocus(true)
-                return true
-            else if (key="back") and (m.content_contains="search_videos")
-                m.content_screen.visible = false
-                m.search_screen.visible = true
-                m.search_screen.setFocus(true)
-                m.overhang.visible = true
-                m.sidebar.visible = false
-                return true
+                handled = true
+            else if (key="back")
+                m.details_screen.callFunc("popContent")
+                rslt = m.content_screen.callFunc("popContent")
+                ?"[home_scene] onKeyPress result from popContent: ";rslt
+                if (rslt)
+                    m.content_screen.visible = false
+                    m.details_screen.visible = true
+                    m.overhang.visible = true
+                    m.sidebar.visible = false
+                    handled = true
+                else if (m.content_contains="search_videos")
+                    m.content_screen.visible = false
+                    m.search_screen.visible = true
+                    m.search_screen.setFocus(true)
+                    m.overhang.visible = true
+                    m.sidebar.visible = false
+                    handled = true
+                end if
             end if
         else if m.details_screen.visible and (key="back")
             m.details_screen.visible=false
             m.overhang.visible=true
             m.content_screen.visible=true
             m.content_screen.setFocus(true)
-            return true
+            handled = true
         else if m.videoplayer.visible and (key="back")
             closeVideo()
             m.details_screen.setFocus(true)
-            return true
+            handled = true
         end if
     end if
 
-    return false
+    return handled
 end function
 
 sub onCategorySelected(obj)
@@ -149,7 +168,6 @@ sub onCategorySelected(obj)
         m.server_setup.visible = true
     else if item.cat_type = "search"
         m.content_screen.visible = false
-        setContentContains("search_videos")
         m.sidebar.visible = false
         m.overhang.visible=true
         m.search_screen.visible = true
@@ -184,7 +202,12 @@ sub onPlayButtonPressed(obj)
 end sub
 
 sub onRelatedButtonPressed(obj)
-    ?"[onRelatedButtonPressed] tags:";m.details_screen.related_tags
+    '
+    '   Tell the details page and the content page to save their current
+    '   state so we can get back to it.
+    '
+    m.content_screen.callFunc("pushContent")
+    m.details_screen.callFunc("pushContent")
 
     m.search_task = createObject("roSGNode", "search_task")
     m.search_task.observeField("videos", "onSearchVideos")
@@ -414,6 +437,7 @@ end sub
 sub onSearchPressed(obj)
     search_string = m.search_screen.text_content
     '? "[onSearchPressed] search string: ";search_string
+    setContentContains("search_videos")
 
     m.search_task = createObject("roSGNode", "search_task")
     m.search_task.observeField("videos", "onSearchVideos")
@@ -469,8 +493,6 @@ end function
 
 sub onSearchVideos(obj)
     info = obj.getData()
-    ? "[home_scene] onSearchVideos info: ";info
-    setContentContains("search_videos")
     if (m.searchResultsReceived = false)
         m.content_screen.callFunc("resetContent")
         m.searchResultsReceived = true

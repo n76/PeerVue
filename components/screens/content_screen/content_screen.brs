@@ -11,8 +11,10 @@ sub init()
     m.background    =   m.top.findNode("Background")
 
     m.savedContent = createObject("roSGNode","ContentNode")
+    m.savedContentFocus = []
 
     resetContent()
+    resetStack()
 
     m.top.observeField("visible", "onVisibleChange")
     m.top.observeField("focusedChild", "OnFocusedChildChange")
@@ -23,6 +25,7 @@ end sub
 '   Clear existing content
 '
 function resetContent()
+    ?"[content_screen] resetContent() entry"
     m.summary.content = createObject("roSGNode","ContentNode")
     m.background.url = ""
     m.content = createObject("roSGNode","ContentNode")
@@ -81,11 +84,43 @@ end function
 
 function saveContent()
     m.savedContent = m.rowList.content
+    m.savedContentFocus = m.rowList.rowItemFocused
 end function
 
 function restoreContent()
+    ?"[content_screen] restoreContent() entry"
     m.content = m.savedContent
     m.rowList.content = m.savedContent
+    m.rowList.jumpToRowItem = m.savedContentFocus
+end function
+
+function resetStack()
+    ?"[content_screen] resetStack() entry"
+    m.contentStack = []
+end function
+
+function pushContent()
+    ?"[content_screen] pushContent() entry"
+    state = {}
+    state.focus = m.rowList.rowItemFocused
+    state.content = m.rowList.content
+    ?"[content_screen] pushContent() focus: ";state.focus
+    m.contentStack.Push(state)
+end function
+
+function popContent() as Boolean
+    ?"[content_screen] popContent() entry: ";m.contentStack
+
+    result = false
+    state = m.contentStack.Pop()
+    ?"[content_screen] popContent() state: ";state
+    if (state <> invalid)
+        m.content = state.content
+        m.rowList.content = state.content
+        m.rowList.jumpToRowItem = state.focus
+        result = true
+    end if
+    return result
 end function
 
 ' handler of focused item in RowList

@@ -13,6 +13,9 @@ sub init()
     m.thumbnail         = m.top.FindNode("thumbnail")
     m.title             = m.top.FindNode("title")
 
+    m.contentStack = []
+    m.currentContent = invalid
+
     m.top.observeField("visible", "onVisibleChange")
     m.play_button.setFocus(true)
 end sub
@@ -42,6 +45,21 @@ function updateConfig(settings)
     m.related_button.text   = get_locale_string("related", settings.strings)
 end function
 
+function resetStack()
+    m.contentStack = []
+end function
+
+function pushContent()
+    m.contentStack.Push(m.currentContent)
+end function
+
+function popContent()
+    contentInfo = m.contentStack.Pop()
+    if (contentInfo <> invalid)
+        setContent(contentInfo)
+    end if
+end function
+
 sub onVisibleChange()
     if m.top.visible = true then
         m.play_button.setFocus(true)
@@ -50,6 +68,12 @@ end sub
 
 sub OnContentChange(obj)
     item = obj.getData()
+    setContent(item)
+end sub
+
+sub setContent(item)
+    m.currentContent = item
+
     '? "details_screen :";item
     if item.name <> Invalid then
         m.title.text = item.name

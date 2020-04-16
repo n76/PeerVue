@@ -24,6 +24,11 @@ SPDX-License-Identifier: MIT
         <field id="related_tags" type="array" />
 
         <function name="updateConfig" />
+
+        <function name="pushContent" />
+        <function name="popContent" />
+        <function name="resetStack" />
+
     </interface>
 
     <script type="text/brightscript" uri="pkg:/components/screens/details_screen/details_screen.brs" />

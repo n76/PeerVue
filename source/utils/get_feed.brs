@@ -32,7 +32,7 @@ function getFeed(url)
             http.asynccancel()
         else if (msg = invalid)
             ? "[getFeed] failed, reason unknown."
-            m.top.error = "Feed failed to load. Unknown reason."
+            'm.top.error = "Feed failed to load. Unknown reason."
             http.asynccancel()
         end if
     end if
@@ -42,7 +42,7 @@ function getFeed(url)
         if json = invalid
             ? "[getFeed] url: "; url
             ? "[getFeed] bad JSON: "; rsltString
-            m.top.error = "Error parsing feed from URL: "+url
+            'm.top.error = "Error parsing feed from URL: "+url
         else
             rslt = json
         end if
@@ -76,7 +76,7 @@ end function
 '
 
 function doSearches( searchList, localeStrings )
-    ?"[doSearches] Entry"
+    '?"[doSearches] Entry"
 
     for each search in searchList
         vids = {}
@@ -91,8 +91,8 @@ function doSearches( searchList, localeStrings )
             vids.title = ""
         end if
 
-        ? "[search_task] s.str_id: ";vids.title
-        ? "[search_task] s.path: ";search.path
+        '? "[search_task] s.str_id: ";vids.title
+        '? "[search_task] s.path: ";search.path
 
         feedData  = getFeed(get_setting("server", "") + search.path)
 
