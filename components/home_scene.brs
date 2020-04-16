@@ -33,6 +33,8 @@ function init()
 
     m.content_contains = "config_videos"
     m.searchResultsReceived = false
+    m.ConfigComplete        = false
+    m.search_task           = invalid
 
     initializeVideoPlayer()
 
@@ -167,10 +169,12 @@ sub onCategorySelected(obj)
         m.overhang.visible=true
         m.server_setup.visible = true
     else if item.cat_type = "search"
-        m.content_screen.visible = false
-        m.sidebar.visible = false
-        m.overhang.visible=true
-        m.search_screen.visible = true
+        if (m.ConfigComplete)
+            m.content_screen.visible = false
+            m.sidebar.visible = false
+            m.overhang.visible=true
+            m.search_screen.visible = true
+        end if
     else if item.cat_type = "about"
         m.content_screen.visible = false
         m.sidebar.visible = false
@@ -183,11 +187,13 @@ sub onCategorySelected(obj)
 end sub
 
 sub OnRowItemSelected()
+    stopSearch()
     item = m.content_screen.focusedContent
     loadVideoInfo(item.uuid)
 end sub
 
 sub onPlayButtonPressed(obj)
+    stopSearch()
     m.details_screen.visible = false
     m.overhang.visible=false
     m.videoplayer.visible = true
@@ -203,33 +209,32 @@ end sub
 
 sub onRelatedButtonPressed(obj)
     '
-    '   Tell the details page and the content page to save their current
-    '   state so we can get back to it.
+    '   Only allow the search and related buttons to work if
+    '   our full configuration including default video content
+    '   has completed. Otherwise we start messing up the video
+    '   lists in the content screen
     '
-    m.content_screen.callFunc("pushContent")
-    m.details_screen.callFunc("pushContent")
+    if (m.ConfigComplete)
+        '
+        '   Tell the details page and the content page to save their current
+        '   state so we can get back to it.
+        '
+        m.content_screen.callFunc("pushContent")
+        m.details_screen.callFunc("pushContent")
 
-    m.search_task = createObject("roSGNode", "search_task")
-    m.search_task.observeField("videos", "onSearchVideos")
-    m.search_task.observeField("error", "onTaskError")
-
-    searches = []
-    for each tag in m.details_screen.related_tags
-        s = {}
-        s.title = tag
-        s.path = "/api/v1/search/videos/?start=0&count=30&sort=-match&tagsOneOf=" + url_encode(tag)
-        searches.push(s)
-    end for
-
-    '
-    ' Indicate we are haven't yet seen first search response
-    '
-    m.searchResultsReceived = false
-
-    m.search_task.searchlist = searches
-    m.search_task.localeStrings = m.strings
-
-    m.search_task.control = "RUN"
+        '
+        '   Build searches from the tags associated with the current
+        '   video
+        '
+        searches = []
+        for each tag in m.details_screen.related_tags
+            s = {}
+            s.title = tag
+            s.path = "/api/v1/search/videos/?start=0&count=30&sort=-match&tagsOneOf=" + url_encode(tag)
+            searches.push(s)
+        end for
+        initiateSearchCommon(searches)
+    end if
 end sub
 
 sub loadVideoInfo(uuid)
@@ -435,35 +440,69 @@ sub onServerUpdatePressed(obj)
 end sub
 
 sub onSearchPressed(obj)
-    search_string = m.search_screen.text_content
-    '? "[onSearchPressed] search string: ";search_string
-    setContentContains("search_videos")
+    '
+    '   Only allow the search and related buttons to work if
+    '   our full configuration including default video content
+    '   has completed. Otherwise we start messing up the video
+    '   lists in the content screen
+    '
+    if (m.ConfigComplete)
+        search_string = m.search_screen.text_content
+        '? "[onSearchPressed] search string: ";search_string
+        setContentContains("search_videos")
+
+        '
+        '   First search in list is simply the user's search string
+        '
+        searches = []
+        s = {}
+        s.title = m.search_screen.text_content
+        s.path = "/api/v1/search/videos/?start=0&count=30&sort=-match&search=" + url_encode(search_string)
+        searches.push(s)
+
+        '
+        '   On the "related" search we break the search string into
+        '   words and treat them, individually or in pairs, as tags
+        '   to search for
+        '
+        '   Example: If the search string is "steam railroad trains" we will
+        '   search for the following tags:
+        '       "steam"
+        '       "railroad"
+        '       "steam railroad"
+        '       "trains"
+        '       "railroad trains"
+        '
+        '   Note, search API on the PeerTube server side is being improved
+        '   and this second search based on assumed tags may not be needed
+        '   in the future
+        '
+        s = {}
+        s.title = get_locale_string("related", m.strings)
+        query = "/api/v1/search/videos/?start=0&count=30&sort=-match"
+        '? "[onSearchPressed] search string: ";m.search_screen.text_content
+        tags = (m.search_screen.text_content).tokenize(" ")
+        previousTag = ""
+        for each tag in tags
+            query = query + "&tagsOneOf=" + url_encode(tag)
+            if previousTag <> ""
+                query = query + "&tagsOneOf=" + url_encode(previousTag + " " + tag)
+            end if
+            previousTag = tag
+        end for
+        s.path = query
+        searches.push(s)
+
+        initiateSearchCommon(searches)
+    end if
+end sub
+
+sub initiateSearchCommon(searches)
+    stopSearch()
 
     m.search_task = createObject("roSGNode", "search_task")
     m.search_task.observeField("videos", "onSearchVideos")
     m.search_task.observeField("error", "onTaskError")
-
-    searches = []
-    s = {}
-    s.title = m.search_screen.text_content
-    s.path = "/api/v1/search/videos/?start=0&count=30&sort=-match&search=" + url_encode(search_string)
-    searches.push(s)
-
-    s = {}
-    s.title = get_locale_string("related", m.strings)
-    query = "/api/v1/search/videos/?start=0&count=30&sort=-match"
-    '? "[onSearchPressed] search string: ";m.search_screen.text_content
-    tags = (m.search_screen.text_content).tokenize(" ")
-    previousTag = ""
-    for each tag in tags
-        query = query + "&tagsOneOf=" + url_encode(tag)
-        if previousTag <> ""
-            query = query + "&tagsOneOf=" + url_encode(previousTag + " " + tag)
-        end if
-        previousTag = tag
-    end for
-    s.path = query
-    searches.push(s)
 
     '
     ' Indicate we are haven't yet seen first search response
@@ -502,7 +541,6 @@ sub onSearchVideos(obj)
     if (m.content_screen.visible = false)
         m.details_screen.visible = false
         m.search_screen.visible = false
-        m.init_screen.visible = false
         m.sidebar.visible = false
         m.overhang.visible=true
 
@@ -523,6 +561,8 @@ sub loadConfig()
     m.search_screen.visible     = false
     m.server_setup.visible      = false
     m.sidebar.visible           = false
+
+    m.ConfigComplete            = false
 
     '
     '   Assure we are in configured content mode and clear the existing
@@ -578,28 +618,40 @@ sub onConfigResponse(obj)
         m.sidebar.visible = false
         m.overhang.visible=true
         m.server_setup.visible = true
-    else
-        '
-        '   Server defined, set content visibility
-        '
-        m.init_screen.visible = false
-        m.sidebar.visible = false
-        m.overhang.visible=true
-
-        m.content_screen.visible = true
-        m.content_screen.setFocus(true)
     end if
 end sub
 
 sub onConfigComplete(obj)
     sendLaunchComplete()
+    m.ConfigComplete = true
 end sub
 
 sub onConfigVideos(obj)
     info = obj.getData()
     m.content_screen.callFunc("addContent",info)
+
+    '
+    '   First few videos available, set content visibility
+    '
+    if (m.init_screen.visible = true)
+        m.content_screen.visible    = true
+        m.init_screen.visible       = false
+        m.overhang.visible          = true
+        m.sidebar.visible           = false
+
+        m.content_screen.setFocus(true)
+    end if
 end sub
 
 sub onTaskError(obj)
     showErrorDialog(obj.getData())
+end sub
+
+sub stopSearch()
+    '
+    '   If the previous search is still in progress, kill it
+    '
+    if (m.search_task <> invalid) and (m.search_task.state <> "done")
+        m.search_task.control = "STOP"
+    end if
 end sub
