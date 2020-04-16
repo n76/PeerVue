@@ -23,9 +23,9 @@ end sub
 function onKeyEvent(key, press) as Boolean
     handled = false
 
-    if (m.top.related_tags <> invalid) and (m.top.related_tags.Count() > 0)
+    if (press)
         ? "[server_select] onKeyEvent", key, press
-        if (press)
+        if (m.top.related_tags <> invalid) and (m.top.related_tags.Count() > 0)
             if (key="up" or key="down") and m.play_button.hasFocus()
                 m.related_button.setFocus(true)
                 m.play_button.setFocus(false)
@@ -34,18 +34,19 @@ function onKeyEvent(key, press) as Boolean
                 m.related_button.setFocus(false)
                 m.play_button.setFocus(true)
                 handled = true
-            else if (key="right" or key="left")
-                if (m.description.hasFocus())
-                    m.description.setFocus(false)
-                    m.play_button.setFocus(true)
-                    m.related_button.setFocus(false)
-                else
-                    m.description.setFocus(true)
-                    m.play_button.setFocus(false)
-                    m.related_button.setFocus(false)
-                end if
-                handled = true
             end if
+        end if
+        if (key="right" or key="left")
+            if (m.description.hasFocus())
+                m.description.setFocus(false)
+                m.play_button.setFocus(true)
+                m.related_button.setFocus(false)
+            else
+                m.description.setFocus(true)
+                m.play_button.setFocus(false)
+                m.related_button.setFocus(false)
+            end if
+            handled = true
         end if
     end if
     return handled
