@@ -51,11 +51,6 @@ function onKeyEvent(key, press) as Boolean
     return handled
 end function
 
-function updateConfig(settings)
-    m.play_button.text      = get_locale_string("play", settings.strings)
-    m.related_button.text   = get_locale_string("related", settings.strings)
-end function
-
 function resetStack()
     m.contentStack = []
 end function

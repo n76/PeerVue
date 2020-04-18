@@ -5,7 +5,7 @@ SPDX-FileCopyrightText: 2020 Tod Fitch <tod@fitchfamily.org>
 SPDX-License-Identifier: MIT
 -->
 
-<component name="text_entry" extends="Group" >
+<component name="search_screen" extends="Group" >
 
     <interface>
         <field id="enter_button_pressed"
@@ -17,22 +17,17 @@ SPDX-License-Identifier: MIT
             type="string"
             alias="keyboard.text" />
 
-        <function name="setLabelText" />
-        <function name="setEnterButtonText" />
-        <function name="setClearButtonText" />
-        <function name="setClearContentText" />
-
     </interface>
 
-    <script type="text/brightscript" uri="pkg:/components/screens/text_entry/text_entry.brs" />
+    <script type="text/brightscript" uri="pkg:/components/screens/search_screen/search_screen.brs" />
 
     <children>
 
         <Label
             id="prompt_text"
+            text="Search..."
             font="font:MediumSystemFont"
             width="1500"
-            text="Server Address:"
             translation="[100,250]"
             />
 
@@ -43,7 +38,7 @@ SPDX-License-Identifier: MIT
 
         <Button
             id="enter_button"
-            text="Update"
+            text="Search..."
             showFocusFootprint="true"
             translation="[100, 800]"
             minWidth="150"

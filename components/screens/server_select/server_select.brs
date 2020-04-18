@@ -38,9 +38,6 @@ sub onClearButtonPressed()
 end sub
 
 function updateConfig(settings)
-    m.prompt_text.text  = get_locale_string("server_url", settings.strings)
-    m.enter_button.text = get_locale_string("update", settings.strings)
-    m.clear_button.text = get_locale_string("clear", settings.strings)
     m.instances = settings.instances
 end function
 

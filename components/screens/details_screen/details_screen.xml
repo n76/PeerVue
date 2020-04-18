@@ -24,8 +24,6 @@ SPDX-License-Identifier: MIT
         <field id="related_tags"    type="array" />
         <field id="video_owner"     type="string" />
 
-        <function name="updateConfig" />
-
         <function name="pushContent" />
         <function name="popContent" />
         <function name="resetStack" />
@@ -34,7 +32,6 @@ SPDX-License-Identifier: MIT
 
     <script type="text/brightscript" uri="pkg:/components/screens/details_screen/details_screen.brs" />
     <script type="text/brightscript" uri="pkg:/source/utils/config.brs" />
-    <script type="text/brightscript" uri="pkg:/source/utils/locale.brs" />
 
     <children>
         <Poster
@@ -79,7 +76,7 @@ SPDX-License-Identifier: MIT
 
         <Button
             id="play_button"
-            text=""
+            text="Play"
             showFocusFootprint="true"
             translation="[160, 700]"
             minWidth="150"
@@ -87,7 +84,7 @@ SPDX-License-Identifier: MIT
 
         <Button
             id="related_button"
-            text=""
+            text="Related Videos"
             showFocusFootprint="true"
             translation="[160, 800]"
             minWidth="150"
@@ -125,7 +122,6 @@ SPDX-License-Identifier: MIT
             id="description"
             font="font:MediumSystemFont"
             color="0xFFFFFF"
-            wrap="true"
             width="1000"
             height="500"
             text=""

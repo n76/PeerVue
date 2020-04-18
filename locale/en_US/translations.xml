@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+SPDX-FileCopyrightText: 2020 Tod Fitch <tod@fitchfamily.org>
+
+SPDX-License-Identifier: MIT
+-->
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en-US" target-language="en-US" >
+    <body>
+        <trans-unit id="0">
+            <source>About</source>
+            <target>About</target>
+        </trans-unit>
+        <trans-unit id="1">
+            <source>Clear</source>
+            <target>Clear</target>
+        </trans-unit>
+        <trans-unit id="2">
+            <source>Discover</source>
+            <target>Discover</target>
+        </trans-unit>
+        <trans-unit id="3">
+            <source>Popular</source>
+            <target>Popular</target>
+        </trans-unit>
+        <trans-unit id="4">
+            <source>Local</source>
+            <target>Local</target>
+        </trans-unit>
+        <trans-unit id="5">
+            <source>PeerVue is an open source channel to view content hosted by a PeerTube instance. Source for this channel is at https://github.com/n76/PeerVue For information about PeerTube see https://https://joinpeertube.org/</source>
+            <target>PeerVue is an open source channel to view content hosted by a PeerTube instance. Source for this channel is at https://github.com/n76/PeerVue For information about PeerTube see https://https://joinpeertube.org/</target>
+        </trans-unit>
+        <trans-unit id="6">
+            <source>Play</source>
+            <target>Play</target>
+        </trans-unit>
+        <trans-unit id="7">
+            <source>Recently Added</source>
+            <target>Recently Added</target>
+        </trans-unit>
+        <trans-unit id="8">
+            <source>Related Videos</source>
+            <target>Related Videos</target>
+        </trans-unit>
+        <trans-unit id="9">
+            <source>Search...</source>
+            <target>Search...</target>
+        </trans-unit>
+        <trans-unit id="10">
+            <source>Server Name (example: Ploud Video France):</source>
+            <target>Server Name (example: Ploud Video France):</target>
+        </trans-unit>
+        <trans-unit id="10">
+            <source>Settings</source>
+            <target>Settings</target>
+        </trans-unit>
+        <trans-unit id="11">
+            <source>Trending</source>
+            <target>Trending</target>
+        </trans-unit>
+        <trans-unit id="12">
+            <source>Update</source>
+            <target>Update</target>
+        </trans-unit>
+    </body>
+    </file>
+</xliff>

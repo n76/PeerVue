@@ -25,23 +25,6 @@ sub onClearButtonPressed()
     m.keyboard.text = m.clear_content
 end sub
 
-function setLabelText(newText)
-    m.prompt_text.text = newText
-end function
-
-function setEnterButtonText(newText)
-    m.enter_button.text = newText
-end function
-
-function setClearButtonText(newText)
-    m.clear_button.text = newText
-end function
-
-function setClearContentText(newText)
-    m.clear_content = newText
-    m.keyboard.text = m.clear_content
-end function
-
 function onKeyEvent(key, press) as Boolean
     handled = false
 

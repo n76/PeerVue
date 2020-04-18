@@ -482,7 +482,7 @@ sub onSearchPressed(obj)
         '   in the future
         '
         s = {}
-        s.title = get_locale_string("related", m.strings)
+        s.title = tr("Related Videos")
         query = "/api/v1/search/videos/?start=0&count=30&sort=-match"
         '? "[onSearchPressed] search string: ";m.search_screen.text_content
         tags = (m.search_screen.text_content).tokenize(" ")
@@ -530,7 +530,6 @@ sub initiateSearchCommon(searches, related)
 
     m.search_task.searchlist = invalid
     m.search_task.searchlist = searches
-    m.search_task.localeStrings = m.strings
 
     m.search_task.control = "RUN"
 end sub
@@ -621,20 +620,10 @@ sub onConfigResponse(obj)
 
     '
     '   Various screens need the configuration too to setup
-    '   locale based text and/or server address, etc.
+    '   server address, etc.
     '
-    m.details_screen.callFunc("updateConfig",settings)
     m.server_setup.callFunc("updateConfig",settings)
     m.sidebar.callFunc("updateConfig",settings)
-
-    '
-    '   Set button text on text entry screens
-    '
-    m.search_screen.callFunc("setLabelText", get_locale_string("search", settings.strings))
-    m.search_screen.callFunc("setEnterButtonText", get_locale_string("search", settings.strings))
-    m.search_screen.callFunc("setClearButtonText", get_locale_string("clear", settings.strings))
-
-    m.about_screen.text = get_locale_string("peervue", settings.strings)
 
     if get_setting("server","") = ""
         '

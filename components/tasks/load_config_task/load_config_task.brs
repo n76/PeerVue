@@ -10,21 +10,6 @@ function load()
     configuration = {}
 
     '
-    '   Get localized strings
-    '
-    loc = CreateObject("roLocalization")
-    filepath = loc.GetLocalizedAsset("", "strings.json")
-    data=ReadAsciiFile(filepath)
-    json = parseJSON(data)
-    if json = invalid
-        ? "[Load Config Task] Strings: "; data
-        m.top.error = "Locale strings at "+filepath+" is invalid."
-    else
-        configuration.strings = json
-        localeStrings = json
-    end if
-
-    '
     '   Get configuration
     '
     filepath = "pkg:/resources/config.json"
@@ -59,7 +44,7 @@ function load()
             ?"[load_config_task] no server defined"
             m.top.complete = "done"
         else
-            doSearches( json.categories, localeStrings )
+            doSearches( json.categories )
         end if
     end if
     '

@@ -14,7 +14,7 @@ SPDX-License-Identifier: MIT
 
     <script type="text/brightscript" uri="pkg:/components/home_scene.brs" />
     <script type="text/brightscript" uri="pkg:/source/utils/config.brs" />
-    <script type="text/brightscript" uri="pkg:/source/utils/locale.brs" />
+
     <children>
         <Poster
             id="MyInitDisplay"
@@ -60,7 +60,7 @@ SPDX-License-Identifier: MIT
             translation="[0,0]"
             />
 
-        <text_entry
+        <search_screen
             id="search_screen"
             visible="false"
             />
@@ -82,7 +82,7 @@ SPDX-License-Identifier: MIT
             color="0xFFFFFF"
             wrap="true"
             width="1500"
-            text=""
+            text="PeerVue is an open source channel to view content hosted by a PeerTube instance. Source for this channel is at https://github.com/n76/PeerVue For information about PeerTube see https://https://joinpeertube.org/"
             translation="[200,300]" />
     </children>
 </component>

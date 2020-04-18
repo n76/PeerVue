@@ -7,6 +7,6 @@ sub init()
 end sub
 
 function load()
-    doSearches( m.top.searchlist, m.top.localeStrings )
+    doSearches( m.top.searchlist )
     return 0
 end function

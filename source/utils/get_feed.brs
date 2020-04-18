@@ -75,21 +75,14 @@ end function
 '       },
 '
 
-function doSearches( searchList, localeStrings )
+function doSearches( searchList )
     '?"[doSearches] Entry"
 
     for each search in searchList
         vids = {}
         searchVideos = []
 
-        if (localeStrings <> invalid) and (search.str_id <> invalid)
-            vids.title = get_locale_string(search.str_id, localeStrings)
-        else
-            vids.title = search.title
-        end if
-        if (vids.title = invalid)
-            vids.title = ""
-        end if
+        vids.title = tr(search.title)
 
         '? "[search_task] s.str_id: ";vids.title
         '? "[search_task] s.path: ";search.path

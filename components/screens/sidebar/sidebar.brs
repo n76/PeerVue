@@ -17,15 +17,15 @@ function updateConfig(settings)
     m.strings = settings.strings
 
     contentNode = createObject("roSGNode","ContentNode")
-    contentNode.appendChild(newCategory("search"))
-    contentNode.appendChild(newCategory("settings"))
-    contentNode.appendChild(newCategory("about"))
+    contentNode.appendChild(newCategory("Search...","search"))
+    contentNode.appendChild(newCategory("Settings","settings"))
+    contentNode.appendChild(newCategory("About","about"))
     m.category_list.content = contentNode
 end function
 
-function newCategory(key)
+function newCategory(key, cat_type)
     node = createObject("roSGNode","category_node")
-    node.title = get_locale_string(key, m.strings)
-    node.cat_type = key
+    node.title = tr(key)
+    node.cat_type = cat_type
     return node
 end function
