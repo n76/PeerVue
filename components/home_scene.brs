@@ -229,7 +229,7 @@ sub onRelatedButtonPressed(obj)
         searches = []
         s = {}
         s.title = m.details_screen.video_owner
-        s.path = "/api/v1/accounts/" + s.title + "/videos?start=0&count=25&sort=-publishedAt"
+        s.path = "/api/v1/accounts/" + url_encode(s.title) + "/videos?start=0&count=25&sort=-publishedAt"
         searches.push(s)
         for each tag in m.details_screen.related_tags
             s = {}
