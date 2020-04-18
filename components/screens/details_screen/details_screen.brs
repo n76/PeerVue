@@ -12,6 +12,7 @@ sub init()
     m.tags              = m.top.FindNode("tags")
     m.thumbnail         = m.top.FindNode("thumbnail")
     m.title             = m.top.FindNode("title")
+    m.owner             = m.top.FindNode("owner")
 
     m.contentStack = []
     m.currentContent = invalid
@@ -25,16 +26,14 @@ function onKeyEvent(key, press) as Boolean
 
     if (press)
         ? "[server_select] onKeyEvent", key, press
-        if (m.top.related_tags <> invalid) and (m.top.related_tags.Count() > 0)
-            if (key="up" or key="down") and m.play_button.hasFocus()
-                m.related_button.setFocus(true)
-                m.play_button.setFocus(false)
-                handled = true
-            else if (key="up" or key="down") and m.related_button.hasFocus()
-                m.related_button.setFocus(false)
-                m.play_button.setFocus(true)
-                handled = true
-            end if
+        if (key="up" or key="down") and m.play_button.hasFocus()
+            m.related_button.setFocus(true)
+            m.play_button.setFocus(false)
+            handled = true
+        else if (key="up" or key="down") and m.related_button.hasFocus()
+            m.related_button.setFocus(false)
+            m.play_button.setFocus(true)
+            handled = true
         end if
         if (key="right" or key="left")
             if (m.description.hasFocus())
@@ -150,11 +149,6 @@ sub setContent(item)
     end for
     m.tags.text = tagString
     m.top.related_tags = item.tags
-    if (m.top.related_tags <> invalid) and (m.top.related_tags.Count() > 0)
-        m.related_button.visible=true
-    else
-        m.related_button.visible=false
-    end if
 
     '
     '   Show publish date.
@@ -166,4 +160,10 @@ sub setContent(item)
         date.FromISO8601String(item.publishedAt)
     end if
     m.publishdate.text = date.AsDateString("short-month-no-weekday")
+
+    '
+    ' Show owener
+    '
+    m.top.video_owner = item.account.name + "@" + item.account.host
+    m.owner.text = m.top.video_owner
 end sub

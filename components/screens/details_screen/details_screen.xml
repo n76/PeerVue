@@ -21,7 +21,8 @@ SPDX-License-Identifier: MIT
             alwaysnotify="true"
             alias="related_button.buttonSelected" />
 
-        <field id="related_tags" type="array" />
+        <field id="related_tags"    type="array" />
+        <field id="video_owner"     type="string" />
 
         <function name="updateConfig" />
 
@@ -110,16 +111,25 @@ SPDX-License-Identifier: MIT
             translation="[800,250]"
             />
 
+        <Label
+            id="owner"
+            font="font:SmallestSystemFont"
+            color="0xFFFFFF"
+            wrap="true"
+            width="500"
+            text=""
+            translation="[800,300]"
+            />
+
         <ScrollableText
             id="description"
             font="font:MediumSystemFont"
             color="0xFFFFFF"
             wrap="true"
             width="1000"
-            height="600"
+            height="500"
             text=""
-            translation="[800,300]"
+            translation="[800,350]"
             />
     </children>
 </component>
-

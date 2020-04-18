@@ -227,6 +227,10 @@ sub onRelatedButtonPressed(obj)
         '   video
         '
         searches = []
+        s = {}
+        s.title = m.details_screen.video_owner
+        s.path = "/api/v1/accounts/" + s.title + "/videos?start=0&count=25&sort=-publishedAt"
+        searches.push(s)
         for each tag in m.details_screen.related_tags
             s = {}
             s.title = tag
@@ -671,4 +675,3 @@ end sub
 sub onTaskError(obj)
     showErrorDialog(obj.getData())
 end sub
-
