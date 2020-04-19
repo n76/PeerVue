@@ -94,6 +94,10 @@ sub onCategoryFocused(obj)
     m.current_category_cat_type = category_type
     m.setting_list.visible  = (category_type = "xSettings")
     m.about_info.visible    = (category_type = "xAbout")
+
+    if (m.setting_list.visible = false)
+        m.language_list.visible = false
+    end if
 end sub
 
 sub onSettingFocused(obj)

@@ -103,7 +103,7 @@ SPDX-License-Identifier: MIT
             font="font:SmallestSystemFont"
             color="0xFFFFFF"
             wrap="true"
-            width="500"
+            width="1000"
             text=""
             translation="[800,250]"
             />
@@ -113,7 +113,7 @@ SPDX-License-Identifier: MIT
             font="font:SmallestSystemFont"
             color="0xFFFFFF"
             wrap="true"
-            width="500"
+            width="1000"
             text=""
             translation="[800,300]"
             />
