@@ -6,23 +6,59 @@ SPDX-License-Identifier: MIT
 -->
 
 <component name="sidebar" extends="Group" >
-<script type="text/brightscript" uri="pkg:/components/screens/sidebar/sidebar.brs" />
     <interface>
-        <field id="category_selected"
-               type="assocarray"
-               alias="category_list.itemSelected"
-        />
+        <field id="selected_item" type="String" />
+        <field id="language_set" type="String" />
+
+        <!-- Row item focused handler -->
+        <field id="categoryFocused" type="intarray" alias="category_list.itemFocused" onChange="onCategoryFocused"/>
+        <field id="settingFocused"  type="intarray" alias="setting_list.itemFocused" onChange="onSettingFocused"/>
 
         <function name="updateConfig" />
 
     </interface>
 
+    <script type="text/brightscript" uri="pkg:/components/screens/sidebar/sidebar.brs" />
+    <script type="text/brightscript" uri="pkg:/source/utils/config.brs" />
+
     <children>
         <LabelList
             id="category_list"
             translation="[50, 150]"
+            itemSize="[400,48]">
+            <ContentNode id = "categories" role = "content" >
+                <category_node title = "Search..." cat_type="search"/>
+                <category_node title = "Settings" cat_type="xSettings"/>
+                <category_node title = "About" cat_type="xAbout"/>
+            </ContentNode>
+        </LabelList>
+
+        <LabelList
+            id="setting_list"
+            translation="[550, 150]"
+            itemSize="[400,48]">
+            <ContentNode id = "categories" role = "content" >
+                <category_node title = "PeerTube Server" cat_type="server"/>
+                <category_node title = "Video Language"  cat_type="xLanguage"/>
+            </ContentNode>
+        </LabelList>
+
+        <RadioButtonList
+            id="language_list"
+            translation="[1150, 150]"
             itemSize="[400,48]"
-        />
+            />
+
+        <Label
+            id="about_info"
+            visible="false"
+            font="font:MediumSystemFont"
+            color="0xFFFFFF"
+            wrap="true"
+            width="1100"
+            height="800"
+            text="PeerVue is an open source channel to view content hosted by a PeerTube instance. Source for this channel is at https://github.com/n76/PeerVue For information about PeerTube see https://https://joinpeertube.org/"
+            translation="[550,150]" />
 
     </children>
 </component>

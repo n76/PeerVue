@@ -20,7 +20,6 @@ function init()
     '
     '   Find all of our screens and components
     '
-    m.about_screen = m.top.findNode("about_screen")
     m.content_screen = m.top.findNode("content_screen")
     m.details_screen = m.top.findNode("details_screen")
     m.error_dialog = m.top.findNode("error_dialog")
@@ -45,8 +44,9 @@ function init()
     m.details_screen.observeField("related_button_pressed", "onRelatedButtonPressed")
     m.search_screen.observeField("enter_button_pressed","onSearchPressed")
     m.server_setup.observeField("enter_button_pressed", "onServerUpdatePressed")
-    m.sidebar.observeField("category_selected", "onCategorySelected")
-    m.top.observeField("rowItemSelected", "OnRowItemSelected")
+    m.sidebar.observeField("selected_item", "onCategorySelected")
+    m.top.observeField("rowItemSelected", "onRowItemSelected")
+    m.sidebar.observeField("language_set", "onLanguageChanged")
 
     '
     '   Flag that we need to send a launch complete signal beacon
@@ -100,14 +100,7 @@ function onKeyEvent(key, press) as Boolean
     handled = false
 
     if (press)
-        if m.about_screen.visible and (key="back")
-            m.about_screen.visible = false
-            m.about_screen.setFocus(false)
-            m.overhang.visible=true
-            m.sidebar.visible = true
-            m.sidebar.setFocus(true)
-            handled = true
-        else if m.search_screen.visible and (key="back")
+        if m.search_screen.visible and (key="back")
             setContentContains("config_videos")
             m.search_screen.visible = false
             m.search_screen.setFocus(false)
@@ -170,28 +163,24 @@ function onKeyEvent(key, press) as Boolean
 end function
 
 sub onCategorySelected(obj)
-    list = m.sidebar.findNode("category_list")
-    item = list.content.getChild(obj.getData())
-    if item.cat_type = "settings"
+    cat_type = obj.getData()
+    if cat_type = "server"
         m.content_screen.visible = false
         m.sidebar.visible = false
         m.overhang.visible=true
         m.server_setup.visible = true
-    else if item.cat_type = "search"
+    else if cat_type = "search"
         if (m.ConfigComplete)
             m.content_screen.visible = false
             m.sidebar.visible = false
             m.overhang.visible=true
             m.search_screen.visible = true
         end if
-    else if item.cat_type = "about"
-        m.content_screen.visible = false
-        m.sidebar.visible = false
-        m.overhang.visible=true
-        m.about_screen.visible = true
+    else if cat_type = "ignore"
+        ? "[home_scene] ignored category type"
     else
-        ? "Type not implemented: ";item.cat_type
-        showErrorDialog(item.cat_type + " not yet implemented.")
+        ? "Type not implemented: ";cat_type
+        'showErrorDialog(cat_type + " not yet implemented.")
     end if
 end sub
 
@@ -443,6 +432,14 @@ sub onServerUpdatePressed(obj)
     end if
 end sub
 
+sub onLanguageChanged()
+    '? "[onLanguageChanged] Language changed to: "; get_language()
+    '
+    '   Need to reload all the default content. Easiest way
+    '   is to reload our whole configuration.
+    loadConfig()
+end sub
+
 sub onSearchPressed(obj)
     '
     '   Only allow the search and related buttons to work if
@@ -582,7 +579,6 @@ sub loadConfig()
     '
     '   Start configuration: Hide everything but the init screen
     '
-    m.about_screen.visible      = false
     m.content_screen.visible    = false
     m.init_screen.visible       = true
     m.overhang.visible          = false
@@ -596,6 +592,10 @@ sub loadConfig()
     '   Assure we are in configured content mode and clear the existing
     '   content if any.
     '
+    while (popContent())
+        ? "[loadConfig] popping content stack"
+    end while
+
     setContentContains("config_videos")
     m.content_screen.callFunc("resetContent")
 

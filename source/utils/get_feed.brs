@@ -78,16 +78,27 @@ end function
 function doSearches( searchList )
     '?"[doSearches] Entry"
 
+    isoCode = get_language()
+    r = CreateObject("roRegex", "(\&count=\d+)", "")
     for each search in searchList
         vids = {}
         searchVideos = []
 
         vids.title = tr(search.title)
+        search_path = search.path
 
         '? "[search_task] s.str_id: ";vids.title
-        '? "[search_task] s.path: ";search.path
+        '? "[search_task] s.path: ";search_path
 
-        feedData  = getFeed(get_setting("server", "") + search.path)
+        '
+        '   If we have a preferred language set (isoCode correct length)
+        '   then add a language filter to the search
+        '
+        if (isoCode <> invalid) and (isoCode.Len() = 2)
+            search_path = r.Replace(search_path, "\1&languageOneOf=" + isoCode)
+        end if
+
+        feedData  = getFeed(get_setting("server", "") + search_path)
 
         '
         ' For "normal" feeds, we have "data" and "total". For "discover"
@@ -116,7 +127,7 @@ function doSearches( searchList )
             ' Report this set of videos to our home scene
             '
             if (searchVideos.Count() = 0)
-                ? "[doSearches] no results on search for ";search.path
+                ? "[doSearches] no results on search for ";search_path
             else
                 vids.videos = searchVideos
                 m.top.videos = vids

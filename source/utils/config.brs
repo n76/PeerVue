@@ -52,3 +52,14 @@ function unset_setting(key)
     registry_delete(key, "PeerVue")
 end function
 
+function get_language()
+    lg = get_setting("language")
+    if (lg = invalid) or (lg = "roku")
+        devInfo = CreateObject("roDeviceInfo")
+        lg = Left(devInfo.GetCurrentLocale(),2)
+    end if
+    if (lg = "none") or (lg = "")
+        lg = "none"
+    end if
+    return lg
+end function

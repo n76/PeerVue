@@ -75,14 +75,5 @@ SPDX-License-Identifier: MIT
             visible="false"
             id="error_dialog" />
 
-        <Label
-            id="about_screen"
-            visible="false"
-            font="font:MediumSystemFont"
-            color="0xFFFFFF"
-            wrap="true"
-            width="1500"
-            text="PeerVue is an open source channel to view content hosted by a PeerTube instance. Source for this channel is at https://github.com/n76/PeerVue For information about PeerTube see https://https://joinpeertube.org/"
-            translation="[200,300]" />
     </children>
 </component>

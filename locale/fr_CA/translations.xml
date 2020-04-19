@@ -64,6 +64,22 @@ SPDX-License-Identifier: MIT
             <source>Update</source>
             <target>Actualisation</target>
         </trans-unit>
+        <trans-unit id="13">
+            <source>Video Language</source>
+            <target>Langage vidéo</target>
+        </trans-unit>
+        <trans-unit id="14">
+            <source>PeerTube Server</source>
+            <target>Le serveur PeerTube</target>
+        </trans-unit>
+        <trans-unit id="15">
+            <source>Any Language</source>
+            <target>Toute Langue</target>
+        </trans-unit>
+        <trans-unit id="16">
+            <source>Use Roku Setting</source>
+            <target>Usar la configuración de Roku</target>
+        </trans-unit>
     </body>
     </file>
 </xliff>
