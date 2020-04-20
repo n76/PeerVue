@@ -218,12 +218,12 @@ sub onRelatedButtonPressed(obj)
         searches = []
         s = {}
         s.title = m.details_screen.video_owner
-        s.path = "/api/v1/accounts/" + url_encode(s.title) + "/videos?start=0&count=25&sort=-publishedAt"
+        s.path = "/api/v1/accounts/" + url_encode(s.title) + "/videos?nsfw=false&start=0&count=25&sort=-publishedAt"
         searches.push(s)
         for each tag in m.details_screen.related_tags
             s = {}
             s.title = tag
-            s.path = "/api/v1/search/videos/?start=0&count=30&sort=-match&tagsOneOf=" + url_encode(tag)
+            s.path = "/api/v1/search/videos/?nsfw=false&start=0&count=30&sort=-match&tagsOneOf=" + url_encode(tag)
             searches.push(s)
         end for
         initiateSearchCommon(searches, true)
@@ -458,7 +458,7 @@ sub onSearchPressed(obj)
         searches = []
         s = {}
         s.title = m.search_screen.text_content
-        s.path = "/api/v1/search/videos/?start=0&count=30&sort=-match&search=" + url_encode(search_string)
+        s.path = "/api/v1/search/videos/?nsfw=false&start=0&count=30&sort=-match&search=" + url_encode(search_string)
         searches.push(s)
 
         '
@@ -480,7 +480,7 @@ sub onSearchPressed(obj)
         '
         s = {}
         s.title = tr("Related Videos")
-        query = "/api/v1/search/videos/?start=0&count=30&sort=-match"
+        query = "/api/v1/search/videos/?nsfw=false&start=0&count=30&sort=-match"
         '? "[onSearchPressed] search string: ";m.search_screen.text_content
         tags = (m.search_screen.text_content).tokenize(" ")
         previousTag = ""

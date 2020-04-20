@@ -2,23 +2,23 @@
     "categories": [
         {
             "title":    "Recently Added",
-            "path":     "/api/v1/videos/?start=0&count=30&sort=-publishedAt"
+            "path":     "/api/v1/videos/?nsfw=false&start=0&count=30&sort=-publishedAt"
         },
         {
             "title":    "Trending",
-            "path":     "/api/v1/videos/?start=0&count=30&sort=-trending"
+            "path":     "/api/v1/videos/?nsfw=false&start=0&count=30&sort=-trending"
         },
         {
             "title":    "Popular",
-            "path":     "/api/v1/videos/?start=0&count=30&sort=-likes"
+            "path":     "/api/v1/videos/?nsfw=false&start=0&count=30&sort=-likes"
         },
         {
             "title":    "Local",
-            "path": "/api/v1/videos/?start=0&count=40&filter=local"
+            "path": "/api/v1/videos/?nsfw=false&start=0&count=40&filter=local"
         },
         {
             "title":    "Discover",
-            "path":     "/api/v1/overviews/videos?start=0&count=20"
+            "path":     "/api/v1/overviews/videos?nsfw=false&start=0&count=20"
         }
     ],
     "iso639_1": {
