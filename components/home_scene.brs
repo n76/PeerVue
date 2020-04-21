@@ -102,58 +102,44 @@ function onKeyEvent(key, press) as Boolean
     if (press)
         if m.search_screen.visible and (key="back")
             setContentContains("config_videos")
-            m.search_screen.visible = false
+            enterSideBar()
             m.search_screen.setFocus(false)
-            m.overhang.visible=true
-            m.sidebar.visible = true
             m.sidebar.setFocus(true)
             handled = true
         else if m.server_setup.visible and (key="back")
-            m.server_setup.visible = false
+            enterSideBar()
             m.server_setup.setFocus(false)
-            m.overhang.visible=true
-            m.sidebar.visible = true
             m.sidebar.setFocus(true)
             handled = true
         else if m.sidebar.visible and ((key="right") or (key="back"))
-            m.content_screen.visible=true
-            m.overhang.visible=true
-            m.sidebar.visible=false
+            enterContentScreen()
             m.sidebar.setFocus(false)
             handled = true
         else if m.content_screen.visible
             if (key="left")
-                m.content_screen.visible=false
-                m.overhang.visible=true
-                m.sidebar.visible=true
+                enterSideBar()
                 m.sidebar.setFocus(true)
                 handled = true
             else if (key="back")
                 rslt = popContent()
                 ?"[home_scene] onKeyPress result from popContent: ";rslt
                 if (rslt)
-                    m.content_screen.visible = false
-                    m.details_screen.visible = true
-                    m.overhang.visible = true
-                    m.sidebar.visible = false
+                    enterDetailsScreen()
                     handled = true
                 else if (m.content_contains="search_videos")
-                    m.content_screen.visible = false
-                    m.search_screen.visible = true
+                    enterSearchScreen()
                     m.search_screen.setFocus(true)
-                    m.overhang.visible = true
-                    m.sidebar.visible = false
                     handled = true
                 end if
             end if
         else if m.details_screen.visible and (key="back")
-            m.details_screen.visible=false
-            m.overhang.visible=true
-            m.content_screen.visible=true
+            enterContentScreen()
             m.content_screen.setFocus(true)
             handled = true
         else if m.videoplayer.visible and (key="back")
             closeVideo()
+            enterDetailsScreen()
+
             m.details_screen.setFocus(true)
             handled = true
         end if
@@ -162,19 +148,68 @@ function onKeyEvent(key, press) as Boolean
     return handled
 end function
 
+sub enterContentScreen()
+    m.content_screen.visible    = true
+    m.details_screen.visible    = false
+    m.init_screen.visible       = false
+    m.overhang.visible          = true
+    m.search_screen.visible     = false
+    m.server_setup.visible      = false
+    m.sidebar.visible           = false
+    m.videoplayer.visible       = false
+end sub
+
+sub enterSideBar()
+    m.content_screen.visible    = false
+    m.details_screen.visible    = false
+    m.init_screen.visible       = false
+    m.overhang.visible          = true
+    m.search_screen.visible     = false
+    m.server_setup.visible      = false
+    m.sidebar.visible           = true
+    m.videoplayer.visible       = false
+end sub
+
+sub enterDetailsScreen()
+    m.content_screen.visible    = false
+    m.details_screen.visible    = true
+    m.init_screen.visible       = false
+    m.overhang.visible          = true
+    m.search_screen.visible     = false
+    m.server_setup.visible      = false
+    m.sidebar.visible           = false
+    m.videoplayer.visible       = false
+end sub
+
+sub enterSearchScreen()
+    m.content_screen.visible    = false
+    m.details_screen.visible    = false
+    m.init_screen.visible       = false
+    m.overhang.visible          = true
+    m.search_screen.visible     = true
+    m.server_setup.visible      = false
+    m.sidebar.visible           = false
+    m.videoplayer.visible       = false
+end sub
+
+sub enterServerSetupScreen()
+    m.content_screen.visible    = false
+    m.details_screen.visible    = false
+    m.init_screen.visible       = false
+    m.overhang.visible          = true
+    m.search_screen.visible     = false
+    m.server_setup.visible      = true
+    m.sidebar.visible           = false
+    m.videoplayer.visible       = false
+end sub
+
 sub onCategorySelected(obj)
     cat_type = obj.getData()
     if cat_type = "server"
-        m.content_screen.visible = false
-        m.sidebar.visible = false
-        m.overhang.visible=true
-        m.server_setup.visible = true
+        enterServerSetupScreen()
     else if cat_type = "search"
         if (m.ConfigComplete)
-            m.content_screen.visible = false
-            m.sidebar.visible = false
-            m.overhang.visible=true
-            m.search_screen.visible = true
+            enterSearchScreen()
         end if
     else if cat_type = "ignore"
         ? "[home_scene] ignored category type"
@@ -419,10 +454,8 @@ sub onServerUpdatePressed(obj)
             '
             ' New server same as old. Treat the same as a back button
             '
-            m.server_setup.visible = false
+            enterSidebar()
             m.server_setup.setFocus(false)
-            m.overhang.visible=true
-            m.sidebar.visible = true
             m.sidebar.setFocus(true)
         else
             '? "[onServerUpdatePressed] new server: ";new_url
@@ -630,12 +663,8 @@ sub onConfigResponse(obj)
         '   If no server defined (initial start up) then
         '   start with server setup screen
         '
-        m.init_screen.visible = false
         m.server_setup.text_content = ""
-        m.content_screen.visible = false
-        m.sidebar.visible = false
-        m.overhang.visible=true
-        m.server_setup.visible = true
+        enterServerSetupScreen()
     end if
 end sub
 
