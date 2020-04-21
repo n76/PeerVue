@@ -103,6 +103,7 @@ prep_staging:
 	cp -r $(SOURCEREL)/images $(STAGINGREL)
 	cp -r $(SOURCEREL)/resources $(STAGINGREL)
 	cp -r $(SOURCEREL)/locale $(STAGINGREL)
+	cp -r $(SOURCEREL)/fonts $(STAGINGREL)
 	cp $(SOURCEREL)/manifest $(STAGINGREL)/manifest
 
 package: prep_staging

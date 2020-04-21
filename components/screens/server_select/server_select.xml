@@ -27,18 +27,18 @@ SPDX-License-Identifier: MIT
 
         <Label
             id="server_name"
-            font="font:LargeBoldSystemFont"
+            text=""
             width="1500"
-            text="Server Address:"
-            translation="[100,150]"
-            />
+            translation="[250,125]" >
+            <Font role = "font" uri = "pkg:/fonts/UKIJCJK.ttf" size = "48" />
+        </Label>
 
         <Label
             id="server_url"
-            font="font:MediumSystemFont"
-            width="1500"
             text="Server Address:"
-            translation="[100,200]"
+            font="font:SmallestSystemFont"
+            width="1500"
+            translation="[250,200]"
             />
 
         <Label
@@ -46,19 +46,19 @@ SPDX-License-Identifier: MIT
             text="Server Name (example: Ploud Video France):"
             font="font:MediumSystemFont"
             width="1500"
-            translation="[100,300]"
+            translation="[250,300]"
             />
 
         <Keyboard
             id="keyboard"
-            translation="[100, 350]"
+            translation="[250, 350]"
             />
 
         <Button
             id="enter_button"
             text="Update"
             showFocusFootprint="true"
-            translation="[100, 800]"
+            translation="[250, 800]"
             minWidth="150"
             />
 
@@ -66,7 +66,7 @@ SPDX-License-Identifier: MIT
             id="clear_button"
             text="Clear"
             showFocusFootprint="true"
-            translation="[500, 800]"
+            translation="[750, 800]"
             minWidth="150"
             />
 

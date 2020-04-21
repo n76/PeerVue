@@ -35,14 +35,16 @@ SPDX-License-Identifier: MIT
         <Label
             id="Title"
             color="0xFFFFFF"
-            text=""
-        />
+            text="" >
+            <Font role = "font" uri = "pkg:/fonts/UKIJCJK.ttf" size = "32" />
+        </Label>
 
         <Label
             id="ReleaseDate"
             color="0xFFFFFF"
-            text=""
-        />
+            text="" >
+            <Font role = "font" uri = "pkg:/fonts/UKIJCJK.ttf" size = "32" />
+        </Label>
 
         <Label
             id="Description"
@@ -51,8 +53,9 @@ SPDX-License-Identifier: MIT
             lineSpacing="7"
             text=""
             width="1500"
-            wrap="true"
-        />
+            wrap="true" >
+            <Font role = "font" uri = "pkg:/fonts/UKIJCJK.ttf" size = "32" />
+        </Label>
     </children>
 
 </component>

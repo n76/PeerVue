@@ -43,36 +43,37 @@ SPDX-License-Identifier: MIT
 
         <Label
             id="duration"
-            font="font:SmallestSystemFont"
             color="0xFFFFFF"
             wrap="true"
             width="500"
             text=""
             translation="[160,500]"
-            horizAlign = "right"
-            />
+            horizAlign = "right" >
+            <Font role = "font" uri = "pkg:/fonts/UKIJCJK.ttf" size = "24" />
+        </Label>
 
         <Label
             id="category"
-            font="font:SmallestSystemFont"
             color="0xFFFFFF"
             wrap="true"
             width="500"
             text=""
             translation="[160,500]"
-            horizAlign = "left"
-            />
+            horizAlign = "left" >
+            <Font role = "font" uri = "pkg:/fonts/UKIJCJK.ttf" size = "24" />
+        </Label>
 
         <Label
             id="tags"
-            font="font:SmallestSystemFont"
             color="0xFFFFFF"
             wrap="true"
             width="500"
             text=""
             translation="[160,550]"
-            horizAlign = "left"
-            />
+            horizAlign = "left" >
+            <Font role = "font" uri = "pkg:/fonts/UKIJCJK.ttf" size = "24" />
+        </Label>
+
 
         <Button
             id="play_button"
@@ -92,40 +93,41 @@ SPDX-License-Identifier: MIT
 
         <Label
             id="title"
-            font="font:LargeBoldSystemFont"
             color="0xFFFFFF"
             text=""
-            translation="[800,200]"
-            />
+            translation="[800,200]" >
+            <Font role = "font" uri = "pkg:/fonts/UKIJCJK.ttf" size = "48" />
+        </Label>
 
         <Label
             id="publishdate"
-            font="font:SmallestSystemFont"
             color="0xFFFFFF"
             wrap="true"
             width="1000"
             text=""
-            translation="[800,250]"
-            />
+            translation="[800,250]" >
+            <Font role = "font" uri = "pkg:/fonts/UKIJCJK.ttf" size = "24" />
+        </Label>
 
         <Label
             id="owner"
-            font="font:SmallestSystemFont"
             color="0xFFFFFF"
             wrap="true"
             width="1000"
             text=""
-            translation="[800,300]"
-            />
+            translation="[800,300]" >
+            <Font role = "font" uri = "pkg:/fonts/UKIJCJK.ttf" size = "24" />
+        </Label>
 
         <ScrollableText
             id="description"
-            font="font:MediumSystemFont"
             color="0xFFFFFF"
             width="1000"
             height="500"
             text=""
-            translation="[800,350]"
-            />
+            translation="[800,350]" >
+            <Font role = "font" uri = "pkg:/fonts/UKIJCJK.ttf" size = "32" />
+        </ScrollableText>
+
     </children>
 </component>

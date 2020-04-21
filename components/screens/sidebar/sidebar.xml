@@ -46,8 +46,10 @@ SPDX-License-Identifier: MIT
         <RadioButtonList
             id="language_list"
             translation="[1150, 150]"
-            itemSize="[400,48]"
-            />
+            itemSize="[400,48]" >
+            <Font role = "font" uri = "pkg:/fonts/UKIJCJK.ttf" size = "32" />
+            <Font role = "focusedFont" uri = "pkg:/fonts/UKIJCJK.ttf" size = "32" />
+        </RadioButtonList>
 
         <Label
             id="about_info"
