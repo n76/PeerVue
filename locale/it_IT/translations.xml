@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+SPDX-FileCopyrightText: 2020 Tod Fitch <tod@fitchfamily.org>
+
+SPDX-License-Identifier: MIT
+-->
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en-US" target-language="en-US" >
+    <body>
+        <trans-unit id="0">
+            <source>About</source>
+            <target>Informazioni su</target>
+        </trans-unit>
+        <trans-unit id="1">
+            <source>Clear</source>
+            <target>Ripulire</target>
+        </trans-unit>
+        <trans-unit id="2">
+            <source>Discover</source>
+            <target>Scopri</target>
+        </trans-unit>
+        <trans-unit id="3">
+            <source>Popular</source>
+            <target>Popolare</target>
+        </trans-unit>
+        <trans-unit id="4">
+            <source>Local</source>
+            <target>Locali</target>
+        </trans-unit>
+        <trans-unit id="5">
+            <source>PeerVue is an open source channel to view content hosted by a PeerTube instance. Source for this channel is at https://github.com/n76/PeerVue For information about PeerTube see https://https://joinpeertube.org/</source>
+            <target>PeerVue è un canale open source per visualizzare contenuti ospitati da un'istanza di PeerTube. La fonte di questo canale è all'indirizzo https://github.com/n76/PeerVue. Per informazioni su PeerTube si veda https://https://joinpeertube.org/.</target>
+        </trans-unit>
+        <trans-unit id="6">
+            <source>Play</source>
+            <target>Riproduci</target>
+        </trans-unit>
+        <trans-unit id="7">
+            <source>Recently Added</source>
+            <target>Aggiunto di recente</target>
+        </trans-unit>
+        <trans-unit id="8">
+            <source>Related Videos</source>
+            <target>Video Correlati</target>
+        </trans-unit>
+        <trans-unit id="9">
+            <source>Search...</source>
+            <target>Sercare...</target>
+        </trans-unit>
+        <trans-unit id="10">
+            <source>Server Name (example: Ploud Video France):</source>
+            <target>Nome del server (esempio: Ploud Video France):</target>
+        </trans-unit>
+        <trans-unit id="10">
+            <source>Settings</source>
+            <target>Impostazioni</target>
+        </trans-unit>
+        <trans-unit id="11">
+            <source>Trending</source>
+            <target>Tendenza</target>
+        </trans-unit>
+        <trans-unit id="12">
+            <source>Update</source>
+            <target>Aggiorna</target>
+        </trans-unit>
+        <trans-unit id="13">
+            <source>Video Language</source>
+            <target>Video Lingua</target>
+        </trans-unit>
+        <trans-unit id="14">
+            <source>PeerTube Server</source>
+            <target>PeerTube Server</target>
+        </trans-unit>
+        <trans-unit id="15">
+            <source>Any Language</source>
+            <target>Qualsiasi lingua</target>
+        </trans-unit>
+        <trans-unit id="16">
+            <source>Use Roku Setting</source>
+            <target>Utilizzare l'impostazione Roku</target>
+        </trans-unit>
+    </body>
+    </file>
+</xliff>
