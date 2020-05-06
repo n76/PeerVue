@@ -1,3 +1,4 @@
+# SPDX-FileCopyrightText: 2020 Jellyfin Project https://github.com/jellyfin/jellyfin-roku
 # SPDX-FileCopyrightText: 2020 Tod Fitch <tod@fitchfamily.org>
 #
 # SPDX-License-Identifier: GPL-2.0-only

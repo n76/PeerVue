@@ -1,3 +1,4 @@
+# SPDX-FileCopyrightText: 2020 Jellyfin Project https://github.com/jellyfin/jellyfin-roku
 # SPDX-FileCopyrightText: 2020 Tod Fitch <tod@fitchfamily.org>
 #
 # SPDX-License-Identifier: GPL-2.0-only
@@ -19,7 +20,7 @@ VERSION = 0.0.1
 ROKU_TEST_ID = 1
 ROKU_TEST_WAIT_DURATION = 5
 
-ZIP_EXCLUDE=  -x rooibos/**\* -x xml/* -x artwork/* -x \*.pkg -x storeassets\* -x keys\* -x \*/.\* -x *.git* -x *.DS* -x *.license -x *.pkg* -x dist/**\*  -x out/**\* 
+ZIP_EXCLUDE=  -x rooibos/**\* -x xml/* -x artwork/* -x \*.pkg -x storeassets\* -x keys\* -x \*/.\* -x *.git* -x *.DS* -x *.license -x *.pkg* -x dist/**\*  -x out/**\*
 
 include app.mk
 
