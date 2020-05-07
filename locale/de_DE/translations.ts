@@ -31,8 +31,24 @@ SPDX-License-Identifier: MIT
             <translation>Lokale</translation>
         </message>
         <message>
-            <source>PeerVue is an open source channel to view content hosted by a PeerTube instance. Source for this channel is at https://github.com/n76/PeerVue For information about PeerTube see https://https://joinpeertube.org/</source>
-            <translation>PeerVue ist ein Open-Source-Kanal zum Anzeigen von Inhalten, die von einer PeerTube-Instanz gehostet werden. Die Quelle für diesen Kanal ist unter https://github.com/n76/PeerVue. Informationen über PeerTube finden Sie unter https://https://joinpeertube.org/</translation>
+            <source>PeerVue is an open source channel to view content hosted by a PeerTube instance.</source>
+            <translation>PeerVue ist ein Open-Source-Kanal zum Anzeigen von Inhalten, die von einer PeerTube-Instanz gehostet werden.</translation>
+        </message>
+        <message>
+            <source>Source for this channel is at https://github.com/n76/PeerVue</source>
+            <translation>Die Quelle für diesen Kanal ist unter https://github.com/n76/PeerVue.</translation>
+        </message>
+        <message>
+            <source>For information about PeerTube see https://https://joinpeertube.org/</source>
+            <translation>Für Informationen über PeerTube siehe https://https://joinpeertube.org/</translation>
+        </message>
+        <message>
+            <source>UKIJCKJ font</source>
+            <translation>Schriftart UKIJCKJ</translation>
+        </message>
+        <message>
+            <source>Search and gear icons</source>
+            <translation>Symbole für Suche und Ausrüstung</translation>
         </message>
         <message>
             <source>Play</source>

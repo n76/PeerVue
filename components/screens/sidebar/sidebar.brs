@@ -18,6 +18,18 @@ function init()
 
     m.iso639_1 = [{"title":"Any Language","cat_type":"none"},{"title":"Use Roku Setting","cat_type":"roku"}]
 
+    '
+    '   Setting up about text here as I can't figure out how to put line breaks
+    '   into an attribute in the XML
+    '
+    crlf = chr(13)+chr(10)
+    about_text = tr("PeerVue is an open source channel to view content hosted by a PeerTube instance.") + " "
+    about_text = about_text + tr("Source for this channel is at https://github.com/n76/PeerVue") + crlf + crlf
+    about_text = about_text + tr("For information about PeerTube see https://https://joinpeertube.org/") + crlf + crlf
+    about_text = about_text + tr("UKIJCKJ font") + " ©2017 Tursun Sultan https://fontlibrary.org/en/font/ukij-cjk" + crlf + crlf
+    about_text = about_text + tr("Search and gear icons") +  " ©2020 Remix-Design https://github.com/Remix-Design/RemixIcon" + crlf + crlf
+    m.about_info.text = about_text
+
     m.top.observeField("visible", "onVisibleChange")
 end function
 
