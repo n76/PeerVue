@@ -1,85 +1,86 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <!--
 SPDX-FileCopyrightText: 2020 Tod Fitch <tod@fitchfamily.org>
 
 SPDX-License-Identifier: MIT
 -->
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en-US" target-language="fr-CA" >
-    <body>
-        <trans-unit id="0">
+<!DOCTYPE TS>
+<TS version="2.0" language="fr_CA" sourcelanguage="en_US">
+    <defaultcodec>UTF-8</defaultcodec>
+    <context>
+        <name>default</name>
+        <message>
             <source>About</source>
-            <target>Concernant</target>
-        </trans-unit>
-        <trans-unit id="1">
+            <translation>Concernant</translation>
+        </message>
+        <message>
             <source>Clear</source>
-            <target>Effacer</target>
-        </trans-unit>
-        <trans-unit id="2">
+            <translation>Effacer</translation>
+        </message>
+        <message>
             <source>Discover</source>
-            <target>Découvrir</target>
-        </trans-unit>
-        <trans-unit id="3">
+            <translation>Découvrir</translation>
+        </message>
+        <message>
             <source>Popular</source>
-            <target>Les plus appréciées</target>
-        </trans-unit>
-        <trans-unit id="4">
+            <translation>Les plus appréciées</translation>
+        </message>
+        <message>
             <source>Local</source>
-            <target>Locales</target>
-        </trans-unit>
-        <trans-unit id="5">
+            <translation>Locales</translation>
+        </message>
+        <message>
             <source>PeerVue is an open source channel to view content hosted by a PeerTube instance. Source for this channel is at https://github.com/n76/PeerVue For information about PeerTube see https://https://joinpeertube.org/</source>
-            <target>PeerVue est une chaîne à code source ouvert permettant de visualiser des contenus hébergés par une instance de PeerTube. La source de cette chaîne se trouve sur https://github.com/n76/PeerVue Pour des informations sur PeerTube, voir https://https://joinpeertube.org/</target>
-        </trans-unit>
-        <trans-unit id="6">
+            <translation>PeerVue est une chaîne à code source ouvert permettant de visualiser des contenus hébergés par une instance de PeerTube. La source de cette chaîne se trouve sur https://github.com/n76/PeerVue Pour des informations sur PeerTube, voir https://https://joinpeertube.org/</translation>
+        </message>
+        <message>
             <source>Play</source>
-            <target>Jouer</target>
-        </trans-unit>
-        <trans-unit id="7">
+            <translation>Jouer</translation>
+        </message>
+        <message>
             <source>Recently Added</source>
-            <target>Récemment ajoutées</target>
-        </trans-unit>
-        <trans-unit id="8">
+            <translation>Récemment ajoutées</translation>
+        </message>
+        <message>
             <source>Related Videos</source>
-            <target>Vidéos Vonnexes</target>
-        </trans-unit>
-        <trans-unit id="9">
+            <translation>Vidéos Vonnexes</translation>
+        </message>
+        <message>
             <source>Search...</source>
-            <target>Chercher...</target>
-        </trans-unit>
-        <trans-unit id="10">
+            <translation>Chercher...</translation>
+        </message>
+        <message>
             <source>Server Name (example: Ploud Video France):</source>
-            <target>Nom du serveur (exemple: Ploud Video France):</target>
-        </trans-unit>
-        <trans-unit id="10">
+            <translation>Nom du serveur (exemple: Ploud Video France):</translation>
+        </message>
+        <message>
             <source>Settings</source>
-            <target>Paramètres</target>
-        </trans-unit>
-        <trans-unit id="11">
+            <translation>Paramètres</translation>
+        </message>
+        <message>
             <source>Trending</source>
-            <target>Tendances</target>
-        </trans-unit>
-        <trans-unit id="12">
+            <translation>Tendances</translation>
+        </message>
+        <message>
             <source>Update</source>
-            <target>Actualisation</target>
-        </trans-unit>
-        <trans-unit id="13">
+            <translation>Actualisation</translation>
+        </message>
+        <message>
             <source>Video Language</source>
-            <target>Langage vidéo</target>
-        </trans-unit>
-        <trans-unit id="14">
+            <translation>Langage vidéo</translation>
+        </message>
+        <message>
             <source>PeerTube Server</source>
-            <target>Le serveur PeerTube</target>
-        </trans-unit>
-        <trans-unit id="15">
+            <translation>Le serveur PeerTube</translation>
+        </message>
+        <message>
             <source>Any Language</source>
-            <target>Toute Langue</target>
-        </trans-unit>
-        <trans-unit id="16">
+            <translation>Toute Langue</translation>
+        </message>
+        <message>
             <source>Use Roku Setting</source>
-            <target>Usar la configuración de Roku</target>
-        </trans-unit>
-    </body>
-    </file>
-</xliff>
+            <translation>Usar la configuración de Roku</translation>
+        </message>
+    </context>
+</TS>
