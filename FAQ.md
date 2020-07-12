@@ -4,7 +4,7 @@ This FAQ will be updated to accommodate new information with respect to updates 
 
 **What is PeerVue?**
 
-PeerVue is an “channel” (a.k.a. app) for a [Roku Media Streaming player](https://en.wikipedia.org/wiki/Roku#Roku_streaming_players). With it you can watch content being servered from a [PeerTube instance](https://joinpeertube.org/).
+PeerVue is an “channel” (a.k.a. app) for a [Roku Media Streaming player](https://en.wikipedia.org/wiki/Roku#Roku_streaming_players). With it you can watch content being served from a [PeerTube instance](https://joinpeertube.org/).
 
 **How Do I Install It**
 Roku provides three ways that a channel can be installed:
