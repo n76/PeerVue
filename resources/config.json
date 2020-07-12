@@ -700,7 +700,7 @@
         },
         "ug": {
             "iso639_2b": "uig",
-            "NativeName": "ئۇيغۇرچە\u200e"
+            "NativeName": "ئۇيغۇرچە‎"
         },
         "uk": {
             "iso639_2b": "ukr",
@@ -766,11 +766,6 @@
             "url": "https://video.ploud.fr"
         },
         {
-            "name": "🐷 Tube",
-            "alt_name": "v.lesterpig.com",
-            "url": "https://v.lesterpig.com"
-        },
-        {
             "name": "22Decembre's PeerTube",
             "alt_name": "tube.22decembre.eu",
             "url": "https://tube.22decembre.eu"
@@ -786,9 +781,19 @@
             "url": "https://video.turbo.chat"
         },
         {
-            "name": "A Tchao Bonsoir! 30 ans de guignols à préserver",
-            "alt_name": "atchao.info",
-            "url": "https://atchao.info"
+            "name": "AADTP Peertube",
+            "alt_name": "videos.aadtp.be",
+            "url": "https://videos.aadtp.be"
+        },
+        {
+            "name": "Acab.io PeerTube",
+            "alt_name": "peertube.acab.io",
+            "url": "https://peertube.acab.io"
+        },
+        {
+            "name": "Académie de Corse",
+            "alt_name": "tube-corse.beta.education.fr",
+            "url": "https://tube-corse.beta.education.fr"
         },
         {
             "name": "AD'HOC Tube",
@@ -846,6 +851,11 @@
             "url": "https://aperi.tube"
         },
         {
+            "name": "AquileTube: Peertube@Aquilenet.fr",
+            "alt_name": "tube.aquilenet.fr",
+            "url": "https://tube.aquilenet.fr"
+        },
+        {
             "name": "Armstube",
             "alt_name": "armstube.com",
             "url": "https://armstube.com"
@@ -861,14 +871,9 @@
             "url": "https://artitube.artifaille.fr"
         },
         {
-            "name": "Autizmo Video",
-            "alt_name": "video.autizmo.xyz",
-            "url": "https://video.autizmo.xyz"
-        },
-        {
-            "name": "Backbord Tube",
-            "alt_name": "tube.backbord.net",
-            "url": "https://tube.backbord.net"
+            "name": "ATILLA",
+            "alt_name": "peertube.atilla.org",
+            "url": "https://peertube.atilla.org"
         },
         {
             "name": "BannedData",
@@ -901,9 +906,9 @@
             "url": "https://bittube.video"
         },
         {
-            "name": "BitTube",
-            "alt_name": "peertube.bittube.tv",
-            "url": "https://peertube.bittube.tv"
+            "name": "Blender Video",
+            "alt_name": "video.blender.org",
+            "url": "https://video.blender.org"
         },
         {
             "name": "BlobTube",
@@ -931,34 +936,29 @@
             "url": "https://video.cabane-libre.org"
         },
         {
+            "name": "Cinémathèque française",
+            "alt_name": "cinematheque.tube",
+            "url": "https://cinematheque.tube"
+        },
+        {
             "name": "CipherBliss PeerTube",
             "alt_name": "peertube.cipherbliss.com",
             "url": "https://peertube.cipherbliss.com"
         },
         {
-            "name": "Circolo Culturale M. Sumo",
+            "name": "Circolo Culturale \"M. Sumo\"",
             "alt_name": "peertube.cojo.uno",
             "url": "https://peertube.cojo.uno"
-        },
-        {
-            "name": "Cloudfrancois' PeerTube",
-            "alt_name": "videos.cloudfrancois.fr",
-            "url": "https://videos.cloudfrancois.fr"
-        },
-        {
-            "name": "coletivos.tube",
-            "alt_name": "videos.coletivos.org",
-            "url": "https://videos.coletivos.org"
-        },
-        {
-            "name": "Conférences gesticulées",
-            "alt_name": "tube.conferences-gesticulees.net",
-            "url": "https://tube.conferences-gesticulees.net"
         },
         {
             "name": "ConfTube",
             "alt_name": "conf.tube",
             "url": "https://conf.tube"
+        },
+        {
+            "name": "Conférences gesticulées",
+            "alt_name": "tube.conferences-gesticulees.net",
+            "url": "https://tube.conferences-gesticulees.net"
         },
         {
             "name": "Continuité pédagogique - PeerTube from GCfamily",
@@ -981,9 +981,9 @@
             "url": "https://csictv.csic.es"
         },
         {
-            "name": "Cyber-Tribal",
-            "alt_name": "peertube.cyber-tribal.com",
-            "url": "https://peertube.cyber-tribal.com"
+            "name": "darftube",
+            "alt_name": "tube.darfweb.eu",
+            "url": "https://tube.darfweb.eu"
         },
         {
             "name": "DataGueule",
@@ -996,14 +996,14 @@
             "url": "https://tv.datamol.org"
         },
         {
+            "name": "Datse Multimedia PeerTube",
+            "alt_name": "video.datsemultimedia.com",
+            "url": "https://video.datsemultimedia.com"
+        },
+        {
             "name": "Dave's Peertube",
             "alt_name": "manicphase.me",
             "url": "https://manicphase.me"
-        },
-        {
-            "name": "ddurieux",
-            "alt_name": "peertube.david.durieux.family",
-            "url": "https://peertube.david.durieux.family"
         },
         {
             "name": "DeadSuperHero Video",
@@ -1011,9 +1011,9 @@
             "url": "https://video.deadsuperhero.com"
         },
         {
-            "name": "derdorifer.org-TV",
-            "alt_name": "tv.derdorifer.org",
-            "url": "https://tv.derdorifer.org"
+            "name": "Designers Ethiques - PeerTube",
+            "alt_name": "peertube.designersethiques.org",
+            "url": "https://peertube.designersethiques.org"
         },
         {
             "name": "Devin Berg Video",
@@ -1056,16 +1056,6 @@
             "url": "https://vidz.dou.bet"
         },
         {
-            "name": "Down The Memory Hole",
-            "alt_name": "tube.4aem.com",
-            "url": "https://tube.4aem.com"
-        },
-        {
-            "name": "DragonPsi Tube",
-            "alt_name": "tube.dragonpsi.xyz",
-            "url": "https://tube.dragonpsi.xyz"
-        },
-        {
             "name": "dreiecksnebel",
             "alt_name": "dreiecksnebel.alex-detsch.de",
             "url": "https://dreiecksnebel.alex-detsch.de"
@@ -1076,24 +1066,9 @@
             "url": "https://peertube.education-forum.com"
         },
         {
-            "name": "EduTube",
-            "alt_name": "tube.delalande.me",
-            "url": "https://tube.delalande.me"
-        },
-        {
-            "name": "Elo Country",
-            "alt_name": "elo-country.patault.ovh",
-            "url": "https://elo-country.patault.ovh"
-        },
-        {
             "name": "EmergeHeart - Don't Extradite Assange - Free Assange - PeerTube",
             "alt_name": "video.emergeheart.info",
             "url": "https://video.emergeheart.info"
-        },
-        {
-            "name": "ESADHaR Video",
-            "alt_name": "peertube.esadhar.net",
-            "url": "https://peertube.esadhar.net"
         },
         {
             "name": "Euskarabildua Jardunaldien PeerTube instantzia",
@@ -1136,14 +1111,19 @@
             "url": "https://tube.fdn.fr"
         },
         {
+            "name": "Fedi Vidi",
+            "alt_name": "vid.garwood.io",
+            "url": "https://vid.garwood.io"
+        },
+        {
             "name": "Fedilab PeerTube",
             "alt_name": "peertube.fedilab.app",
             "url": "https://peertube.fedilab.app"
         },
         {
-            "name": "FédiQuébec",
-            "alt_name": "peertube.fedi.quebec",
-            "url": "https://peertube.fedi.quebec"
+            "name": "Feeu",
+            "alt_name": "peertube.agneraya.com",
+            "url": "https://peertube.agneraya.com"
         },
         {
             "name": "Festival Parmi Nous - Vidéos",
@@ -1156,9 +1136,14 @@
             "url": "https://peertube.ffs2play.fr"
         },
         {
-            "name": "FIGHTFORINFO",
-            "alt_name": "fightforinfo.com",
-            "url": "https://fightforinfo.com"
+            "name": "Flim.ml",
+            "alt_name": "flim.ml",
+            "url": "https://flim.ml"
+        },
+        {
+            "name": "FloriTube",
+            "alt_name": "tube.florimond.eu",
+            "url": "https://tube.florimond.eu"
         },
         {
             "name": "FLOSS Marketing School - PeerTube's instance",
@@ -1169,11 +1154,6 @@
             "name": "FonTube",
             "alt_name": "fontube.fr",
             "url": "https://fontube.fr"
-        },
-        {
-            "name": "Foxtrot Community",
-            "alt_name": "peertube.foxtrot-community.cc",
-            "url": "https://peertube.foxtrot-community.cc"
         },
         {
             "name": "FPVTube",
@@ -1201,6 +1181,11 @@
             "url": "https://videos.funkwhale.audio"
         },
         {
+            "name": "FédiQuébec",
+            "alt_name": "peertube.fedi.quebec",
+            "url": "https://peertube.fedi.quebec"
+        },
+        {
             "name": "GAiALabs PeerTube",
             "alt_name": "peertube.gaialabs.ch",
             "url": "https://peertube.gaialabs.ch"
@@ -1214,6 +1199,16 @@
             "name": "Glass Bead Collective videos",
             "alt_name": "video.glassbeadcollective.org",
             "url": "https://video.glassbeadcollective.org"
+        },
+        {
+            "name": "Gnostic Avarice",
+            "alt_name": "peertube.ichigo.everydayimshuflin.com",
+            "url": "https://peertube.ichigo.everydayimshuflin.com"
+        },
+        {
+            "name": "GnousTube",
+            "alt_name": "tube.gnous.eu",
+            "url": "https://tube.gnous.eu"
         },
         {
             "name": "Gnumeria",
@@ -1246,11 +1241,6 @@
             "url": "https://video.gresille.org"
         },
         {
-            "name": "grinTube",
-            "alt_name": "tube.grin.hu",
-            "url": "https://tube.grin.hu"
-        },
-        {
             "name": "GTube",
             "alt_name": "video.gcfam.net",
             "url": "https://video.gcfam.net"
@@ -1276,6 +1266,11 @@
             "url": "https://video.hackers.town"
         },
         {
+            "name": "Haddock PeerTube",
+            "alt_name": "watch.haddock.cc",
+            "url": "https://watch.haddock.cc"
+        },
+        {
             "name": "Hardlimit",
             "alt_name": "video.hardlimit.com",
             "url": "https://video.hardlimit.com"
@@ -1284,6 +1279,11 @@
             "name": "HatThieves's PeerTube",
             "alt_name": "peertube.hatthieves.es",
             "url": "https://peertube.hatthieves.es"
+        },
+        {
+            "name": "HayTV",
+            "alt_name": "haytv.blueline.mg",
+            "url": "https://haytv.blueline.mg"
         },
         {
             "name": "HDYS",
@@ -1316,6 +1316,11 @@
             "url": "https://tube.homecomputing.fr"
         },
         {
+            "name": "HopeTube",
+            "alt_name": "hope.tube",
+            "url": "https://hope.tube"
+        },
+        {
             "name": "HosTyour.TV",
             "alt_name": "hostyour.tv",
             "url": "https://hostyour.tv"
@@ -1324,6 +1329,11 @@
             "name": "I hate being alive",
             "alt_name": "video.ihatebeinga.live",
             "url": "https://video.ihatebeinga.live"
+        },
+        {
+            "name": "IDDQDTube",
+            "alt_name": "tube.iddqd.press",
+            "url": "https://tube.iddqd.press"
         },
         {
             "name": "Imagin'Tube",
@@ -1346,12 +1356,7 @@
             "url": "https://infotik.fr"
         },
         {
-            "name": "Instance CrossRoads",
-            "alt_name": "tube.worldofhauru.xyz",
-            "url": "https://tube.worldofhauru.xyz"
-        },
-        {
-            "name": "Instance Peertube pour La Voix Des Sans Voix",
+            "name": "Instance Peertube pour La Voix Des Sans Voix!!",
             "alt_name": "videos.lavoixdessansvoix.org",
             "url": "https://videos.lavoixdessansvoix.org"
         },
@@ -1364,6 +1369,11 @@
             "name": "IPHODASE",
             "alt_name": "video.iphodase.fr",
             "url": "https://video.iphodase.fr"
+        },
+        {
+            "name": "IreisTube",
+            "alt_name": "peertube.ireis.site",
+            "url": "https://peertube.ireis.site"
         },
         {
             "name": "iriseden Peertube",
@@ -1386,19 +1396,34 @@
             "url": "https://peertube.jackbot.fr"
         },
         {
-            "name": "Jérémy's PeerTube - mazzonetto.eu",
-            "alt_name": "peertube.mazzonetto.eu",
-            "url": "https://peertube.mazzonetto.eu"
-        },
-        {
             "name": "Juggling Videos",
             "alt_name": "juggling.digital",
             "url": "https://juggling.digital"
         },
         {
+            "name": "justtelly",
+            "alt_name": "justtelly.com",
+            "url": "https://justtelly.com"
+        },
+        {
+            "name": "justtelly",
+            "alt_name": "www.justtelly.com",
+            "url": "https://www.justtelly.com"
+        },
+        {
+            "name": "Jérémy's PeerTube - mazzonetto.eu",
+            "alt_name": "peertube.mazzonetto.eu",
+            "url": "https://peertube.mazzonetto.eu"
+        },
+        {
             "name": "Kapussinette Tube",
             "alt_name": "tube.kapussinettes.ovh",
             "url": "https://tube.kapussinettes.ovh"
+        },
+        {
+            "name": "KenTube",
+            "alt_name": "tube.kenfm.de",
+            "url": "https://tube.kenfm.de"
         },
         {
             "name": "KicouTube",
@@ -1446,9 +1471,9 @@
             "url": "https://tube.ksl-bmx.de"
         },
         {
-            "name": "la GOB tiers lieu - Ateliers hybrides",
-            "alt_name": "peertube.lagob.fr",
-            "url": "https://peertube.lagob.fr"
+            "name": "La Confrérie du Taboulé",
+            "alt_name": "video.taboulisme.com",
+            "url": "https://video.taboulisme.com"
         },
         {
             "name": "La Quadrature du Net",
@@ -1461,19 +1486,9 @@
             "url": "https://video.latavernedejohnjohn.fr"
         },
         {
-            "name": "LainTube",
-            "alt_name": "tube.lain.church",
-            "url": "https://tube.lain.church"
-        },
-        {
             "name": "Lanceur-Alerte TV",
             "alt_name": "lanceur-alerte.tv",
             "url": "https://lanceur-alerte.tv"
-        },
-        {
-            "name": "Lastorder V",
-            "alt_name": "v.lastorder.xyz",
-            "url": "https://v.lastorder.xyz"
         },
         {
             "name": "Le Média",
@@ -1482,13 +1497,8 @@
         },
         {
             "name": "Le PeerTube chez Marud",
-            "alt_name": "marudpeertube.damnserver.com",
-            "url": "https://marudpeertube.damnserver.com"
-        },
-        {
-            "name": "Le PeerTube de Mensoif",
-            "alt_name": "videomensoif.ynh.fr",
-            "url": "https://videomensoif.ynh.fr"
+            "alt_name": "peertube.marud.fr",
+            "url": "https://peertube.marud.fr"
         },
         {
             "name": "Le Samarien",
@@ -1499,11 +1509,6 @@
             "name": "learn c++",
             "alt_name": "91video.online",
             "url": "https://91video.online"
-        },
-        {
-            "name": "Les vidéos d'Ensilibre",
-            "alt_name": "videos.ensilib.re",
-            "url": "https://videos.ensilib.re"
         },
         {
             "name": "Les vidéos de SideWays, la websérie itinérante (https://side-ways.net)",
@@ -1526,9 +1531,9 @@
             "url": "https://video.liberta.vip"
         },
         {
-            "name": "Libox PeerTube",
-            "alt_name": "medias.libox.fr",
-            "url": "https://medias.libox.fr"
+            "name": "Libre.Video",
+            "alt_name": "libretube.net",
+            "url": "https://libretube.net"
         },
         {
             "name": "LibreLabUCM",
@@ -1536,19 +1541,9 @@
             "url": "https://peertube.librelabucm.org"
         },
         {
-            "name": "LibreTube",
-            "alt_name": "libre.tube",
-            "url": "https://libre.tube"
-        },
-        {
             "name": "LinuxRocks PeerTube",
             "alt_name": "peertube.linuxrocks.online",
             "url": "https://peertube.linuxrocks.online"
-        },
-        {
-            "name": "LivecchiTube",
-            "alt_name": "video.livecchi.cloud",
-            "url": "https://video.livecchi.cloud"
         },
         {
             "name": "living utopia PeerTube",
@@ -1556,34 +1551,24 @@
             "url": "https://peertube.livingutopia.org"
         },
         {
-            "name": "LohnTube",
-            "alt_name": "video.lo.hn",
-            "url": "https://video.lo.hn"
-        },
-        {
             "name": "Lou.lt vidéos",
             "alt_name": "tube.lou.lt",
             "url": "https://tube.lou.lt"
         },
         {
+            "name": "Luke's Videos",
+            "alt_name": "videos.lukesmith.xyz",
+            "url": "https://videos.lukesmith.xyz"
+        },
+        {
+            "name": "LundiMatin",
+            "alt_name": "video.lundi.am",
+            "url": "https://video.lundi.am"
+        },
+        {
             "name": "lw1.at -- PeerTube",
             "alt_name": "video.lw1.at",
             "url": "https://video.lw1.at"
-        },
-        {
-            "name": "ɭost Ɂod",
-            "alt_name": "lostpod.space",
-            "url": "https://lostpod.space"
-        },
-        {
-            "name": "Magisterium Refuznik",
-            "alt_name": "refuznik.video",
-            "url": "https://refuznik.video"
-        },
-        {
-            "name": "MakotoWorkshop's PeerTube",
-            "alt_name": "peertube.makotoworkshop.org",
-            "url": "https://peertube.makotoworkshop.org"
         },
         {
             "name": "mantlepro",
@@ -1606,16 +1591,6 @@
             "url": "https://media.zat.im"
         },
         {
-            "name": "Méga Tube",
-            "alt_name": "megatube.lilomoino.fr",
-            "url": "https://megatube.lilomoino.fr"
-        },
-        {
-            "name": "Merci la police !",
-            "alt_name": "merci-la-police.fr",
-            "url": "https://merci-la-police.fr"
-        },
-        {
             "name": "Meta-Tube",
             "alt_name": "meta-tube.de",
             "url": "https://meta-tube.de"
@@ -1629,6 +1604,11 @@
             "name": "MigennesTube",
             "alt_name": "video.migennes.net",
             "url": "https://video.migennes.net"
+        },
+        {
+            "name": "Mind's Forge Videos",
+            "alt_name": "video.mindsforge.com",
+            "url": "https://video.mindsforge.com"
         },
         {
             "name": "MinzTube",
@@ -1721,9 +1701,24 @@
             "url": "https://video.netsyms.com"
         },
         {
-            "name": "NexonSU's PeerTube",
-            "alt_name": "peertube.nexon.su",
-            "url": "https://peertube.nexon.su"
+            "name": "Netzbegrünung PeerTube",
+            "alt_name": "peertube.netzbegruenung.de",
+            "url": "https://peertube.netzbegruenung.de"
+        },
+        {
+            "name": "NextGen Tube",
+            "alt_name": "ngtube.fun",
+            "url": "https://ngtube.fun"
+        },
+        {
+            "name": "Nimag Video",
+            "alt_name": "video.nimag.net",
+            "url": "https://video.nimag.net"
+        },
+        {
+            "name": "No GAFA !",
+            "alt_name": "peertube.nogafa.org",
+            "url": "https://peertube.nogafa.org"
         },
         {
             "name": "Nuage de vidéos",
@@ -1736,11 +1731,6 @@
             "url": "https://tube.nuagelibre.fr"
         },
         {
-            "name": "Odat - Tube",
-            "alt_name": "tube.odat.xyz",
-            "url": "https://tube.odat.xyz"
-        },
-        {
             "name": "Ojamajo Doremi - Centre de Visionnage",
             "alt_name": "wetube.ojamajo.moe",
             "url": "https://wetube.ojamajo.moe"
@@ -1749,6 +1739,11 @@
             "name": "omniatv videos",
             "alt_name": "video.omniatv.com",
             "url": "https://video.omniatv.com"
+        },
+        {
+            "name": "Open.Tube",
+            "alt_name": "open.tube",
+            "url": "https://open.tube"
         },
         {
             "name": "OtterTube",
@@ -1787,8 +1782,18 @@
         },
         {
             "name": "PeerTube",
+            "alt_name": "docker.videos.lecygnenoir.info",
+            "url": "https://docker.videos.lecygnenoir.info"
+        },
+        {
+            "name": "PeerTube",
             "alt_name": "medias.pingbase.net",
             "url": "https://medias.pingbase.net"
+        },
+        {
+            "name": "PeerTube",
+            "alt_name": "nanawel-peertube.dyndns.org",
+            "url": "https://nanawel-peertube.dyndns.org"
         },
         {
             "name": "PeerTube",
@@ -1797,13 +1802,13 @@
         },
         {
             "name": "PeerTube",
-            "alt_name": "peertube.alcalyn.app",
-            "url": "https://peertube.alcalyn.app"
+            "alt_name": "peertube.b38.rural-it.org",
+            "url": "https://peertube.b38.rural-it.org"
         },
         {
             "name": "PeerTube",
-            "alt_name": "peertube.club",
-            "url": "https://peertube.club"
+            "alt_name": "peertube.chiccou.net",
+            "url": "https://peertube.chiccou.net"
         },
         {
             "name": "PeerTube",
@@ -1812,23 +1817,8 @@
         },
         {
             "name": "PeerTube",
-            "alt_name": "peertube.ddns.net",
-            "url": "https://peertube.ddns.net"
-        },
-        {
-            "name": "PeerTube",
-            "alt_name": "peertube.dsmouse.net",
-            "url": "https://peertube.dsmouse.net"
-        },
-        {
-            "name": "PeerTube",
             "alt_name": "peertube.f-si.org",
             "url": "https://peertube.f-si.org"
-        },
-        {
-            "name": "PeerTube",
-            "alt_name": "peertube.gcaillaut.fr",
-            "url": "https://peertube.gcaillaut.fr"
         },
         {
             "name": "PeerTube",
@@ -1842,13 +1832,13 @@
         },
         {
             "name": "PeerTube",
-            "alt_name": "peertube.mckillop.org",
-            "url": "https://peertube.mckillop.org"
+            "alt_name": "peertube.lagvoid.com",
+            "url": "https://peertube.lagvoid.com"
         },
         {
             "name": "PeerTube",
-            "alt_name": "peertube.opentunisia.org",
-            "url": "https://peertube.opentunisia.org"
+            "alt_name": "peertube.lefaut.fr",
+            "url": "https://peertube.lefaut.fr"
         },
         {
             "name": "PeerTube",
@@ -1859,21 +1849,6 @@
             "name": "PeerTube",
             "alt_name": "peertube.su",
             "url": "https://peertube.su"
-        },
-        {
-            "name": "PeerTube",
-            "alt_name": "peertube.swarm.solvingmaz.es",
-            "url": "https://peertube.swarm.solvingmaz.es"
-        },
-        {
-            "name": "PeerTube",
-            "alt_name": "peertube.tamanoir.foucry.net",
-            "url": "https://peertube.tamanoir.foucry.net"
-        },
-        {
-            "name": "PeerTube",
-            "alt_name": "peertube.terranout.mine.nu",
-            "url": "https://peertube.terranout.mine.nu"
         },
         {
             "name": "PeerTube",
@@ -1892,28 +1867,18 @@
         },
         {
             "name": "PeerTube",
-            "alt_name": "peertube.umeahackerspace.se",
-            "url": "https://peertube.umeahackerspace.se"
-        },
-        {
-            "name": "PeerTube",
-            "alt_name": "peertube2.020.pl",
-            "url": "https://peertube2.020.pl"
-        },
-        {
-            "name": "PeerTube",
             "alt_name": "peertube2.cpy.re",
             "url": "https://peertube2.cpy.re"
         },
         {
             "name": "PeerTube",
-            "alt_name": "tube.bn4t.me",
-            "url": "https://tube.bn4t.me"
+            "alt_name": "testtube.florimond.eu",
+            "url": "https://testtube.florimond.eu"
         },
         {
             "name": "PeerTube",
-            "alt_name": "tube.bruniau.net",
-            "url": "https://tube.bruniau.net"
+            "alt_name": "tube.bn4t.me",
+            "url": "https://tube.bn4t.me"
         },
         {
             "name": "PeerTube",
@@ -1927,6 +1892,11 @@
         },
         {
             "name": "PeerTube",
+            "alt_name": "tube.port0.xyz",
+            "url": "https://tube.port0.xyz"
+        },
+        {
+            "name": "PeerTube",
             "alt_name": "tube.taker.fr",
             "url": "https://tube.taker.fr"
         },
@@ -1937,13 +1907,8 @@
         },
         {
             "name": "PeerTube",
-            "alt_name": "vid.ncrypt.at",
-            "url": "https://vid.ncrypt.at"
-        },
-        {
-            "name": "PeerTube",
-            "alt_name": "video.conquerworld.fr",
-            "url": "https://video.conquerworld.fr"
+            "alt_name": "video.exodus-privacy.eu.org",
+            "url": "https://video.exodus-privacy.eu.org"
         },
         {
             "name": "PeerTube",
@@ -1962,11 +1927,6 @@
         },
         {
             "name": "PeerTube",
-            "alt_name": "video.monarch-pass.net",
-            "url": "https://video.monarch-pass.net"
-        },
-        {
-            "name": "PeerTube",
             "alt_name": "video.nesven.eu",
             "url": "https://video.nesven.eu"
         },
@@ -1977,8 +1937,8 @@
         },
         {
             "name": "PeerTube",
-            "alt_name": "videos.benpro.fr",
-            "url": "https://videos.benpro.fr"
+            "alt_name": "videos.casually.cat",
+            "url": "https://videos.casually.cat"
         },
         {
             "name": "PeerTube",
@@ -1987,8 +1947,18 @@
         },
         {
             "name": "PeerTube",
+            "alt_name": "videos.martyn.berlin",
+            "url": "https://videos.martyn.berlin"
+        },
+        {
+            "name": "PeerTube",
             "alt_name": "videos.pofilo.fr",
             "url": "https://videos.pofilo.fr"
+        },
+        {
+            "name": "PeerTube (peertube.maxweiss.io)",
+            "alt_name": "peertube.maxweiss.io",
+            "url": "https://peertube.maxweiss.io"
         },
         {
             "name": "PeerTube - I Self Host (IPv6)",
@@ -1996,9 +1966,9 @@
             "url": "https://peertube.iselfhost.com"
         },
         {
-            "name": "PeerTube - Publique - Eric",
-            "alt_name": "peertube.eric.ovh",
-            "url": "https://peertube.eric.ovh"
+            "name": "PeerTube - MetalBanana",
+            "alt_name": "peertube.metalbanana.net",
+            "url": "https://peertube.metalbanana.net"
         },
         {
             "name": "PeerTube - roflopter.fr",
@@ -2011,44 +1981,19 @@
             "url": "https://peertube.snargol.com"
         },
         {
-            "name": "PeerTube - Storais",
-            "alt_name": "peertube.storais.org",
-            "url": "https://peertube.storais.org"
-        },
-        {
             "name": "PeerTube - underworld.fr",
             "alt_name": "peertube.underworld.fr",
             "url": "https://peertube.underworld.fr"
         },
         {
-            "name": "PeerTube - zapashcanon",
-            "alt_name": "peertube.zapashcanon.fr",
-            "url": "https://peertube.zapashcanon.fr"
+            "name": "PeerTube 3",
+            "alt_name": "peertube3.cpy.re",
+            "url": "https://peertube3.cpy.re"
         },
         {
             "name": "PeerTube @ 1312",
             "alt_name": "peertube.1312.media",
             "url": "https://peertube.1312.media"
-        },
-        {
-            "name": "PeerTube | Hostux.social",
-            "alt_name": "peer.hostux.social",
-            "url": "https://peer.hostux.social"
-        },
-        {
-            "name": "PeerTube | KSITE.DE",
-            "alt_name": "vod.ksite.de",
-            "url": "https://vod.ksite.de"
-        },
-        {
-            "name": "PeerTube | Maiti.info",
-            "alt_name": "tube.maiti.info",
-            "url": "https://tube.maiti.info"
-        },
-        {
-            "name": "PeerTube 3",
-            "alt_name": "peertube3.cpy.re",
-            "url": "https://peertube3.cpy.re"
         },
         {
             "name": "PeerTube amicale.net",
@@ -2066,6 +2011,11 @@
             "url": "https://vid.lelux.fi"
         },
         {
+            "name": "PeerTube at Monarch-Pass.net",
+            "alt_name": "video.monarch-pass.net",
+            "url": "https://video.monarch-pass.net"
+        },
+        {
             "name": "PeerTube BE",
             "alt_name": "p.eertu.be",
             "url": "https://p.eertu.be"
@@ -2074,6 +2024,21 @@
             "name": "PeerTube ChantierLibre",
             "alt_name": "peertube.chantierlibre.org",
             "url": "https://peertube.chantierlibre.org"
+        },
+        {
+            "name": "PeerTube de Kip",
+            "alt_name": "video.unkipamunich.fr",
+            "url": "https://video.unkipamunich.fr"
+        },
+        {
+            "name": "PeerTube de L'académie de Nancy-Metz",
+            "alt_name": "tube-nancy.beta.education.fr",
+            "url": "https://tube-nancy.beta.education.fr"
+        },
+        {
+            "name": "PeerTube de Monlycée.net",
+            "alt_name": "peertube.monlycee.net",
+            "url": "https://peertube.monlycee.net"
         },
         {
             "name": "PeerTube de Normandie",
@@ -2086,6 +2051,16 @@
             "url": "https://peertube.we-keys.fr"
         },
         {
+            "name": "PeerTube Devloprog",
+            "alt_name": "peertube.devloprog.org",
+            "url": "https://peertube.devloprog.org"
+        },
+        {
+            "name": "PeerTube devol",
+            "alt_name": "peertube.devol.it",
+            "url": "https://peertube.devol.it"
+        },
+        {
             "name": "PeerTube Fablab LCube",
             "alt_name": "tube.fab-l3.org",
             "url": "https://tube.fab-l3.org"
@@ -2094,16 +2069,6 @@
             "name": "PeerTube FDLibre",
             "alt_name": "video.fdlibre.eu",
             "url": "https://video.fdlibre.eu"
-        },
-        {
-            "name": "PeerTube for All",
-            "alt_name": "peertube.alter-nativ-voll.de",
-            "url": "https://peertube.alter-nativ-voll.de"
-        },
-        {
-            "name": "PeerTube for Musiclovers",
-            "alt_name": "peertube.anarchmusicall.net",
-            "url": "https://peertube.anarchmusicall.net"
         },
         {
             "name": "PeerTube Francophone Heraut.eu",
@@ -2116,14 +2081,14 @@
             "url": "https://video.g3l.org"
         },
         {
-            "name": "PeerTube Heberge.fr",
-            "alt_name": "peertube.heberge.fr",
-            "url": "https://peertube.heberge.fr"
+            "name": "PeerTube graz.social",
+            "alt_name": "tube.graz.social",
+            "url": "https://tube.graz.social"
         },
         {
-            "name": "PeerTube HugoLecourt",
-            "alt_name": "peertube.hugolecourt.fr",
-            "url": "https://peertube.hugolecourt.fr"
+            "name": "PeerTube INFRES",
+            "alt_name": "peertube.r2.enst.fr",
+            "url": "https://peertube.r2.enst.fr"
         },
         {
             "name": "PeerTube Italia - Video Sharing Free & Open: Etico, Libero, Decentralizzato",
@@ -2134,6 +2099,11 @@
             "name": "PeerTube Luxembourg",
             "alt_name": "peertube.opencloud.lu",
             "url": "https://peertube.opencloud.lu"
+        },
+        {
+            "name": "PeerTube Lycée Connecté",
+            "alt_name": "peertube.lyceeconnecte.fr",
+            "url": "https://peertube.lyceeconnecte.fr"
         },
         {
             "name": "Peertube Montecsys",
@@ -2149,6 +2119,11 @@
             "name": "Peertube on alpharius.io",
             "alt_name": "peertube.alpharius.io",
             "url": "https://peertube.alpharius.io"
+        },
+        {
+            "name": "PeerTube on Mastodon.host",
+            "alt_name": "peertube.mastodon.host",
+            "url": "https://peertube.mastodon.host"
         },
         {
             "name": "PeerTube on Nomagic",
@@ -2171,6 +2146,16 @@
             "url": "https://tube.openalgeria.org"
         },
         {
+            "name": "PeerTube Opportun",
+            "alt_name": "tube.opportunis.me",
+            "url": "https://tube.opportunis.me"
+        },
+        {
+            "name": "PeerTube SemiPvt",
+            "alt_name": "peertube.semipvt.com",
+            "url": "https://peertube.semipvt.com"
+        },
+        {
             "name": "PeerTube SL-Network",
             "alt_name": "peertube.sl-network.fr",
             "url": "https://peertube.sl-network.fr"
@@ -2186,7 +2171,127 @@
             "url": "https://video.tedomum.net"
         },
         {
-            "name": "PeerTube UK",
+            "name": "PeerTube Temporaire - Academie de Amiens",
+            "alt_name": "tube-amiens.beta.education.fr",
+            "url": "https://tube-amiens.beta.education.fr"
+        },
+        {
+            "name": "PeerTube Temporaire - Academie de Besancon",
+            "alt_name": "tube-besancon.beta.education.fr",
+            "url": "https://tube-besancon.beta.education.fr"
+        },
+        {
+            "name": "PeerTube Temporaire - Academie de Clermont-Ferrand",
+            "alt_name": "tube-clermont-ferrand.beta.education.fr",
+            "url": "https://tube-clermont-ferrand.beta.education.fr"
+        },
+        {
+            "name": "PeerTube Temporaire - Academie de Dijon",
+            "alt_name": "tube-dijon.beta.education.fr",
+            "url": "https://tube-dijon.beta.education.fr"
+        },
+        {
+            "name": "PeerTube Temporaire - Academie de Lille",
+            "alt_name": "tube-lille.beta.education.fr",
+            "url": "https://tube-lille.beta.education.fr"
+        },
+        {
+            "name": "PeerTube Temporaire COVID-19- academie de Grenoble",
+            "alt_name": "tube-grenoble.beta.education.fr",
+            "url": "https://tube-grenoble.beta.education.fr"
+        },
+        {
+            "name": "PeerTube Temporaire de - Academie de Nice",
+            "alt_name": "tube-nice.beta.education.fr",
+            "url": "https://tube-nice.beta.education.fr"
+        },
+        {
+            "name": "PeerTube Temporaire de Academie de Creteil",
+            "alt_name": "tube-creteil.beta.education.fr",
+            "url": "https://tube-creteil.beta.education.fr"
+        },
+        {
+            "name": "PeerTube Temporaire de l academie de Limoges",
+            "alt_name": "tube-limoges.beta.education.fr",
+            "url": "https://tube-limoges.beta.education.fr"
+        },
+        {
+            "name": "PeerTube Temporaire de l academie de Montpellier",
+            "alt_name": "tube-montpellier.beta.education.fr",
+            "url": "https://tube-montpellier.beta.education.fr"
+        },
+        {
+            "name": "PeerTube Temporaire de l academie de Nantes",
+            "alt_name": "tube-nantes.beta.education.fr",
+            "url": "https://tube-nantes.beta.education.fr"
+        },
+        {
+            "name": "PeerTube Temporaire de l academie de Orleans-Tours",
+            "alt_name": "tube-orleans-tours.beta.education.fr",
+            "url": "https://tube-orleans-tours.beta.education.fr"
+        },
+        {
+            "name": "PeerTube Temporaire de l academie de Paris",
+            "alt_name": "tube-paris.beta.education.fr",
+            "url": "https://tube-paris.beta.education.fr"
+        },
+        {
+            "name": "PeerTube Temporaire de l academie de Rennes",
+            "alt_name": "tube-rennes.beta.education.fr",
+            "url": "https://tube-rennes.beta.education.fr"
+        },
+        {
+            "name": "PeerTube Temporaire de l academie de Strasbourg",
+            "alt_name": "tube-strasbourg.beta.education.fr",
+            "url": "https://tube-strasbourg.beta.education.fr"
+        },
+        {
+            "name": "PeerTube Temporaire de l academie de Toulouse",
+            "alt_name": "tube-toulouse.beta.education.fr",
+            "url": "https://tube-toulouse.beta.education.fr"
+        },
+        {
+            "name": "PeerTube Temporaire de l académie de Normandie",
+            "alt_name": "tube-normandie.beta.education.fr",
+            "url": "https://tube-normandie.beta.education.fr"
+        },
+        {
+            "name": "PeerTube Temporaire de l'academie d'Aix-Marseille",
+            "alt_name": "tube-aix-marseille.beta.education.fr",
+            "url": "https://tube-aix-marseille.beta.education.fr"
+        },
+        {
+            "name": "PeerTube Temporaire de l'académie de Lyon",
+            "alt_name": "tube-lyon.beta.education.fr",
+            "url": "https://tube-lyon.beta.education.fr"
+        },
+        {
+            "name": "PeerTube Temporaire de l'Académie de Reims",
+            "alt_name": "tube-reims.beta.education.fr",
+            "url": "https://tube-reims.beta.education.fr"
+        },
+        {
+            "name": "PeerTube Temporaire de l'académie de Versailles",
+            "alt_name": "tube-versailles.beta.education.fr",
+            "url": "https://tube-versailles.beta.education.fr"
+        },
+        {
+            "name": "PeerTube Temporaire des académies d'Outre-mer",
+            "alt_name": "tube-outremer.beta.education.fr",
+            "url": "https://tube-outremer.beta.education.fr"
+        },
+        {
+            "name": "PeerTube Temporaire pour les personnels du Ministère de l'Éducation Nationale",
+            "alt_name": "tube-education.beta.education.fr",
+            "url": "https://tube-education.beta.education.fr"
+        },
+        {
+            "name": "PeerTube TETRIS",
+            "alt_name": "peertube.scic-tetris.org",
+            "url": "https://peertube.scic-tetris.org"
+        },
+        {
+            "name": "PeerTube UK ✊🏿",
             "alt_name": "peertube.co.uk",
             "url": "https://peertube.co.uk"
         },
@@ -2201,9 +2306,24 @@
             "url": "https://videos.dinofly.com"
         },
         {
-            "name": "PeerTube Video Data-Expertise !",
-            "alt_name": "video.data-expertise.com",
-            "url": "https://video.data-expertise.com"
+            "name": "PeerTube wivodaim.net",
+            "alt_name": "peertube.wivodaim.net",
+            "url": "https://peertube.wivodaim.net"
+        },
+        {
+            "name": "PeerTube | Maiti.info",
+            "alt_name": "tube.maiti.info",
+            "url": "https://tube.maiti.info"
+        },
+        {
+            "name": "PeerTube | tube.1001solutions.net",
+            "alt_name": "tube.1001solutions.net",
+            "url": "https://tube.1001solutions.net"
+        },
+        {
+            "name": "PeerTube(LIVE)",
+            "alt_name": "peertube.live",
+            "url": "https://peertube.live"
         },
         {
             "name": "PeerTube.020.pl",
@@ -2251,19 +2371,19 @@
             "url": "https://peertube.dynlinux.io"
         },
         {
+            "name": "peertube.fidonet.io",
+            "alt_name": "peertube.fidonet.io",
+            "url": "https://peertube.fidonet.io"
+        },
+        {
             "name": "Peertube.fr",
             "alt_name": "peertube.fr",
             "url": "https://peertube.fr"
         },
         {
-            "name": "peertube.lol",
-            "alt_name": "peertube.lol",
-            "url": "https://peertube.lol"
-        },
-        {
-            "name": "PeerTube.Mablr.org",
-            "alt_name": "peertube.mablr.org",
-            "url": "https://peertube.mablr.org"
+            "name": "PeerTube.it",
+            "alt_name": "peertube.it",
+            "url": "https://peertube.it"
         },
         {
             "name": "PeerTube.me Elukerio",
@@ -2296,11 +2416,6 @@
             "url": "https://peertube.video"
         },
         {
-            "name": "PeerTube(LIVE)",
-            "alt_name": "peertube.live",
-            "url": "https://peertube.live"
-        },
-        {
             "name": "PeerTubeFR",
             "alt_name": "peertube.nocturlab.fr",
             "url": "https://peertube.nocturlab.fr"
@@ -2321,6 +2436,11 @@
             "url": "https://tv.lapesto.fr"
         },
         {
+            "name": "Petit Lutin art'tube",
+            "alt_name": "petitlutinartube.fr",
+            "url": "https://petitlutinartube.fr"
+        },
+        {
             "name": "Philox47 PeerTube",
             "alt_name": "peer.philoxweb.be",
             "url": "https://peer.philoxweb.be"
@@ -2339,6 +2459,11 @@
             "name": "Plaftube",
             "alt_name": "tube.plaf.fr",
             "url": "https://tube.plaf.fr"
+        },
+        {
+            "name": "PlomTube",
+            "alt_name": "tube.plomlompom.com",
+            "url": "https://tube.plomlompom.com"
         },
         {
             "name": "Ploud Video Japan",
@@ -2366,6 +2491,16 @@
             "url": "https://ppstube.portageps.org"
         },
         {
+            "name": "Privacy International Media Server",
+            "alt_name": "media.privacyinternational.org",
+            "url": "https://media.privacyinternational.org"
+        },
+        {
+            "name": "PrivacyTools PeerTube",
+            "alt_name": "tube.privacytools.io",
+            "url": "https://tube.privacytools.io"
+        },
+        {
             "name": "pt.kircheneuenburg.de",
             "alt_name": "pt.kircheneuenburg.de",
             "url": "https://pt.kircheneuenburg.de"
@@ -2381,11 +2516,6 @@
             "url": "https://videos.pueseso.club"
         },
         {
-            "name": "Pure ISP Tube",
-            "alt_name": "video.pure-isp.eu",
-            "url": "https://video.pure-isp.eu"
-        },
-        {
             "name": "Purum Bellum",
             "alt_name": "pt.pube.tk",
             "url": "https://pt.pube.tk"
@@ -2394,6 +2524,11 @@
             "name": "PyTube",
             "alt_name": "pytu.be",
             "url": "https://pytu.be"
+        },
+        {
+            "name": "QLF",
+            "alt_name": "video.gafamfree.party",
+            "url": "https://video.gafamfree.party"
         },
         {
             "name": "QOTO PeerTube",
@@ -2411,9 +2546,9 @@
             "url": "https://peertube.qtg.fr"
         },
         {
-            "name": "Quaylessed Peertube",
-            "alt_name": "peertube.quaylessed.icu",
-            "url": "https://peertube.quaylessed.icu"
+            "name": "QueerMotion",
+            "alt_name": "queermotion.org",
+            "url": "https://queermotion.org"
         },
         {
             "name": "Rainbow Swingers",
@@ -2456,19 +2591,24 @@
             "url": "https://peertube.robonomics.network"
         },
         {
+            "name": "RoyalTube",
+            "alt_name": "pt.steffo.eu",
+            "url": "https://pt.steffo.eu"
+        },
+        {
             "name": "RunTube",
             "alt_name": "runtube.re",
             "url": "https://runtube.re"
         },
         {
+            "name": "S2S",
+            "alt_name": "peertube.s2s.video",
+            "url": "https://peertube.s2s.video"
+        },
+        {
             "name": "scitech.video PeerTube",
             "alt_name": "scitech.video",
             "url": "https://scitech.video"
-        },
-        {
-            "name": "ServeBeer",
-            "alt_name": "peertube.servebeer.com",
-            "url": "https://peertube.servebeer.com"
         },
         {
             "name": "Service de Streaming Vidéo - Académie de Lyon",
@@ -2496,9 +2636,19 @@
             "url": "https://watch.snoot.tube"
         },
         {
+            "name": "SpacePub",
+            "alt_name": "spacepub.space",
+            "url": "https://spacepub.space"
+        },
+        {
             "name": "StemyTube",
             "alt_name": "peertube.stemy.me",
             "url": "https://peertube.stemy.me"
+        },
+        {
+            "name": "Stop Tracking Us TV",
+            "alt_name": "stoptrackingus.tv",
+            "url": "https://stoptrackingus.tv"
         },
         {
             "name": "Subak Video",
@@ -2506,29 +2656,29 @@
             "url": "https://video.subak.ovh"
         },
         {
-            "name": "sunless sea",
-            "alt_name": "videos.govanify.com",
-            "url": "https://videos.govanify.com"
-        },
-        {
-            "name": "SVNET - Tube",
-            "alt_name": "tube.svnet.fr",
-            "url": "https://tube.svnet.fr"
-        },
-        {
-            "name": "SwigTube",
-            "alt_name": "swigif.biz.st",
-            "url": "https://swigif.biz.st"
-        },
-        {
             "name": "Sys4 Tube",
             "alt_name": "peertube.demonix.fr",
             "url": "https://peertube.demonix.fr"
         },
         {
+            "name": "Tangent's PeerTube",
+            "alt_name": "peertube.tangentfox.com",
+            "url": "https://peertube.tangentfox.com"
+        },
+        {
             "name": "tchncs",
             "alt_name": "tube.tchncs.de",
             "url": "https://tube.tchncs.de"
+        },
+        {
+            "name": "The Controverse",
+            "alt_name": "controverse.tube",
+            "url": "https://controverse.tube"
+        },
+        {
+            "name": "The VidCommons Project",
+            "alt_name": "vidcommons.org",
+            "url": "https://vidcommons.org"
         },
         {
             "name": "TheChangeBook.org Tube",
@@ -2539,6 +2689,16 @@
             "name": "Thinkerview",
             "alt_name": "thinkerview.video",
             "url": "https://thinkerview.video"
+        },
+        {
+            "name": "TILvids",
+            "alt_name": "tilvids.com",
+            "url": "https://tilvids.com"
+        },
+        {
+            "name": "TNT PeerTube",
+            "alt_name": "peertube.taxinachtegel.de",
+            "url": "https://peertube.taxinachtegel.de"
         },
         {
             "name": "toobnix",
@@ -2571,14 +2731,14 @@
             "url": "https://tube.kher.nl"
         },
         {
-            "name": "Tube Linc.Systems",
-            "alt_name": "tube.linc.systems",
-            "url": "https://tube.linc.systems"
+            "name": "Tube à Dédale",
+            "alt_name": "tube.chatelet.ovh",
+            "url": "https://tube.chatelet.ovh"
         },
         {
-            "name": "Tube Tesgo",
-            "alt_name": "tube.tesgo.fr",
-            "url": "https://tube.tesgo.fr"
+            "name": "tube.afix.space",
+            "alt_name": "tube.afix.space",
+            "url": "https://tube.afix.space"
         },
         {
             "name": "tube.azbyka.ru",
@@ -2611,14 +2771,34 @@
             "url": "https://tube.netzspielplatz.de"
         },
         {
+            "name": "tube.pawelko.net",
+            "alt_name": "tube.pawelko.net",
+            "url": "https://tube.pawelko.net"
+        },
+        {
             "name": "Tube@Nox-Rhea",
             "alt_name": "tube.nox-rhea.org",
             "url": "https://tube.nox-rhea.org"
         },
         {
+            "name": "Tubee",
+            "alt_name": "tubee.fr",
+            "url": "https://tubee.fr"
+        },
+        {
             "name": "TubeMaliweb",
             "alt_name": "tube.maliweb.at",
             "url": "https://tube.maliweb.at"
+        },
+        {
+            "name": "TUpeerTube",
+            "alt_name": "tube1.it.tuwien.ac.at",
+            "url": "https://tube1.it.tuwien.ac.at"
+        },
+        {
+            "name": "TuVídeo - EnCanarias",
+            "alt_name": "tuvideo.encanarias.info",
+            "url": "https://tuvideo.encanarias.info"
         },
         {
             "name": "TuxnTube",
@@ -2636,14 +2816,29 @@
             "url": "https://thickrips.cloud"
         },
         {
+            "name": "Us.TV",
+            "alt_name": "us.tv",
+            "url": "https://us.tv"
+        },
+        {
+            "name": "v.mkp.ca",
+            "alt_name": "v.mkp.ca",
+            "url": "https://v.mkp.ca"
+        },
+        {
+            "name": "v.sevvie.ltd",
+            "alt_name": "v.sevvie.ltd",
+            "url": "https://v.sevvie.ltd"
+        },
+        {
             "name": "Vault #99",
             "alt_name": "vault.mle.party",
             "url": "https://vault.mle.party"
         },
         {
-            "name": "Ventres Mous",
-            "alt_name": "peertube.ventresmous.fr",
-            "url": "https://peertube.ventresmous.fr"
+            "name": "vid.Wizards.zone",
+            "alt_name": "vid.wizards.zone",
+            "url": "https://vid.wizards.zone"
         },
         {
             "name": "Video blueline peertube",
@@ -2651,19 +2846,9 @@
             "url": "https://video.blueline.mg"
         },
         {
-            "name": "Video Linc.Systems",
-            "alt_name": "video.linc.systems",
-            "url": "https://video.linc.systems"
-        },
-        {
             "name": "video.1000i100.fr",
             "alt_name": "video.1000i100.fr",
             "url": "https://video.1000i100.fr"
-        },
-        {
-            "name": "video.blender.org",
-            "alt_name": "video.blender.org",
-            "url": "https://video.blender.org"
         },
         {
             "name": "video.marcorennmaus.de",
@@ -2671,24 +2856,14 @@
             "url": "https://video.marcorennmaus.de"
         },
         {
+            "name": "video.marcorennmaus.de",
+            "alt_name": "video.marcorennmaus.tk",
+            "url": "https://video.marcorennmaus.tk"
+        },
+        {
             "name": "video.selea.se",
             "alt_name": "video.selea.se",
             "url": "https://video.selea.se"
-        },
-        {
-            "name": "video.splat.soy",
-            "alt_name": "video.splat.soy",
-            "url": "https://video.splat.soy"
-        },
-        {
-            "name": "video.valme.io",
-            "alt_name": "video.valme.io",
-            "url": "https://video.valme.io"
-        },
-        {
-            "name": "video.wivodaim.net",
-            "alt_name": "video.wivodaim.net",
-            "url": "https://video.wivodaim.net"
         },
         {
             "name": "Videohost by lono.space",
@@ -2726,44 +2901,14 @@
             "url": "https://video.mugoreve.fr"
         },
         {
-            "name": "Vidéos Colibris",
-            "alt_name": "video.colibris-outilslibres.org",
-            "url": "https://video.colibris-outilslibres.org"
-        },
-        {
-            "name": "Vidéos de l'UPR",
-            "alt_name": "videos.upr.fr",
-            "url": "https://videos.upr.fr"
-        },
-        {
-            "name": "Vidéos des Archives Henri-Poincaré",
-            "alt_name": "videos.ahp-numerique.fr",
-            "url": "https://videos.ahp-numerique.fr"
-        },
-        {
-            "name": "Vidéos des CEMEA",
-            "alt_name": "videos.cemea.org",
-            "url": "https://videos.cemea.org"
-        },
-        {
-            "name": "Vidéos Globenet",
-            "alt_name": "videos.globenet.org",
-            "url": "https://videos.globenet.org"
-        },
-        {
-            "name": "Vidéos Hors Sentiers",
-            "alt_name": "ptube.horsentiers.fr",
-            "url": "https://ptube.horsentiers.fr"
+            "name": "Videos from outer space",
+            "alt_name": "videos.fromouter.space",
+            "url": "https://videos.fromouter.space"
         },
         {
             "name": "Videos Les Communs",
             "alt_name": "videos.lescommuns.org",
             "url": "https://videos.lescommuns.org"
-        },
-        {
-            "name": "Vidéos souvenirs",
-            "alt_name": "vis.ion.ovh",
-            "url": "https://vis.ion.ovh"
         },
         {
             "name": "Videos Ubuntu Paris",
@@ -2781,29 +2926,49 @@
             "url": "https://www.videos-libr.es"
         },
         {
-            "name": "Videotape.me",
-            "alt_name": "videotape.me",
-            "url": "https://videotape.me"
+            "name": "Vidéos Colibris",
+            "alt_name": "video.colibris-outilslibres.org",
+            "url": "https://video.colibris-outilslibres.org"
         },
         {
-            "name": "Vidéothèque de l'académie d'Amiens.",
+            "name": "Vidéos des Archives Henri-Poincaré",
+            "alt_name": "videos.ahp-numerique.fr",
+            "url": "https://videos.ahp-numerique.fr"
+        },
+        {
+            "name": "Vidéos des CEMEA",
+            "alt_name": "videos.cemea.org",
+            "url": "https://videos.cemea.org"
+        },
+        {
+            "name": "Vidéos du Libre",
+            "alt_name": "videosdulib.re",
+            "url": "https://videosdulib.re"
+        },
+        {
+            "name": "Vidéos Globenet",
+            "alt_name": "videos.globenet.org",
+            "url": "https://videos.globenet.org"
+        },
+        {
+            "name": "Vidéos Hors Sentiers",
+            "alt_name": "ptube.horsentiers.fr",
+            "url": "https://ptube.horsentiers.fr"
+        },
+        {
+            "name": "Vidéos souvenirs",
+            "alt_name": "vis.ion.ovh",
+            "url": "https://vis.ion.ovh"
+        },
+        {
+            "name": "Vidéothèque de l'académie  d'Amiens.",
             "alt_name": "tube.ac-amiens.fr",
             "url": "https://tube.ac-amiens.fr"
         },
         {
-            "name": "VidéoTube d'Alolise",
-            "alt_name": "videos.alolise.org",
-            "url": "https://videos.alolise.org"
-        },
-        {
-            "name": "VIID-Ga",
-            "alt_name": "viid.ga",
-            "url": "https://viid.ga"
-        },
-        {
-            "name": "Vloggers (PeerTube)",
-            "alt_name": "vloggers.social",
-            "url": "https://vloggers.social"
+            "name": "Vidéothèque de l'académie de Nancy-Metz",
+            "alt_name": "videos.ac-nancy-metz.fr",
+            "url": "https://videos.ac-nancy-metz.fr"
         },
         {
             "name": "Vny",
@@ -2816,6 +2981,11 @@
             "url": "https://peertube.volaras.net"
         },
         {
+            "name": "Vulgar Realities",
+            "alt_name": "video.hylianux.com",
+            "url": "https://video.hylianux.com"
+        },
+        {
             "name": "Wakapo's videos",
             "alt_name": "videos.wakapo.com",
             "url": "https://videos.wakapo.com"
@@ -2826,19 +2996,9 @@
             "url": "https://watch.44con.com"
         },
         {
-            "name": "WeMakeTube",
-            "alt_name": "videos.tcit.fr",
-            "url": "https://videos.tcit.fr"
-        },
-        {
             "name": "Widemus (PeerTube)",
             "alt_name": "widemus.de",
             "url": "https://widemus.de"
-        },
-        {
-            "name": "Write.as",
-            "alt_name": "video.writeas.org",
-            "url": "https://video.writeas.org"
         },
         {
             "name": "XR Tube",
@@ -2846,9 +3006,9 @@
             "url": "https://tube.rebellion.global"
         },
         {
-            "name": "Xtenz Peertube",
-            "alt_name": "peertube.xtenz.xyz",
-            "url": "https://peertube.xtenz.xyz"
+            "name": "XWiki PeerTube",
+            "alt_name": "peertube.xwiki.com",
+            "url": "https://peertube.xwiki.com"
         },
         {
             "name": "Y-Y Tube",
@@ -2872,6 +3032,11 @@
         },
         {
             "name": "YunoHost PeerTube",
+            "alt_name": "peertube.de1.sknode.com",
+            "url": "https://peertube.de1.sknode.com"
+        },
+        {
+            "name": "YunoHost PeerTube",
             "alt_name": "peertube.la-famille-muller.fr",
             "url": "https://peertube.la-famille-muller.fr"
         },
@@ -2879,6 +3044,11 @@
             "name": "YunoHost PeerTube",
             "alt_name": "peertube.xoddark.com",
             "url": "https://peertube.xoddark.com"
+        },
+        {
+            "name": "YunoHost PeerTube",
+            "alt_name": "peertube1.zeteo.me",
+            "url": "https://peertube1.zeteo.me"
         },
         {
             "name": "YunoHost PeerTube",
@@ -2891,14 +3061,14 @@
             "url": "https://yunopeertube.myddns.me"
         },
         {
-            "name": "ZergyTube",
-            "alt_name": "peertube.zergy.net",
-            "url": "https://peertube.zergy.net"
+            "name": "ɭost Ɂod",
+            "alt_name": "lostpod.space",
+            "url": "https://lostpod.space"
         },
         {
-            "name": "비디오.sftblw.moe",
-            "alt_name": "video.sftblw.moe",
-            "url": "https://video.sftblw.moe"
+            "name": "♪ Ɛxoɖe ♫",
+            "alt_name": "exode.me",
+            "url": "https://exode.me"
         },
         {
             "name": "アノニマスの見解",
@@ -2906,19 +3076,19 @@
             "url": "https://peertube.anon-kenkai.com"
         },
         {
-            "name": "性/别影音平台 | SOGIE Videos",
-            "alt_name": "videos.uni-corn.me",
-            "url": "https://videos.uni-corn.me"
-        },
-        {
             "name": "軟體自由協會 PeerTube 影音平台",
             "alt_name": "peertube.slat.org",
             "url": "https://peertube.slat.org"
         },
         {
-            "name": "雪餅の動画工房",
-            "alt_name": "tube.yukimochi.jp",
-            "url": "https://tube.yukimochi.jp"
+            "name": "비디오.sftblw.moe",
+            "alt_name": "video.sftblw.moe",
+            "url": "https://video.sftblw.moe"
+        },
+        {
+            "name": "🐷 Tube",
+            "alt_name": "v.lesterpig.com",
+            "url": "https://v.lesterpig.com"
         }
     ]
 }
