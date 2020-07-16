@@ -856,11 +856,6 @@
             "url": "https://tube.aquilenet.fr"
         },
         {
-            "name": "Armstube",
-            "alt_name": "armstube.com",
-            "url": "https://armstube.com"
-        },
-        {
             "name": "Artica_Peertube",
             "alt_name": "peertube.artica.center",
             "url": "https://peertube.artica.center"
@@ -979,6 +974,11 @@
             "name": "CSICtv",
             "alt_name": "csictv.csic.es",
             "url": "https://csictv.csic.es"
+        },
+        {
+            "name": "DairyTube",
+            "alt_name": "vids.queendairy.xyz",
+            "url": "https://vids.queendairy.xyz"
         },
         {
             "name": "darftube",
@@ -1451,6 +1451,11 @@
             "url": "https://videos.koweb.fr"
         },
         {
+            "name": "koyu.space on VHS",
+            "alt_name": "vhs.koyu.space",
+            "url": "https://vhs.koyu.space"
+        },
+        {
             "name": "KrashTube",
             "alt_name": "media.krashboyz.org",
             "url": "https://media.krashboyz.org"
@@ -1556,11 +1561,6 @@
             "url": "https://tube.lou.lt"
         },
         {
-            "name": "Luke's Videos",
-            "alt_name": "videos.lukesmith.xyz",
-            "url": "https://videos.lukesmith.xyz"
-        },
-        {
             "name": "LundiMatin",
             "alt_name": "video.lundi.am",
             "url": "https://video.lundi.am"
@@ -1589,6 +1589,11 @@
             "name": "media.zat.im",
             "alt_name": "media.zat.im",
             "url": "https://media.zat.im"
+        },
+        {
+            "name": "Merci la police !",
+            "alt_name": "merci-la-police.fr",
+            "url": "https://merci-la-police.fr"
         },
         {
             "name": "Meta-Tube",
@@ -1726,11 +1731,6 @@
             "url": "https://nuage.acostey.fr"
         },
         {
-            "name": "Nuagelibre",
-            "alt_name": "tube.nuagelibre.fr",
-            "url": "https://tube.nuagelibre.fr"
-        },
-        {
             "name": "Ojamajo Doremi - Centre de Visionnage",
             "alt_name": "wetube.ojamajo.moe",
             "url": "https://wetube.ojamajo.moe"
@@ -1764,6 +1764,11 @@
             "name": "P2J : Pair 2 Jeux",
             "alt_name": "videos.pair2jeux.tube",
             "url": "https://videos.pair2jeux.tube"
+        },
+        {
+            "name": "P2P TV",
+            "alt_name": "p2ptv.ru",
+            "url": "https://p2ptv.ru"
         },
         {
             "name": "P2Tube",
@@ -1847,8 +1852,8 @@
         },
         {
             "name": "PeerTube",
-            "alt_name": "peertube.su",
-            "url": "https://peertube.su"
+            "alt_name": "peertube.terranout.mine.nu",
+            "url": "https://peertube.terranout.mine.nu"
         },
         {
             "name": "PeerTube",
@@ -1879,6 +1884,11 @@
             "name": "PeerTube",
             "alt_name": "tube.bn4t.me",
             "url": "https://tube.bn4t.me"
+        },
+        {
+            "name": "PeerTube",
+            "alt_name": "tube.bruniau.net",
+            "url": "https://tube.bruniau.net"
         },
         {
             "name": "PeerTube",
@@ -2506,11 +2516,6 @@
             "url": "https://pt.kircheneuenburg.de"
         },
         {
-            "name": "pt.neko.bar",
-            "alt_name": "pt.neko.bar",
-            "url": "https://pt.neko.bar"
-        },
-        {
             "name": "Pueseso",
             "alt_name": "videos.pueseso.club",
             "url": "https://videos.pueseso.club"
@@ -2666,14 +2671,14 @@
             "url": "https://peertube.tangentfox.com"
         },
         {
+            "name": "Tardis World Tube",
+            "alt_name": "tube.tardis.world",
+            "url": "https://tube.tardis.world"
+        },
+        {
             "name": "tchncs",
             "alt_name": "tube.tchncs.de",
             "url": "https://tube.tchncs.de"
-        },
-        {
-            "name": "The Controverse",
-            "alt_name": "controverse.tube",
-            "url": "https://controverse.tube"
         },
         {
             "name": "The VidCommons Project",
@@ -2731,9 +2736,9 @@
             "url": "https://tube.kher.nl"
         },
         {
-            "name": "Tube à Dédale",
-            "alt_name": "tube.chatelet.ovh",
-            "url": "https://tube.chatelet.ovh"
+            "name": "Tube Linc.Systems",
+            "alt_name": "tube.linc.systems",
+            "url": "https://tube.linc.systems"
         },
         {
             "name": "tube.afix.space",
@@ -2846,6 +2851,11 @@
             "url": "https://video.blueline.mg"
         },
         {
+            "name": "Video Linc.Systems",
+            "alt_name": "video.linc.systems",
+            "url": "https://video.linc.systems"
+        },
+        {
             "name": "video.1000i100.fr",
             "alt_name": "video.1000i100.fr",
             "url": "https://video.1000i100.fr"
@@ -2859,11 +2869,6 @@
             "name": "video.marcorennmaus.de",
             "alt_name": "video.marcorennmaus.tk",
             "url": "https://video.marcorennmaus.tk"
-        },
-        {
-            "name": "video.selea.se",
-            "alt_name": "video.selea.se",
-            "url": "https://video.selea.se"
         },
         {
             "name": "Videohost by lono.space",
@@ -2971,6 +2976,11 @@
             "url": "https://videos.ac-nancy-metz.fr"
         },
         {
+            "name": "VidéoTube d'Alolise",
+            "alt_name": "videos.alolise.org",
+            "url": "https://videos.alolise.org"
+        },
+        {
             "name": "Vny",
             "alt_name": "video.vny.fr",
             "url": "https://video.vny.fr"
@@ -3049,11 +3059,6 @@
             "name": "YunoHost PeerTube",
             "alt_name": "peertube1.zeteo.me",
             "url": "https://peertube1.zeteo.me"
-        },
-        {
-            "name": "YunoHost PeerTube",
-            "alt_name": "ptube.rousset.nom.fr",
-            "url": "https://ptube.rousset.nom.fr"
         },
         {
             "name": "Yunopeertube",
