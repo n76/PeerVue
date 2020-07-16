@@ -10,6 +10,8 @@ SPDX-License-Identifier: MIT
         <field id="rowContent" type="node" alias="content_screen.content" onChange="OnChangeContent" />
         <!-- Row item selection handler -->
         <field id="rowItemSelected" type="intarray" alwaysNotify="true" alias="content_screen.rowItemSelected"/>
+
+        <function name="deepLink" />
     </interface>
 
     <script type="text/brightscript" uri="pkg:/components/home_scene.brs" />

@@ -35,6 +35,9 @@ function init()
     m.ConfigComplete        = false
     m.search_task           = invalid
 
+    m.DeepLinkContentId     = Invalid
+    m.DeepLinkMediaType     = Invalid
+
     initializeVideoPlayer()
 
     '
@@ -55,6 +58,20 @@ function init()
 
     loadConfig()
 end function
+
+Function deepLink(mediaType, contentId)
+    m.DeepLinkContentId     = contentId
+    m.DeepLinkMediaType     = mediaType
+    if (m.launchCompleteSent)
+        startDeepLink()
+    end if
+end function
+
+sub startDeepLink()
+    ? "startDeepLink() mediaType = ";m.DeepLinkMediaType
+    ? "startDeepLink() contendId = ";m.DeepLinkContentId
+    loadDeepLinkVideoInfo(m.DeepLinkContentId)
+end sub
 
 sub pushContent()
     m.details_screen.callFunc("pushContent")
@@ -91,6 +108,9 @@ sub sendLaunchComplete()
     if m.launchCompleteSent = false
         m.launchCompleteSent = true
         m.top.signalBeacon("AppLaunchComplete")
+        if (m.DeepLinkContentId <> Invalid) and (m.DeepLinkMediaType <> Invalid)
+            startDeepLink()
+        end if
     end if
 end sub
 
@@ -292,6 +312,42 @@ sub onVideoInfoResponse(obj)
         '
     else
         ? "[onVideoInfoResponse]: Feed response is empty!"
+    end if
+end sub
+
+sub loadDeepLinkVideoInfo(uuid)
+    m.url_task = createObject("roSGNode", "load_video_info_task")
+    m.url_task.observeField("response", "onDeepLinkVideoInfoResponse")
+    m.url_task.url = get_setting("server","") + "/api/v1/videos/" + uuid
+    m.url_task.control = "RUN"
+end sub
+
+sub onDeepLinkVideoInfoResponse(obj)
+    data = obj.getData()
+    if data <> Invalid
+        m.content_screen.visible = false
+        m.overhang.visible=true
+        m.details_screen.visible = true
+        m.details_screen.content = data
+        preBufferVideo(data)
+        '
+        '   Fix me: Need to get captions, if they exist, for video object
+        '       /api/v1/videos/<video id>/captions
+        '       See: SubtitleTracks at
+        '       https://developer.roku.com/en-gb/docs/developer-program/getting-started/architecture/content-metadata.md
+        '
+        '       Also, see https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+        '       for list of ISO 639-1 2 and ISO 639.2B 3 letter codes. Probably
+        '       need a table lookup to do the conversion
+        '
+
+        '   If media type specified by deep link is short form or live then
+        '   simulate pressing the play button.
+        if (m.DeepLinkMediaType = "shortFormVideo") or (m.DeepLinkMediaType = "Live")
+            onPlayButtonPressed(Invalid)
+        end if
+    else
+        ? "[onDeepLinkVideoInfoResponse]: Response is empty!"
     end if
 end sub
 
