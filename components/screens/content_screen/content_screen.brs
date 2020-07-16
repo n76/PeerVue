@@ -31,6 +31,14 @@ function resetContent()
     m.rowList.content = m.content
 end function
 
+function validItem(item)  as Boolean
+    rslt = true
+    rslt = rslt and (item.previewPath <> Invalid)
+    rslt = rslt and (item.thumbnailPath <> Invalid)
+    rslt = rslt and (item.name <> Invalid)
+
+    return rslt
+end function
 '
 '   Add videos to current content
 '
@@ -40,41 +48,43 @@ function addContent(videoInfo)
     row = createObject("RoSGNode","ContentNode")
     row.Title = videoInfo.title
     for each item in videoInfo.videos
-        node = createObject("roSGNode","summary_node")
-        node.title = item.name
+        if validItem(item) then
+            node = createObject("roSGNode","summary_node")
+            node.title = item.name
 
-        node.uuid = item.uuid
-        node.url = get_setting("server", "") + item.previewPath
+            node.uuid = item.uuid
+            node.url = get_setting("server", "") + item.previewPath
 
-        '
-        ' PeerTube descriptions use markdown and, at the least, we want
-        ' to remove URLs that we can't click on with Roku
-        '
-        ' Assume markdown hyperlinks are of the form:
-        '
-        ' [some text](url)
-        '
-        if item.description <> Invalid then
-            regex1 = createObject("roRegEx", "\([A-Za-z]+:\/\/[A-Za-z0-9\-_]+\.[A-Za-z0-9\-_:%&;\?\#\/.=]+\)", "gi")
-            regex2 = createObject("roRegEx", "[\[\]]", "gi")
-            text = regex1.ReplaceAll(item.description,"")
-            node.description = regex2.ReplaceAll(text,"")
-        else
-            node.description = ""
+            '
+            ' PeerTube descriptions use markdown and, at the least, we want
+            ' to remove URLs that we can't click on with Roku
+            '
+            ' Assume markdown hyperlinks are of the form:
+            '
+            ' [some text](url)
+            '
+            if item.description <> Invalid then
+                regex1 = createObject("roRegEx", "\([A-Za-z]+:\/\/[A-Za-z0-9\-_]+\.[A-Za-z0-9\-_:%&;\?\#\/.=]+\)", "gi")
+                regex2 = createObject("roRegEx", "[\[\]]", "gi")
+                text = regex1.ReplaceAll(item.description,"")
+                node.description = regex2.ReplaceAll(text,"")
+            else
+                node.description = ""
+            end if
+
+            node.HdGridPosterUrl = get_setting("server", "") + item.thumbnailPath
+            node.ShortDescriptionLine1 = item.name
+            node.ShortDescriptionLine2 = ""
+            node.Length=item.duration
+
+            if (item.originallyPublishedAt <> invalid)
+                date.FromISO8601String(item.originallyPublishedAt)
+            else
+                date.FromISO8601String(item.publishedAt)
+            end if
+            node.ReleaseDate = date.AsDateString("short-month-no-weekday")
+            row.appendChild(node)
         end if
-
-        node.HdGridPosterUrl = get_setting("server", "") + item.thumbnailPath
-        node.ShortDescriptionLine1 = item.name
-        node.ShortDescriptionLine2 = ""
-        node.Length=item.duration
-
-        if (item.originallyPublishedAt <> invalid)
-            date.FromISO8601String(item.originallyPublishedAt)
-        else
-            date.FromISO8601String(item.publishedAt)
-        end if
-        node.ReleaseDate = date.AsDateString("short-month-no-weekday")
-        row.appendChild(node)
     end for
 
     m.content.appendChild(row)
