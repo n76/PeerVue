@@ -92,10 +92,12 @@ function doSearches( searchList )
 
         '
         '   If we have a preferred language set (isoCode correct length)
-        '   then add a language filter to the search
+        '   then add a language filter to the search. Since so many
+        '   videos don’t have a language set, include unknown language
+        '   in any language specific search.
         '
         if (isoCode <> invalid) and (isoCode.Len() = 2)
-            search_path = r.Replace(search_path, "\1&languageOneOf=" + isoCode)
+            search_path = r.Replace(search_path, "\1&languageOneOf=" + isoCode  + "&languageOneOf=_unknown")
         end if
 
         feedData  = getFeed(get_setting("server", "") + search_path)
